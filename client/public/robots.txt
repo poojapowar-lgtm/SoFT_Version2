@@ -3,7 +3,7 @@ Allow: /
 
 # Block admin routes
 Disallow: /admin/
-Disallow: /admin/login
+Disallow: /admin/secure-soft
 Disallow: /admin/dashboard
 Disallow: /admin/news
 Disallow: /admin/events

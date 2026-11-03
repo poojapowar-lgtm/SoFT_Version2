@@ -1,10 +1,5 @@
-.national-rank {
-  padding: clamp(25px, 4vw, 45vw) clamp(20px, 4.5vw, 100px);
-  background-color: white;
-  background-image: url("/public/assets/images/home/rank20.png");
-  background-size: cover;
-  background-position:top;
-  background-repeat: no-repeat;
+.rank-container {
+  margin: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px) 0 clamp(25px, 5.5vw, 100px);
 }
 
 /* Content Layout */
@@ -12,10 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(10px, 1.5vw, 40px);
+  gap: clamp(10px, 1.5vw, 30px);
 }
 
-/* Left Text */
+
 .rank-text {
   flex: 1;
 }
@@ -24,62 +19,58 @@
   text-align: left;
 }
 
-/* RANKING LOGOS */
-.rank-logos {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(15px, 2vw, 30px);
-  justify-content: center;
-  align-items: center;
-}
 
-/* Logo */
-.RLogo {
-  width: clamp(85px, 15vw, 220px);
-  background-color: white;
+
+.national-rank-img {
+  padding-bottom: 10px;
+  display: block;
+  width: 100%;
+  max-width: clamp(85px, 12vw, 225px);
+  /* max-height: 250px; */
   height: auto;
   object-fit: contain;
-  opacity: 0.92;
-  animation: professionalPulse 3.5s ease-in-out infinite;
-  transition:
-    transform 0.4s ease,
-    opacity 0.4s ease,
-    filter 0.4s ease;
+  filter: drop-shadow(0 6px 10px rgba(0, 77, 0, 0.15));
+  transition: transform 0.3s ease;
 }
 
+.national-rank-img:hover {
+  transform: scale(1.03);
+}
 
-/* Professional Pulse */
-@keyframes professionalPulse {
+.rank-logos-wrapper {
+  width: 90%;
+  overflow: hidden;
+}
 
-  0%,
-  100% {
-    opacity: 0.92;
-    transform: scale(1);
-    filter: brightness(1);
+.rank-logos {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: clamp(10px, 2vw, 30px);
+  width: max-content;
+  animation: continuousLogoScroll 20s linear infinite;
+}
+
+.RLogo {
+  flex: 0 0 auto;
+  width: clamp(100px, 12vw, 200px);
+  height: clamp(25px, 4vw, 60px);
+  object-fit: contain;
+  display: block;
+}
+
+/* Seamless, continuous scrolling */
+@keyframes continuousLogoScroll {
+  from {
+    transform: translateX(0);
   }
 
-  50% {
-    opacity: 1;
-    transform: scale(1.040);
-    filter: brightness(1.06) drop-shadow(0 clamp(3px, 0.5vw, 6px) clamp(8px, 1vw, 14px) rgba(0, 0, 0, 0.12));
+  to {
+    transform: translateX(-50%);
   }
 }
 
-
-/* Hover */
-.RLogo:hover {
-  opacity: 1;
-  transform: scale(1.07);
-  filter:
-    brightness(1.05) drop-shadow(0 clamp(5px, 0.7vw, 9px) clamp(12px, 1.5vw, 22px) rgba(0, 0, 0, 0.18));
+.rank-logos-wrapper:hover .rank-logos {
   animation-play-state: paused;
 }
 
-
-/* MOBILE */
-@media (max-width: 576px) {
-  .rank-content {
-    flex-direction: column;
-  }
-}

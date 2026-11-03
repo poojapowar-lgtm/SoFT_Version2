@@ -1,7 +1,7 @@
 .programs-section {
-   text-align: center;
-  padding: clamp(25px, 4vw, 45vw) clamp(20px, 4.5vw, 100px);
-  background: #F3ECD3;
+  text-align: center;
+  padding: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
+  /* background: #F3ECD3; */
   overflow: hidden;
 }
 
@@ -16,8 +16,7 @@
   display: flex;
   width: max-content;
   animation: scroll 25s linear infinite;
-  padding:clamp(15px, 1.2vw, 20px) 0;
-  gap: clamp(15px, 3vw, 40px);
+  gap: clamp(15px, 2.5vw, 40px);
 }
 
 .programs-slider:hover .programs-track {
@@ -26,25 +25,51 @@
 
 /* Card */
 .program-cards {
-  width: clamp(220px, 30vw, 380px);
-  background: #722327;
-  color: white;
+  width: clamp(250px, 35vw, 450px);
+  background: #E9E1C4;
+  color: #004D00;
   overflow: hidden;
   flex-shrink: 0;
+  padding:clamp(7px, 1.2vw, 18px)  clamp(10px, 2vw, 25px);
+  border-radius: clamp(7px, 1.2vw, 18px);
   text-decoration: none;
 }
 
-/* Image */
 .program-cards img {
   width: 100%;
-  height: clamp(180px, 23vw, 350px);
+  height: clamp(150px, 15vw, 250px);
+  border-radius: clamp(7px, 1.2vw, 18px);
+  display: block;
   object-fit: cover;
+  object-position: top;
+  aspect-ratio: 8 / 5;
 }
 
-
 .pg-title {
-  margin: clamp(7px, 1.2vw, 15px);
-  font-size: clamp(12px, 2vw, 22px);
+  margin: clamp(7px, 1.2vw, 15px) 0;
+  font-size: clamp(12px, 1.5vw, 22px);
   font-weight: 450;
-  text-align: center;
+  text-align: left;
+}
+
+.pg-arrow-icon {
+  display: block;
+  margin: clamp(6px, 0.8vw, 10px) 0 0;
+  font-size: clamp(10px, 1vw, 16px);
+  color: #ffffff;
+  background: #004D00;
+  padding: clamp(4px, 0.8vw, 8px);
+  border-radius: 50%;
+  box-sizing: content-box;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.program-cards:hover .pg-arrow-icon {
+  transform: translateX(6px);
+  background: #3f8114;
+}
+
+.pg-desc {
+  color: #153816;
+  text-align: left;
 }

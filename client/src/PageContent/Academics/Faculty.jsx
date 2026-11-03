@@ -30,7 +30,10 @@ const Faculty = () => {
               <img
                 src={`http://localhost:5000/uploads/${item.image}`}
                 alt={item.name}
-                title={item.name}
+                width="140"
+                height="140"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

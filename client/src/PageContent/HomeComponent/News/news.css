@@ -2,20 +2,27 @@
 .news-container {
     margin: 0 auto;
     display: flex;
-    gap: clamp(15px, 2.5vw, 40px);
-    padding: clamp(25px, 4vw, 45vw) clamp(20px, 5vw, 80px);
+    gap: clamp(20px, 3vw, 100px);
+    padding: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
 }
 
 /* Equal sections */
-.notices,
+/* .notices,
 .happenings {
     flex: 1;
     min-width: 0;
-    background: linear-gradient(135deg,
-            #ffffff 0%,
-            #f9fbf3 100%);
-    padding: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+} */
+.notices {
+    flex: 1.5;
+    min-width: 0;
+}
+
+.happenings {
+    flex: 2.5;
+    min-width: 0;
+    background-color: #E9E1C4;
+    padding: 0 clamp(20px, 2.5vw, 45px) clamp(20px, 2.5vw, 45px) clamp(20px, 2.5vw, 45px);
+    border-radius: clamp(8px, 1vw, 18px);
 }
 
 /* Header */
@@ -23,13 +30,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 /* Buttons */
 .news-btn {
     display: flex;
-    gap: clamp(14px, 2vw, 22px);
+    gap: clamp(10px, 0.8vw, 20px);
 }
 
 .news-btn button {
@@ -50,9 +57,10 @@
 
 /* Notices List */
 .notices-list {
-    height: clamp(220px, 25vw, 300px);
+    max-height: clamp(180px, 20vw, 280px);
     overflow-y: auto;
     padding-right: 5px;
+    margin: clamp(10px, 1.2vw, 20px) 0;
 }
 
 /* Scrollbar */
@@ -70,14 +78,16 @@
 .notice-card {
     display: flex;
     align-items: center;
+    max-width: 700px;
     gap: clamp(12px, 2vw, 18px);
-    margin: clamp(10px, 1.2vw, 15px);
-    padding: clamp(8px, 1.2vw, 12px) clamp(10px, 1.5vw, 20px);
+    margin: clamp(10px, 1.2vw, 15px) 0;
+    padding: clamp(5px, 0.5vw, 10px) clamp(10px, 1.2vw, 18px);
     border-radius: 10px;
-    background: linear-gradient(90deg,
+    background-color: #E9E1C4;
+    /* background: linear-gradient(90deg,
             #eef6d8 0%,
             #f5f9e8 45%,
-            #ffffff 100%);
+            #ffffff 100%); */
     border: 1px solid #ffffff;
     border-left: 3px solid #97c600;
     transition: all 0.3s ease;
@@ -101,17 +111,17 @@
 
 .notice-text {
     margin: 0;
+    font-size: clamp(10.5px, 1vw, 16px) !important;
     flex: 1;
-    font-size: clamp(12px, 1.2vw, 18px);
-    color: #333;
+    color: #004D00;
 }
 
 /* Link */
 .notice-link {
-    font-size: clamp(12px, 1.2vw, 16px);
+    font-size: clamp(9px, 1vw, 13px);
     white-space: nowrap;
     color: #0066ff;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     margin: 4px 10px;
 }
@@ -124,24 +134,21 @@
 .date-card {
     display: flex;
     flex-direction: column;
-    color: #722327;
+    color: #004D00;
     min-width: 65px;
     text-align: center;
     border-right: 1px solid #97c600;
     padding-right: 8px;
 }
 
-a {
-    font-size: clamp(10.5px, 1.2vw, 15.5px);
-}
 
 .day {
-    font-size: clamp(15px, 2vw, 26px);
+    font-size: clamp(15px, 1.8vw, 25px);
     font-weight: bold;
 }
 
 .month {
-    font-size: clamp(12px, 1vw, 20px);
+    font-size: clamp(12px, 1.2vw, 20px);
 }
 
 /* View All */
@@ -169,13 +176,16 @@ a {
     min-width: max-content;
     overflow: hidden;
     transition: 0.3s ease;
+    border-radius: clamp(8px, 1vw, 18px);
 }
 
 /* Image */
 .happening-card img {
     width: 100%;
-    height: clamp(220px, 25vw, 340px);
+    height: clamp(180px, 18vw, 300px);
+    display: block;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 

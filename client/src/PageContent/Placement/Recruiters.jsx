@@ -22,7 +22,10 @@ const Recruiters = () => {
             <img
               src={`http://localhost:5000/uploads/${item.logo}`}
               alt={item.company_name}
-              title={item.company_name}
+              width="220"
+              height="100"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         ))}

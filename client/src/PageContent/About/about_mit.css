@@ -1,10 +1,13 @@
 /* IMAGE STYLING */
 .aboutmit-image img {
-    display: flex;
+    display: block;
     margin: 0 auto;
-    max-width: 1000px;
-    height: clamp(200px, 25vw, 380px);
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 500 / 250;
     object-fit: cover;
+    object-position: top;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
     transition:
         transform 0.3s ease,
@@ -17,7 +20,6 @@
 }
 
 /* ABOUT SOFT - IMAGE + CONTENT*/
-
 .aboutsoft-content {
     width: 100%;
     max-width: 1200px;
@@ -38,12 +40,16 @@
 }
 
 .aboutsoft-image img {
-    width: 100%;
-    height: clamp(200px, 35vw, 300px);
     display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    aspect-ratio: 700 / 400;
     object-fit: cover;
     border-radius: 8px;
+
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+
     transition:
         transform 0.4s ease,
         box-shadow 0.4s ease;
@@ -87,6 +93,7 @@
 .mission-card {
     position: relative;
     padding: clamp(5px, 1.2vw, 15px) clamp(20px, 4vw, 45px);
+    border-radius: clamp(25px, 2vw, 50px);
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -95,25 +102,25 @@
 
 
 .vision-card {
-    background-image: url("/public/assets/images/home/vision6.jpg");
+    background-image: url("/public/assets/images/home/vision6.webp");
 }
 
 
 .mission-card {
-    background-image: url("/public/assets/images/home/vision1.jpg");
+    background-image: url("/public/assets/images/home/vision1.webp");
 }
 
-/* Dark Overlay */
 .vision-card::before,
 .mission-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(241, 238, 238, 0.45);
+    /* background: rgb(255 255 255 / 85%); */
+    background: rgba(241, 238, 225, 0.85);
     z-index: 0;
 }
 
-/* Keep content above overlay */
+
 .vision-card>*,
 .mission-card>* {
     position: relative;
@@ -129,11 +136,11 @@
 
 .vm-heading h2 {
     margin: 0;
-    font-family: math;
+     font-family: system-ui;
     color: #24650d;
-    font-size: clamp(18px, 2.5vw, 30px);
+    font-size: clamp(18px, 2vw, 28px);
     line-height: 1.2;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.5px;
 }
 
@@ -141,13 +148,15 @@
 /* Heading underline */
 .vm-heading span {
     display: block;
-    width: clamp(45px, 6vw, 80px);
-    height: 3px;
-    margin-top: clamp(7px, 0.8vw, 10px);
+    height: 2px;
     background: #97c600;
     border-radius: 10px;
 }
 
+.v-para {
+    font-size: clamp(10px, 1vw, 14px) !important;
+    color: #153816;
+}
 
 /* Mission row */
 .mission-row {
@@ -200,15 +209,12 @@
 
 /*  MOBILE */
 @media (max-width: 600px) {
+
     .vision-card,
     .mission-card {
         padding: clamp(20px, 5vw, 25px);
     }
 
-    .vm-heading {
-        width: 100%;
-        text-align: center;
-    }
 
     .vm-heading span {
         margin-left: auto;

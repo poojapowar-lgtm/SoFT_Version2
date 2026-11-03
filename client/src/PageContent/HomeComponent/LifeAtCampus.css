@@ -1,7 +1,7 @@
 .life-campus {
   margin: 0 auto;
   /* background-color: #f3ecd3; */
-  padding: clamp(25px, 4vw, 45vw) clamp(20px, 4.5vw, 100px);
+  padding: 0 clamp(25px, 5.5vw, 100px) clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
 }
 
 /* Layout */
@@ -9,51 +9,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(15px, 2vw, 30px);
+  /* gap: clamp(15px, 2vw, 30px); */
 }
 
 /* Left Text */
 .campus-left {
-  margin-left: clamp(0px, 5vw, 80px);
   flex: 1;
   text-align: left;
 }
 
 /* Button */
 #campus-btn {
+  margin-top: 5px;
   margin-left: auto;
   display: block;
-  margin-top: clamp(15px, 3vw, 25px);
 }
 
-
-/* .campus-image {
-  flex: 1;
-  text-align: center;
-}
-
-.campus-image img {
-  width: 85%;
-  height: auto;
-  object-fit: cover;
-  border-radius: clamp(8px, 1vw, 16px);
-} */
-
-
-@media (max-width: 576px) {
-  .campus-content {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-
-}
 
 /* CAMPUS IMAGE GRID */
 .campus-image-grid {
+  position: relative;
   width: 100%;
-  max-width: clamp(450px, 45vw, 1000px);
-  height: clamp(250px, 40vw, 500px);
-  padding: clamp(15px, 3vw, 25px);
+  max-width: clamp(420px, 40vw, 700px);
+  height: clamp(200px, 28vw, 450px);
+  padding: clamp(10px, 2.5vw, 25px);
+  gap: clamp(5px, 0.5vw, 10px);
   display: grid;
   margin: 0 auto;
 }
@@ -61,6 +41,7 @@
 /* Individual image boxes */
 .campus-img {
   border: 1px solid white;
+  border-radius: clamp(15px, 3vw, 25px) 0;
   position: relative;
   overflow: hidden;
   box-shadow: 0 clamp(5px, 1vw, 15px) clamp(15px, 2vw, 30px) rgba(0, 0, 0, 0.15);
@@ -72,16 +53,8 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition:
-    transform 0.6s ease,
-    filter 0.6s ease;
 }
 
-/* Hover effect */
-.campus-img:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.05);
-}
 
 /* Slightly different positioning */
 .campus-img-1 {
@@ -104,6 +77,39 @@
   grid-row: 2;
 }
 
+/* One-by-one zoom animation */
+.campus-img-1 img {
+  animation: campusZoom 8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.campus-img-2 img {
+  animation: campusZoom 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.campus-img-3 img {
+  animation: campusZoom 8s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.campus-img-4 img {
+  animation: campusZoom 8s ease-in-out infinite;
+  animation-delay: 6s;
+}
+
+@keyframes campusZoom {
+
+  0%,
+  20%,
+  100% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1.1);
+  }
+}
 
 /* DECORATIVE EFFECT*/
 .campus-img::after {
@@ -114,4 +120,32 @@
       transparent 55%,
       rgba(0, 0, 0, 0.18));
   pointer-events: none;
+}
+
+.campus-section {
+  max-width: clamp(450px, 35vw, 550px);
+  border-radius: clamp(8px, 1vw, 18px);
+  background: green;
+  padding-left: 20px;
+}
+
+.campus-keypoint {
+  bottom: clamp(10px, 2vw, 30px);
+  left: 0;
+  background-color: #97C600;
+  border-radius: clamp(60px, 7vw, 100px) clamp(8px, 1vw, 18px) clamp(8px, 1vw, 18px) clamp(60px, 7vw, 100px);
+  padding: clamp(5px, 0.5vw, 15px) clamp(15px, 3vw, 30px);
+}
+
+
+.campus-keypoint ul li {
+  color: #002B47;
+}
+
+@media (max-width: 576px) {
+  .campus-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
 }

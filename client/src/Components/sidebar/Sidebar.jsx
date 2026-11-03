@@ -1,23 +1,45 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { CgMenuGridR } from "react-icons/cg";
 import "./sidebar.css";
 
 const Sidebar = ({ menuItems }) => {
-  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="sidebar">
-      <ul>
+      {/* Mobile menu toggle */}
+      <button
+        type="button"
+        className="sidebar-menu-toggle"
+        onClick={() => setMenuOpen((prev) => !prev)}
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+      >
+        <CgMenuGridR />
+      </button>
+
+      {/* Menu items */}
+      <ul className={menuOpen ? "sidebar-menu-open" : ""}>
         {menuItems.map((item, index) => {
-          const link = item.to || item.path; // support both and to
-          const isActive = location.pathname.includes(link);
+          const link = item.to || item.path;
+
+          if (!link) return null;
 
           return (
-            <li key={index} className={isActive ? "active" : ""}>
-              <Link to={link}>
+            <li key={link || index}>
+              <NavLink
+                to={link}
+                end={link === "/"}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  isActive ? "sidebar-link active" : "sidebar-link"
+                }
+              >
                 <span className="menu-arrow"></span>
                 {item.name}
-              </Link>
+              </NavLink>
             </li>
           );
         })}

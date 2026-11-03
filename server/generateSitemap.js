@@ -33,7 +33,7 @@ const urls = [
   "/examinations/admission-notice",
   "/research/board-of-research",
   "/research/research-paper-publication",
-  "/research/pentant-publications",
+  "/research/Patent-publications",
   "/research/funded-projects",
   "/research/phd-admissions",
   "/research/mou",

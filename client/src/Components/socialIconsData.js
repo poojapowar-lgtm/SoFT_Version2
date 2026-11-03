@@ -1,9 +1,9 @@
 const socialIconsData = [
-  // {
-  //   url: "https://api.whatsapp.com/send/?phone=918308010405&text&type=phone_number&app_absent=0",
-  //   network: "whatsapp",
-  //   bgColor: "#25D366",
-  // },
+  {
+    url: "https://wa.me/7391054740",
+    network: "whatsapp",
+    bgColor: "#25D366",
+  },
   {
     url: "https://www.facebook.com/share/194GTQf99H/",
     network: "facebook",

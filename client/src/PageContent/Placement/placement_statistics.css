@@ -1,6 +1,4 @@
 .placement-wrapper {
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin: 0 auto;
   padding: clamp(10px, 2vw, 25px);
   width: 80%;
@@ -8,25 +6,25 @@
 
 .placement-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 180px), 1fr));
-  gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 5vw, 140px), 1fr));
+  gap: clamp(15px, 2vw, 40px);
   margin-bottom: clamp(15px, 3vw, 25px);
 }
 
 .placement-heading {
-  font-size: clamp(14px, 2.5vw, 20px);
+  font-size: clamp(11px, 1vw, 16px);
   font-weight: bold;
-  color: green;
+  color: #004d00;
   text-align: center;
-  margin: 0;
+  margin: clamp(5px, 1.2vw, 10px) 0;
 }
 
 .placement-count {
-  font-size: clamp(18px, 2.5vw, 28px);
+  font-size: clamp(14px, 1.2vw, 24px);
   font-weight: bold;
-  color: rgb(114, 83, 5);
+  color: #722327;
   text-align: center;
-  margin: 0;
+  margin: clamp(5px, 1.2vw, 10px) 0;
 }
 
 

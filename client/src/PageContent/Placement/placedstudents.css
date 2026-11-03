@@ -4,7 +4,7 @@
     gap: clamp(15px, 2vw, 30px);
 }
 
-/* Card layout */
+
 .placed-std-card {
     display: flex;
     align-items: stretch;
@@ -16,13 +16,13 @@
     overflow: hidden;
 }
 
-/* Hover */
+
 .placed-std-card:hover {
     transform: translateY(-6px) scale(1.01);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* Content */
+
 .placed-std-content {
     flex: 1;
     padding: clamp(10px, 2vw, 16px);
@@ -46,7 +46,17 @@
     color: goldenrod;
 }
 
-/* Tablet */
+.student-img {
+    display: block;
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    aspect-ratio: 100 / 80;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
 @media (max-width: 768px) {
     .placed-std-card {
         flex-direction: column;

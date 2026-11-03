@@ -22,6 +22,9 @@
   position: relative;
   width: 100%;
   min-width: 0;
+  border-radius: clamp(20px, 2vw, 28px);
+background: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -42,18 +45,16 @@
   align-items: center;
   gap: clamp(12px, 2vw, 25px);
   padding: clamp(12px, 1.5vw, 20px) clamp(10px, 1.5vw, 22px);
-  background-image: url("/public/assets/images/home/speak1.jpg");
+  background-image: url("/public/assets/images/home/speak1.webp");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   position: relative;
 }
 
-
 /* PROFILE IMAGE */
 .speak-left {
   flex-shrink: 0;
-  position: relative;
 }
 
 .speak-left img {
@@ -114,8 +115,6 @@
   font-size: clamp(12px, 1vw, 15px);
   line-height: 1.75;
   text-align: left;
-  background: #fafafa;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
 }
 
 
@@ -134,7 +133,8 @@
 
 /* READ MORE */
 .read-more {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-family: system-ui;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   display: inline-block;
   margin-left: clamp(5px, 0.5vw, 8px);
   padding: 0;
@@ -198,36 +198,6 @@
   transform: scale(0.95);
 }
 
-
-/* DOTS */
-.dots {
-  margin-top: clamp(16px, 2vw, 22px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dot {
-  width: clamp(4.5px, 0.65vw, 7px);
-  height: clamp(4.5px, 0.65vw, 7px);
-  margin: 0 clamp(3px, 0.4vw, 6px);
-  display: inline-block;
-  border-radius: 50%;
-  background: #d3d3d3;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  width: clamp(6px, 0.85vw, 9px);
-  height: clamp(6px, 0.85vw, 9px);
-  background: rgb(128, 93, 5);
-  transform: scale(1.1);
-}
-
-.dot:hover {
-  background: #008000;
-}
 
 
 

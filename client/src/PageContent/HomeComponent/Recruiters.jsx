@@ -17,8 +17,6 @@ const Recruiters = () => {
 
   return (
     <section className="recruiters">
-      <h2 className="title">Our Recruiters & Successful Placements</h2>
-
       <div className="logo-slider">
         <div className="logo-track">
           {[...data, ...data].map((item, index) => (
@@ -26,7 +24,10 @@ const Recruiters = () => {
               <img
                 src={`http://localhost:5000/uploads/${item.logo}`}
                 alt={item.company_name}
-                title={item.company_name}
+                width="300"
+                height="100"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}

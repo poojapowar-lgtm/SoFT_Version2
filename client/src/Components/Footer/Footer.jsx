@@ -50,28 +50,35 @@ const Footer = () => {
             src="/assets/images/home/mit_logo.webp"
             alt="MIT-ADT University Logo"
             title="MIT-ADT University"
+            width="170"
+            height="50"
+            decoding="async"
           />
+
           <div className="footer-brand">
             <img
               className="ft-logo2"
-              src="/assets/images/home/SoFT_Logo.png"
+              src="/favicon_new.png"
               alt="MIT School of Food Technology Logo"
               title="MIT School of Food Technology"
+              width="90"
+              height="65"
+              decoding="async"
             />
-            <div className="footer-title">
-              <h1 className="ft-logo-title">MIT-SoFT</h1>
-              <p className="ft-logo-subtitle">School of Food Technology</p>
-            </div>
-          </div>
 
+            {/* <div className="footer-title">
+              <h2 className="ft-logo-title">MIT-SoFT</h2>
+              <p className="ft-logo-subtitle">School of Food Technology</p>
+            </div> */}
+          </div>
         </div>
 
         <div className="footer-social">
-          <div className="footer-social-icons">
+          <div className="footer-social-box">
             {socialIconsData.map(({ url, network, bgColor }, index) => (
               <SocialIcon
                 key={index}
-                className="foot-social-icons"
+                className="footer-social-icons"
                 url={url}
                 network={network}
                 bgColor={bgColor}
@@ -79,7 +86,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        
+
       </div>
       <div className="footer-links-container">
         <div className="footer-links">
@@ -90,7 +97,7 @@ const Footer = () => {
                 Download Brochure
               </a>
             </li>
-            <li><a href="/admissions/annoucement">Admission Annoucement</a></li>
+            <li><a href="/admissions/annoucement">Admission Announcement</a></li>
             <li><a href="/admissions/fee-structure">Fee Structure</a></li>
             <li><a href="/academics/academic-calendar">Academic Calendar</a></li>
             <li><a href="/contact">Connect with Us</a></li>
@@ -115,14 +122,14 @@ const Footer = () => {
           <h4> Exams</h4>
           <ul>
             <li><a href="/examinations/examinations-schedule"> Exam Schedule </a></li>
-            <li><a href="/campus-life/events"> Result Login </a></li>
+            {/* <li><a href="/campus-life/events"> Result Login </a></li> */}
           </ul>
         </div>
 
         <div className="footer-links">
           <h4> Alumni</h4>
           <ul>
-            <li><a href="/alumni/alumni-report">Alumni Report</a></li>
+            {/* <li><a href="/alumni/alumni-report">Alumni Report</a></li> */}
             <li><a href="/placement/placed-students">Placed Students</a></li>
             <li><a href="/academics/achievements">Achievements</a></li>
           </ul>
@@ -130,9 +137,9 @@ const Footer = () => {
           <h4> Other Links</h4>
           <ul>
             <li><a href="https://sdgs.un.org/">United Nations</a></li>
-            <li><a href="https://www.fssai.gov.in/">Fssai</a></li>
-            <li><a href="https://www.mofpi.gov.in/">mofpi</a></li>
-            <li><a href="https://swayam.gov.in/nc_details/NPTEL">swayam</a></li>
+            <li><a href="https://www.fssai.gov.in/">FSSAI</a></li>
+            <li><a href="https://www.mofpi.gov.in/">MoFPI</a></li>
+            <li><a href="https://swayam.gov.in/nc_details/NPTEL">SWAYAM</a></li>
           </ul>
         </div>
 
@@ -141,20 +148,19 @@ const Footer = () => {
           <h4> Address</h4>
           <ul>
             <li>
-              MIT-ADT Campus, Rajbaugh, Solapur – Pune Highway Near Bharat
-              Petrol Pump, Loni-Kalbhor, Maharashtra – 412201
+              MIT-ADT Campus, Rajbaug, Pune–Solapur Highway, near Bharat Petrol Pump, Loni Kalbhor, Maharashtra 412201
             </li>
           </ul>
           <iframe
             className="map"
-            title="Map location"
+            title="MIT-SoFT Campus Location Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.8228655029525!2d74.02029187595625!3d18.49168107005449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e9784f39a613%3A0x189ffd59802ec685!2sMIT%20School%20of%20Food%20Technology%2C%20MIT%20ADT%20University%2C%20Pune!5e0!3m2!1sen!2sin!4v1773135364412!5m2!1sen!2sin"
-            allowFullScreen
+            width="400"
+            height="200"
+            allow="fullscreen"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            referrerPolicy="strict-origin-when-cross-origin"
           ></iframe>
-
-
         </div>
       </div>
 
@@ -168,15 +174,20 @@ const Footer = () => {
       {/* FOOTER BOTTOM */}
       <div className="footer-bottom">
         <p className="bottom-text">
-          MIT-SoFT Pune © 2025. All Rights Reserved. Designed & Developed by
+          MIT-SoFT Pune © 2026. All Rights Reserved. Designed & Developed by
           MIT-ADT Website Department.
         </p>
 
         <div className="visitor-box">
           <h4> Site Visitors:</h4>
 
-          <p className="visitor-count">
+          {/* <p className="visitor-count">
             {visitorCount.toString().split("").join(" ")}
+          </p> */}
+          <p className="visitor-count" aria-live="polite">
+            {visitorCount > 0
+              ? visitorCount.toString().split("").join(" ")
+              : "0 0 0 0 0 0"}
           </p>
         </div>
       </div>

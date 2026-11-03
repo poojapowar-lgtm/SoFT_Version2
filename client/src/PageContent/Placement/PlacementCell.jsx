@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../../Pages/board_body.css";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-
 const PlacementCell = () => {
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -10,25 +9,25 @@ const PlacementCell = () => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
-    const Placementdata = [
+    const placementData = [
         {
-            title: "1. Identification of Student Interest & Domain Mapping",
+            title: "1. Identification of Student Interests & Domain Mapping",
             content: (
                 <ul className="page-list">
                     <li>
-                        Collect domain-wise industry placement preferences of final-year
-                        B.Tech. & M.Tech. Food Technology students (e.g., Fruit &
-                        Vegetables Processing, Bakery and Confectionary Industry, Dairy
-                        Processing Industry, Spice Industry, Meat & Poultry Processing,
-                        Wine Processing Industry, Carbonated Beverages industry, Edible
-                        oil Processing Industry, Rice mills etc.).
+                        Collect domain-wise placement preferences from final-year B.Tech.
+                        and M.Tech. Food Technology students, covering industries such as
+                        fruit and vegetable processing, bakery and confectionery, dairy
+                        processing, spices, meat and poultry processing, wine processing,
+                        carbonated beverages, edible oils, rice milling, and other related
+                        sectors.
                     </li>
                     <li>
-                        Analyze student interest to align industry requirements with
-                        student career goals.
+                        Analyze student interests to align industry requirements with
+                        students' career goals.
                     </li>
                 </ul>
-            )
+            ),
         },
         {
             title: "2. Recruiter Identification & Job Description Collection",
@@ -36,52 +35,49 @@ const PlacementCell = () => {
                 <>
                     <ul className="page-list">
                         <li>
-                            Identify and approach suitable recruiters based on student
+                            Identify and approach suitable recruiters based on students'
                             domain preferences.
                         </li>
-                        <li>Collect complete recruiter details including:</li>
+                        <li>Collect complete recruiter details, including:</li>
                     </ul>
-                    <ol>
+                    <ol className="page-list">
                         <li>Organization profile</li>
-                        <li>Job Title / Designation</li>
-                        <li>Detailed Job Description (JD)</li>
+                        <li>Job title or designation</li>
+                        <li>Detailed job description (JD)</li>
                         <li>Eligibility criteria</li>
-                        <li>CTC / stipend</li>
-                        <li>Location and joining details</li>
+                        <li>Cost to company (CTC) or stipend</li>
+                        <li>Job location and joining details</li>
                     </ol>
                 </>
-            )
+            ),
         },
         {
             title: "3. Placement Drive Approval & Scheduling",
             content: (
                 <ul className="page-list">
-                    <li>Obtain approval from competent authorities.</li>
-                    <li>
-                        Finalize date, time, venue, and mode (online/offline).
-                    </li>
-                    <li>
-                        Confirm participation with the recruiting organization.
-                    </li>
+                    <li>Obtain approval from the competent authorities.</li>
+                    <li>Finalize the date, time, venue, and mode (online or offline).</li>
+                    <li>Confirm participation with the recruiting organization.</li>
                 </ul>
-            )
+            ),
         },
         {
-            title: "4. Upload of Drive Details on Calyx Pod AI Platform",
+            title: "4. Uploading Drive Details to the Calyx Pod AI Platform",
             content: (
                 <>
                     <ul className="page-list">
                         <li>
-                            Upload complete placement drive details on the Calyxy Pod AI
-                            platform, where all placement-preference students are registered.
+                            Upload complete placement drive details to the Calyx Pod AI
+                            platform, where students who have registered for placement
+                            opportunities can access the information.
                         </li>
-                        <li>Ensure the platform includes:</li>
+                        <li>Ensure that the platform includes:</li>
                     </ul>
-                    <ol>
+                    <ol className="page-list">
                         <li>Company profile</li>
-                        <li>Job role & JD</li>
+                        <li>Job role and job description</li>
                         <li>Eligibility criteria</li>
-                        <li>Drive schedule</li>
+                        <li>Placement drive schedule</li>
                         <li>Registration deadline</li>
                     </ol>
                     <ul className="page-list">
@@ -90,75 +86,71 @@ const PlacementCell = () => {
                         </li>
                     </ul>
                 </>
-            )
+            ),
         },
         {
             title: "5. Student Notification & Registration",
             content: (
                 <ul className="page-list">
                     <li>
-                        Notify eligible students through official channels and the Calyxy
-                        Pod AI platform.
+                        Notify eligible students through official communication channels
+                        and the Calyx Pod AI platform.
                     </li>
-                    <li>
-                        Verify student eligibility and confirm participation.
-                    </li>
+                    <li>Verify student eligibility and confirm participation.</li>
                 </ul>
-            )
+            ),
         },
         {
             title: "6. Pre-Placement Preparation Activities",
             content: (
                 <>
                     <ul className="page-list">
-                        <li>Conduct Pre-Placement Talk (PPT) by the recruiter.</li>
-                        <li>Organize preparatory sessions:</li>
-                    </ul>
-                    <ul>
-                        <li>Resume writing (Food Industry specific)</li>
-                        <li>Group Discussion & Interview Skills</li>
-                        <li>Behavioral & Soft Skills Training</li>
+                        <li>Conduct a pre-placement talk (PPT) by the recruiter.</li>
+                        <li>Organize preparatory sessions covering:</li>
+                        <li>Resume writing tailored to the food industry</li>
+                        <li>Group discussion and interview skills</li>
+                        <li>Behavioral and soft skills training</li>
                         <li>
-                            Technical orientation (GMP, HACCP, FSSAI, QA/QC, R & D basics)
+                            Technical orientation covering GMP, HACCP, FSSAI, QA/QC, and
+                            the fundamentals of research and development (R&D)
                         </li>
                     </ul>
                 </>
-            )
+            ),
         },
         {
-            title: "7. Shortlisting of Candidates",
+            title: "7. Candidate Shortlisting",
             content: (
                 <ul className="page-list">
+                    <li>Share registered student profiles with the recruiter.</li>
                     <li>
-                        Share registered student profiles with the recruiter.
-                    </li>
-                    <li>
-                        Publish shortlisted candidate list through official notice and
-                        platform.
+                        Publish the shortlist of candidates through official notices and
+                        the placement platform.
                     </li>
                 </ul>
-            )
+            ),
         },
         {
             title: "8. Placement Drive Execution",
             content: (
                 <>
                     <ul className="page-list">
-                        <li>Coordinate and conduct selection rounds:</li>
+                        <li>Coordinate and conduct the selection rounds, which may include:</li>
                     </ul>
-                    <ol>
-                        <li>Aptitude / Technical Test</li>
-                        <li>Group Discussion</li>
-                        <li>Technical Interview</li>
-                        <li>HR Interview</li>
+                    <ol className="page-list">
+                        <li>Aptitude or technical test</li>
+                        <li>Group discussion</li>
+                        <li>Technical interview</li>
+                        <li>HR interview</li>
                     </ol>
                     <ul className="page-list">
                         <li>
-                            Provide logistical and administrative support to recruiters.
+                            Provide logistical and administrative support to recruiters
+                            throughout the placement drive.
                         </li>
                     </ul>
                 </>
-            )
+            ),
         },
         {
             title: "9. Selection & Offer Communication",
@@ -166,11 +158,11 @@ const PlacementCell = () => {
                 <ul className="page-list">
                     <li>Receive selection results from the recruiter.</li>
                     <li>
-                        Communicate final selection, offer details, and joining
-                        information to students.
+                        Communicate final selection results, offer details, and joining
+                        information to the selected students.
                     </li>
                 </ul>
-            )
+            ),
         },
         {
             title: "10. Documentation & Reporting",
@@ -178,65 +170,86 @@ const PlacementCell = () => {
                 <>
                     <ul className="page-list">
                         <li>Maintain structured records of:</li>
-                    </ul>
-                    <ul>
-                        <li>Registered vs. selected students</li>
-                        <li>Offer letters and CTC details</li>
-                        <li>Recruiter and student feedback</li>
-                    </ul>
-                    <ul className="page-list">
-                        <li>
-                            Submit consolidated placement report to the institute.
-                        </li>
+                        <ol className="page-list">
+                            <li>Registered and selected students</li>
+                            <li>Offer letters and CTC details</li>
+                            <li>Recruiter and student feedback</li>
+                        </ol>
+                        <li>Submit a consolidated placement report to the institute.</li>
                     </ul>
                 </>
-            )
+            ),
         },
         {
             title: "11. Post-Placement Support & Feedback",
             content: (
                 <ul className="page-list">
+                    <li>Support students during joining and onboarding.</li>
                     <li>
-                        Support students during joining and onboarding.
-                    </li>
-                    <li>
-                        Collect feedback from recruiters and placed students for
+                        Collect feedback from recruiters and placed students to support
                         continuous improvement.
                     </li>
                 </ul>
-            )
-        }
+            ),
+        },
     ];
 
-    const CoOrdinator = [
+    const coordinatorData = [
         {
             name: "Dr. Balaji N. Jadhav",
-            desgination: "Placement Incharge",
+            designation: "Placement In-Charge",
             mail: "balaji.jadhav@mituniversity.edu.in",
-            contact: "9420090899"
+            contact: "9420090899",
         },
-    ]
+    ];
+
     return (
         <div className="placement-container">
-
             <h2 className="innerpage-title">Placement Cell</h2>
+
             <ul className="page-list">
-                <li>A dedicated Training & Placement Cell facilitates internships and final placements through on-campus and virtual recruitment drives.</li>
-                <li>Students are trained through industry interaction, resume building, aptitude tests, soft-skill development, and interview preparation through the SCIL.</li>
-                <li>Placement opportunities are provided in Production, Quality Assurance/Quality Control, R&D, Food Safety, Regulatory Affairs, Certification, Supply Chain, and NAPS programs.</li>
-                <li>The School also supports international placements, industrial training, and internship-to-placement pathways.</li>
+                <li>
+                    A dedicated Training & Placement Cell facilitates internships and
+                    final placements through on-campus and virtual recruitment drives.
+                </li>
+                <li>
+                    Students receive training through industry interactions, resume
+                    building, aptitude tests, soft skills development, and interview
+                    preparation through SCIL.
+                </li>
+                <li>
+                    Placement opportunities are available in production, quality
+                    assurance and quality control (QA/QC), research and development
+                    (R&D), food safety, regulatory affairs, certification, supply chain
+                    management, and National Apprenticeship Promotion Scheme (NAPS)
+                    programs.
+                </li>
+                <li>
+                    The School also supports international placement opportunities,
+                    industrial training, and internship-to-placement pathways.
+                </li>
             </ul>
 
+            <h2 className="innerpage-title">
+                Placement Drive Process & Standard Operating Procedure (SOP)
+            </h2>
 
-            <h2 className="innerpage-title">Placement Drive Conduction Process/SOP</h2>
             <div className="accordion-container">
-
-                {Placementdata.map((item, index) => (
+                {placementData.map((item, index) => (
                     <div key={index} className="accordion-item">
                         <div
                             className={`faq-header ${activeIndex === index ? "active" : ""
                                 }`}
                             onClick={() => toggleAccordion(index)}
+                            role="button"
+                            tabIndex={0}
+                            aria-expanded={activeIndex === index}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    toggleAccordion(index);
+                                }
+                            }}
                         >
                             <h4 className="accordion-title">{item.title}</h4>
                             <span className="faq-icon">
@@ -246,50 +259,38 @@ const PlacementCell = () => {
 
                         {activeIndex === index && (
                             <div className="accordion-content-wrapper">
-                                <div className="accordion-content">
-                                    <p>{item.content}</p>
-                                </div>
+                                <div className="accordion-content">{item.content}</div>
                             </div>
-
                         )}
                     </div>
                 ))}
-
             </div>
 
-            <h2 className="innerpage-title">Placement Co-Ordinator</h2>
+            <h2 className="innerpage-title">Placement Coordinator</h2>
+
             <div className="board-body-container">
-                {CoOrdinator.map((item, index) => (
+                {coordinatorData.map((item, index) => (
                     <div className="board-card" key={index}>
                         <h3 className="board-name">{item.name}</h3>
 
                         <p style={{ margin: "5px 0" }}>
-                            <strong>{item.desgination}</strong>
+                            <strong>{item.designation}</strong>
                         </p>
 
-                        {/* Email */}
                         <p className="board-desg">
-                            <a
-                                href={`mailto:${item.mail}`}
-                                className="board-link"
-                            >
+                            <a href={`mailto:${item.mail}`} className="board-link">
                                 {item.mail}
                             </a>
                         </p>
 
-                        {/* Phone */}
                         <p className="board-desg">
-                            <a
-                                href={`tel:${item.contact}`}
-                                className="board-link"
-                            >
+                            <a href={`tel:${item.contact}`} className="board-link">
                                 {item.contact}
                             </a>
                         </p>
                     </div>
                 ))}
             </div>
-
         </div>
     );
 };

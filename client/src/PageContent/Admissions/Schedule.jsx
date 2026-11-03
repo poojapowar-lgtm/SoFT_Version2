@@ -1,73 +1,87 @@
 import React from "react";
-
+import { MdOutlineDone } from "react-icons/md";
 
 const Schedule = () => {
 
     const admissionFlow = [
         {
-            title: "Admission Flow",
+            title: "Admission Process",
             desc: [
-                "Student is informed about admission date, time and required documents.",
-                "Student reports with original documents, 2 photocopy sets and scanned copies.",
-                "Attendance is marked and token issued.",
-                "Orientation by Admission Committee.",
-                "Document verification against originals.",
-                "ERP details verified; upload support provided if needed.",
-                "Fee payment and receipt generation.",
-                "Final submission of documents; acknowledgement receipt issued."
+                "Inform students about the admission date, time, and required documents.",
+                "Students must report with their original documents, two sets of photocopies, and scanned copies.",
+                "Mark attendance and issue a token.",
+                "Conduct an orientation session led by the Admission Committee.",
+                "Verify all documents against the original documents.",
+                "Verify ERP details and provide assistance with document uploads, if required.",
+                "Collect the applicable fees and generate a payment receipt.",
+                "Collect the final set of documents and issue an acknowledgement receipt."
             ]
         },
         {
-            title: "Responsibilities",
+            title: "Roles and Responsibilities",
             desc: [
-                "Admission Head: Admission communication",
-                "Reception Committee: Attendance & token",
-                "Chairman: Orientation",
-                "Verification Committee: Document verification",
-                "ERP Coordinator: ERP support",
-                "Accounts: Fee collection",
-                "Student Section: Document submission & records",
-                "Registrar/Head of Institute: Eligibility approval & enrolment"
+                "Admission Head: Communicate admission-related information.",
+                "Reception Committee: Manage attendance and token distribution.",
+                "Chairperson: Conduct the orientation session.",
+                "Verification Committee: Verify admission documents.",
+                "ERP Coordinator: Provide ERP-related support.",
+                "Accounts Department: Collect fees and process payments.",
+                "Student Section: Manage document submissions and maintain records.",
+                "Registrar/Head of Institute: Approve eligibility and oversee enrolment."
             ]
         },
         {
             title: "Eligibility Verification",
             desc: [
-                "Verify academic, ID and category documents.",
-                "Issue deficiency notice for missing documents.",
-                "Check the UGC fake university list for PG admission."
+                "Verify academic, identity, and category-related documents.",
+                "Issue a deficiency notice if any required documents are missing.",
+                "For postgraduate admissions, check the UGC list of fake universities, as applicable."
             ]
         },
         {
-            title: "Records to Maintain",
+            title: "Records to Be Maintained",
             desc: [
-                "Admission forms",
-                "Verification checklists",
+                "Admission application forms",
+                "Document verification checklists",
                 "Deficiency notices",
                 "Acknowledgement receipts",
                 "Admission records"
             ]
         }
-    ]
+    ];
+
 
 
     return (
         <div>
             <h2 className="innerpage-title">Admission Schedule</h2>
 
-            <div className="row-lists">
-                {admissionFlow.map((section, index) => (
-                    <div className="scope-card" key={index}>
-                        <h3 className="innerpage-subtitle">{section.title}</h3>
+            <div className="future-container">
+                <div className="pg-outcomes-container">
+                    {admissionFlow.map((section, index) => (
+                        <div className="pg-outcomes-item" key={index}>
+                            <div className="pg-outcomes-number">{index + 1}</div>
 
-                        <ul className="page-list">
-                            {section.desc.map((item, i) => (
-                                <li key={i}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+                            <div className="pg-outcomes-card">
+                                <h3
+                                    className="innerpage-subtitle"
+                                    style={{ margin: "0px" }}
+                                >
+                                    {section.title}
+                                </h3>
+
+                                <ul className="page-list">
+                                    {section.desc.map((item, i) => (
+                                        <li key={i}>{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                     <div className="pg-outcomes-number"><MdOutlineDone /></div>
+                </div>
             </div>
+
 
 
         </div>

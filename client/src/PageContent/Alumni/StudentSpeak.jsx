@@ -25,27 +25,15 @@ const StudentSpeak = () => {
 
     const getItemsPerView = () => (window.innerWidth <= 768 ? 1 : 2);
 
-    const nextSlide = () => {
-        if (index + getItemsPerView() < data.length) {
-            setIndex((prev) => prev + 1);
-        }
-    };
+    const maxIndex = Math.max(0, data.length - getItemsPerView());
 
-    const prevSlide = () => {
-        if (index > 0) {
-            setIndex((prev) => prev - 1);
-        }
-    };
-
-    //  SCROLL FUNCTIONS (FIX)
     const scrollLeft = () => {
-        sliderRef.current.scrollBy({ left: -320, behavior: "smooth" });
+        setIndex((prev) => Math.max(0, prev - 1));
     };
 
     const scrollRight = () => {
-        sliderRef.current.scrollBy({ left: 320, behavior: "smooth" });
+        setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     };
-
     const visibleData = data.slice(index, index + getItemsPerView());
 
     useEffect(() => {
@@ -79,14 +67,13 @@ const StudentSpeak = () => {
 
                                 {/* TOP ROW */}
                                 <div className="speak-top">
-
                                     {/* IMAGE */}
                                     <div className="speak-left">
                                         <img
                                             src={
                                                 item.image
                                                     ? `http://localhost:5000/uploads/${item.image}`
-                                                    : "/default-user.png"
+                                                    : "/default-user.webp"
                                             }
                                             alt={item.image_alt || item.name}
                                             title={item.image_title || item.name}
@@ -142,10 +129,21 @@ const StudentSpeak = () => {
 
                 {/* NAV BUTTONS */}
                 <div className="nav-buttons">
-                    <button onClick={scrollLeft}>
+                    <button
+                        type="button"
+                        onClick={scrollLeft}
+                        disabled={index === 0}
+                        aria-label="Previous alumni story"
+                    >
                         <TbPlayerTrackPrevFilled />
                     </button>
-                    <button onClick={scrollRight}>
+
+                    <button
+                        type="button"
+                        onClick={scrollRight}
+                        disabled={index >= maxIndex}
+                        aria-label="Next alumni story"
+                    >
                         <TbPlayerTrackNextFilled />
                     </button>
                 </div>

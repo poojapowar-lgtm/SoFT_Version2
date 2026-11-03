@@ -10,14 +10,14 @@
 
 
 .board-card {
-    max-width: 500px;
+    max-width: 440px;
     background: linear-gradient(90deg,
             #eef6d8 0%,
             #f5f9e8 45%,
             #ffffff 100%);
     border: 2px solid #ffffff;
     padding: 0 clamp(10px, 1.5vw, 20px);
-    border-left: 4px solid #97c600;
+    border-left: 4px solid #004d00;
     border-radius: 0 50px 50px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
@@ -29,12 +29,13 @@
 }
 
 .board-name {
-    font-family: math;
+    /* font-family: math; */
+     font-family: system-ui;
     letter-spacing: 0.5px;
-    font-size: clamp(12px, 1.5vw, 18px);
+    font-size: clamp(12px, 1vw, 18px);
     font-weight: 600;
-    margin-bottom:clamp(5px, 1.5vw, 10px) ;
-    color: #722327;
+     margin: 8px 0;
+    color: #004d00;
 }
 
 
@@ -47,19 +48,20 @@
 
 /* Change text when card is hovered */
 .board-card:hover .board-name {
-    color: #004d00;
+    color: #722327;
 }
 
 .board-card:hover .board-desg {
     color: rgb(55, 55, 107);
 }
 
-.board-desg {
+.board-desg,
+.board-card p {
     margin: 5px 0;
 }
 
 .board-link {
-    color: blue;
+    color: #004d00;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -69,6 +71,7 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
 
 /* Mobile: 1 card per row */
 @media (max-width: 600px) {

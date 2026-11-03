@@ -3,32 +3,33 @@ import "./admission.css";
 
 const HowApply = () => {
 
-  const cardData = [
+const cardData = [
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828919.png",
-      title: "Fulfil academic eligibility as per program requirements",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828919.webp",
+        title: "Meet the academic eligibility requirements for the selected program.",
     },
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828911.png",
-      title: "Appear for accepted entrance examinations (MHT-CET/JEE/NEET/CUET/GATE/PERA-CET as applicable).",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828911.webp",
+        title: "Appear for an accepted entrance examination (MHT-CET, JEE, NEET, CUET, GATE, or PERA CET), as applicable to the program.",
     },
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828906.png",
-      title: "Apply through the university admission portal (www.mituniversity.ac.in)",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828906.webp",
+        title: "Apply through the university admission portal (www.mituniversity.ac.in).",
     },
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828925.png",
-      title: "Shortlisted candidates appear for interviews.",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828925.webp",
+        title: "Attend an interview if shortlisted.",
     },
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828940.png",
-      title: "Merit list published based on 12th /UG/PG marks, entrance score and interview performance (depends upon the program applied and university norms).",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828940.webp",
+        title: "The merit list is prepared based on Class 12, undergraduate, or postgraduate marks, entrance examination scores, and interview performance, as applicable to the program and university norms.",
     },
     {
-      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828961.png",
-      title: "Complete document verification and fee payment.",
+        logo: "https://cdn-icons-png.flaticon.com/512/1828/1828961.webp",
+        title: "Complete document verification and pay the applicable fees.",
     },
-  ];
+];
+
 
   return (
     <div className="howapply-container">

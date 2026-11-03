@@ -2,46 +2,33 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import InnerBanner from "../Components/inner_banner/InnerBanner";
 import Sidebar from "../Components/sidebar/Sidebar";
-import SEOMeta from "../Components/SEOMeta";
+import SEOMeta from "../Components/SEO/SEOMeta";
 import "./pages.css";
 
 const Admission = () => {
     const location = useLocation();
 
-    const menu = [
-        { name: "Admission Announcement", path: "annoucement" },
-        { name: "Admission Schedule", path: "schedule" },
-        { name: "Eligibility", path: "eligibility" },
-        { name: "Admission Procedure", path: "procedure" },
-        // { name: "Entrance Exams Updates", path: "entrance" },
-        { name: "Fee Structure", path: "fee-structure" },
-        { name: "Scholarship Details", path: "scholarship" },
-        { name: "FAQ's", path: "faq" },
-        // { name: "Merit/Selection List", path: "merit-list" },
-        // { name: "Counselling & seat allotment", path: "counselling" },
-        // { name: "Spot admissions/vacancy notices", path: "vacancy" },
-        // { name: "Cancellation and withdrawal notices", path: "withdrawal" },
-        // { name: "How to Apply", path: "apply" },
-    ];
+const menu = [
+    { name: "Admission Announcement", path: "annoucement" },
+    { name: "Admission Schedule", path: "schedule" },
+    { name: "Eligibility", path: "eligibility" },
+    { name: "Admission Procedure", path: "procedure" },
+    { name: "Fee Structure", path: "fee-structure" },
+    { name: "Scholarship Details", path: "scholarship" },
+    { name: "FAQs", path: "faq" },
+];
 
-    // Title mapping
-    const titleMap = {
-        "annoucement": "Admission Announcement",
-        "schedule": "Admission Schedule",
-        "eligibility": "Eligibility",
-        "procedure": "Admission Procedure",
-        // "entrance": "Entrance Exams Updates",
-        "fee-structure": "Fee Structure",
-        "scholarship": "Scholarship Details",
-        "faq": "FAQ's",
+// Title mapping
+const titleMap = {
+    "annoucement": "Admission Announcement",
+    "schedule": "Admission Schedule",
+    "eligibility": "Eligibility",
+    "procedure": "Admission Procedure",
+    "fee-structure": "Fee Structure",
+    "scholarship": "Scholarship Details",
+    "faq": "FAQs",
+};
 
-        // "merit-list": "Merit/Selection List",
-        // "counselling": "Counselling & seat allotment",
-        // "vacancy": "Spot admissions/vacancy notices",
-        // "withdrawal": "Cancellation and withdrawal notices",
-        // "apply": "How to Apply",
-
-    };
 
     // Get dynamic title based on route
     const getTitle = () => {
@@ -54,7 +41,7 @@ const Admission = () => {
 
     const title = getTitle();
 
-    const bgImage = "/assets/images/home/inner_bnr.jpg";
+    const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
     return (
         <>

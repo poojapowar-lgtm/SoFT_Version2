@@ -8,41 +8,42 @@ const SyllabusPage = () => {
 
   const programs = {
     "btech-food-technology": {
-      title: "B. Tech. (Food Technology)",
-      description: "AY 2026-27 : View PDF",
+      title: "B.Tech. (Food Technology)",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/BTFT_Outline_Syllabus_2026-27.docx",
     },
 
     "direct-2nd-year-btech": {
-      title: "Direct 2nd Year B. Tech. (Food Technology)",
-      description: "AY 2026-27 : View PDF",
+      title: "Direct Second-Year B.Tech. (Food Technology)",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/BTFT_Outline_Syllabus_2026-27.docx",
     },
 
     "mtech-food-technology": {
-      title: "M. Tech (Food Technology)",
-      description: "AY 2026-27 : View PDF",
+      title: "M.Tech. (Food Technology)",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/MTFT Course structure Layout 2026-27.docx",
     },
 
     "mtech-foodsafety": {
-      title: "M. Tech (Food Safety & Quality Management)",
-      description: "AY 2026-27 : View PDF",
+      title: "M.Tech. (Food Safety and Quality Management)",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/M.Tech_FQ_Syllabus.docx",
     },
 
     "mtech-food-technology-working-professional": {
-      title: "M. Tech (Food Technology) (Working Professionals)",
-      description: "AY 2026-27 : View PDF",
+      title: "M.Tech. (Food Technology) – Working Professionals",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/MTFT_Working Profetional Course Layout.docx",
     },
 
     "phd-food-technology": {
       title: "Ph.D. (Food Technology)",
-      description: "AY 2026-27 : View PDF",
+      description: "Academic Year 2026–27: View Syllabus",
       file: "/assets/docs/Ph.D syllabus updated_2025.docx",
     },
   };
+
 
   const data = programs[programId];
 

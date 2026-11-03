@@ -4,135 +4,122 @@ import EnquiryForm from "../EnquiryForm";
 
 const bannerData = [
   {
-    image: "/assets/banner_gif/bnr1.jpg",
+    image: "/assets/banner_gif/Green_Innovation5.png",
     title: (
       <>
-        A Better Sound Through <br />
-        Food Technology Research
+        Advancing Food Technology <br />
+        Through Knowledge & Innovation
       </>
     ),
+    alt: "Food technology knowledge and innovation",
   },
   {
-    image: "/assets/banner_gif/bnr2.png",
+    image: "/assets/banner_gif/Green_Innovation1.png",
     title: (
       <>
-        Advancing Food Technology<br /> Through Knowledge & Innovation
+        Innovating for a Safer <br />
+        and Sustainable Food Future
       </>
     ),
+    alt: "Sustainable food technology innovation",
   },
   {
-    image: "/assets/banner_gif/bnr3.jpg",
+    image: "/assets/banner_gif/Green_Innovation2.png",
     title: (
       <>
-        Innovating for a Safer <br />and Sustainable Food Future
+        Turning Curiosity into Food Innovation
       </>
     ),
+    alt: "Food innovation at MIT School of Food Technology",
   },
   {
-    image: "/assets/banner_gif/bnr4.jpg",
+    image: "/assets/banner_gif/Green_Innovation3.png",
     title: (
       <>
-        Turning Curiosity  <br /> into Food Innovation.
+        Exploring the Science  Behind Every Bite
       </>
     ),
+    alt: "Food science research",
   },
   {
-    image: "/assets/banner_gif/bnr5.png",
+    image: "/assets/banner_gif/Green_Innovation4.png",
     title: (
       <>
-        Exploring Science<br />  Behind Every Bite
+        Innovating Food. Inspiring the Future.
       </>
     ),
+    alt: "Food technology innovation",
   },
   {
-    image: "/assets/banner_gif/bnr7.jpg",
+    image: "/assets/banner_gif/bnr7.webp",
     title: (
       <>
-        Innovating Food.<br />  Inspiring the Future.
+        Growing Knowledge. <br />
+        Transforming Food. Shaping Tomorrow.
       </>
     ),
-  },
-  {
-    image: "/assets/banner_gif/bnr6.jpg",
-    title: (
-      <>
-        Growing Knowledge.   <br /> Transforming Food. Shaping Tomorrow.
-      </>
-    ),
+    alt: "Food technology education",
   },
 ];
 
+
 const Banner = () => {
   const [showForm, setShowForm] = useState(false);
-
   const [currentBanner, setCurrentBanner] = useState(0);
 
-
-  /* PRELOAD ALL BANNER IMAGES */
-  useEffect(() => {
-    bannerData.forEach((banner) => {
-      const img = new Image();
-      img.src = banner.image;
-    });
-  }, []);
-
-
-  /* CHANGE BANNER EVERY 5 SECONDS */
+  // Change banner every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBanner((prev) =>
-        (prev + 1) % bannerData.length
-      );
-    }, 3000);
+      setCurrentBanner((prev) => (prev + 1) % bannerData.length);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Preload the next 2 banners
+  useEffect(() => {
+    const nextIndex = (currentBanner + 1) % bannerData.length;
+    const secondNextIndex = (currentBanner + 2) % bannerData.length;
+
+    const nextImage = new Image();
+    nextImage.src = bannerData[nextIndex].image;
+
+    const secondNextImage = new Image();
+    secondNextImage.src = bannerData[secondNextIndex].image;
+  }, [currentBanner]);
+
   return (
     <>
       <div className="banner-container">
-        {/* <div className="banner-image">
-          <div className="banner-card">
-            <h2 className="banner-title">
-              A Better Sound Through <br /> Food Technology Research
-            </h2>
-          </div>
-        </div> */}
         <div className="banner-image">
-
-          {bannerData.map((banner, index) => (
-            <img
-              key={index}
-              src={banner.image}
-              alt={banner.title}
-              className={`banner-background ${index === currentBanner ? "active" : ""
-                }`}
-            />
-          ))}
-
-          <div
+          <img
             key={currentBanner}
-            className="banner-card"
-          >
+            src={bannerData[currentBanner].image}
+            alt={bannerData[currentBanner].alt}
+            width="1200"
+            height="450"
+            className="banner-background active"
+            fetchPriority={currentBanner === 0 ? "high" : "auto"}
+            decoding="async"
+          />
+
+          <div className="banner-card">
             <h2 className="banner-title">
               {bannerData[currentBanner].title}
             </h2>
           </div>
-
         </div>
       </div>
 
-      {/* Vertical Button */}
       {!showForm && (
         <button
           className="enquiry-btn"
           onClick={() => setShowForm(true)}
         >
-          Enquiry
+          Enquiry Now
         </button>
       )}
 
-      {/* Popup Form */}
       {showForm && (
         <div className="enquiry-modal">
           <div className="enquiry-content">

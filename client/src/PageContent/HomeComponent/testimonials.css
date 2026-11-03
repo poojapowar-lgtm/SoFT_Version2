@@ -1,11 +1,8 @@
 /* TESTIMONIALS WRAPPER */
 .testimonials-wrapper {
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
+    /* max-width: 1600px; */
     text-align: center;
-    padding:
-        clamp(25px, 4vw, 60px) 0;
+    padding: clamp(20px, 2.5vw, 45px) 0;
     position: relative;
     box-sizing: border-box;
 }
@@ -63,6 +60,7 @@
 .testimonials-card {
     width: clamp(260px, 28vw, 400px);
     min-width: clamp(260px, 28vw, 400px);
+    border-radius: clamp(8px, 1vw, 18px);
     flex-shrink: 0;
     overflow: hidden;
     background: #000;
@@ -85,7 +83,7 @@
 /* VIDEO */
 .video-box {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 14 / 8;
     overflow: hidden;
 }
 

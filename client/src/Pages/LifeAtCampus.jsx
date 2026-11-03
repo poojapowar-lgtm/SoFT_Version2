@@ -2,24 +2,24 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import InnerBanner from "../Components/inner_banner/InnerBanner";
 import Sidebar from "../Components/sidebar/Sidebar";
-import SEOMeta from "../Components/SEOMeta";
+import SEOMeta from "../Components/SEO/SEOMeta";
 import "./pages.css";
 
 const LifeAtCampus = () => {
   const location = useLocation();
 
-  const menu = [
-    { name: "Events", path: "events" }, 
+const menu = [
+    { name: "Events", path: "events" },
     { name: "Facilities", path: "facilities" },
     { name: "Sports", path: "sports" },
-  ];
+];
 
-  // Title mapping
-  const titleMap = {
+// Title mapping
+const titleMap = {
     "events": "Events",
     "facilities": "Facilities",
-    "sports": "Sports"
-  };
+    "sports": "Sports",
+};
 
   // Get dynamic title based on route
   const getTitle = () => {
@@ -32,7 +32,7 @@ const LifeAtCampus = () => {
 
   const title = getTitle();
 
-  const bgImage = "/assets/images/home/inner_bnr.jpg";
+  const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
   return (
     <>

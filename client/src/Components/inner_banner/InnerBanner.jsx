@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import EnquiryForm from "../EnquiryForm";
 import "./inner_banner.css";
@@ -16,7 +16,14 @@ const InnerBanner = ({ title, bgImage }) => {
         <div className="innerbanner-container">
             <div className="innerbanner-image">
 
-                <img src={bgImage} alt={title || "MIT-SoFT Page Banner"} title={title || "MIT School of Food Technology"} />
+                <img
+                    src={bgImage}
+                    alt={title || "MIT-SoFT Page Banner"}
+                    width="2000"
+                    height="600"
+                    fetchPriority="high"
+                    decoding="async"
+                />
 
                 <div className="innerbanner-card">
 
@@ -55,7 +62,7 @@ const InnerBanner = ({ title, bgImage }) => {
                             className="enquiry-btn"
                             onClick={() => setShowForm(true)}
                         >
-                            Enquiry
+                            Enquiry Now
                         </button>
                     )}
 

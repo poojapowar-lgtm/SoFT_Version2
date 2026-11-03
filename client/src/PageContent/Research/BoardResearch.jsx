@@ -1,56 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../../Pages/board_body.css";
 
 const BoardResearch = () => {
-  const ResearchBoardData = [
-    {
-      title: "Chairman",
-      name: "Dr. Anjali A Bhoite",
-      desgination: "Associate Dean SoFT, MIT ADT University, Pune",
-    },
-    {
-      title: "Member 1",
-      name: "Dr. Yogita Chavan",
-      desgination: "Associate Professor, FPPT Dept., SoFT, MIT ADT University, Pune",
-    },
-    {
-      title: "Member 2",
-      name: "Dr. Amit Kulthe",
-      desgination: "Associate Professor, APO Dept., SoFT, MIT ADT University, Pune",
-    },
-    {
-      title: "Member 3",
-      name: "Dr. Vaibhav Patil",
-      desgination: "Associate Professor &amp; I/c Head, ESFT Dept., SoFT, MIT ADT University, Pune",
-    },
-    {
-      title: "External Member 1",
-      name: "Dr. Renu Vyas",
-      desgination: "Head, School of Bioengineering &amp; Dean",
-    },
-    {
-      title: "External Member 2",
-      name: "Dr. Bhushan Chaudhari",
-      desgination: "Sr. Expert, Formulation, Research &amp; Development, Omni Active Health Technologies Ltd., Mumbai",
-    },
-    {
-      title: "External Member 3",
-      name: "Dr. Ahammed Shabeer",
-      desgination: "Scientist, Agriculture Chemistry, NRCG, Pune",
-    },
-  ];
+  const [ResearchBoardData, setResearchBoardData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchResearchCommittee = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/members?type=research_committee"
+        );
+
+        setResearchBoardData(response.data);
+      } catch (err) {
+        console.error("Error fetching Research Committee:", err);
+        setError("Unable to load School Research Committee members.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchResearchCommittee();
+  }, []);
 
   return (
     <div>
-      <h2 className="innerpage-title">School Research Committee</h2>
+      <h2 className="innerpage-title">
+        School Research Committee
+      </h2>
+
       <div className="board-body-container">
-        {ResearchBoardData.map((item, index) => (
-          <div className="board-card" key={index}>
-            <h3 className="board-name">{item.title}</h3>
-            <p style={{ margin: "5px 0" }}><strong>{item.name}</strong></p>
-            <p className="board-desg">{item.desgination}</p>
-          </div>
-        ))}
+        {loading ? (
+          <p>Loading Research Committee members...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : ResearchBoardData.length === 0 ? (
+          <p>No Research Committee members available.</p>
+        ) : (
+          ResearchBoardData.map((item) => (
+            <div className="board-card" key={item.id}>
+              <h3 className="board-name">
+                {item.name}
+              </h3>
+              <p className="board-desg">
+                {item.designation}
+              </p>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

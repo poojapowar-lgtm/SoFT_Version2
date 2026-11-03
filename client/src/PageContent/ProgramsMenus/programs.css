@@ -1,18 +1,26 @@
 .about-pg-container {
   display: flex;
-  gap: clamp(20px, 4vw, 40px);
+  gap: clamp(20px, 2vw, 40px);
   flex-wrap: wrap;
 }
 
 .about-pg-img {
   flex: 1;
-  max-width: 450px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .about-pg-img img {
+  border-radius: clamp(25px, 2vw, 50px);
+  border: 2px solid white;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+  display: block;
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  aspect-ratio: 400 / 250;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
 }
 
 .about-pg-content {
@@ -53,7 +61,6 @@
   margin: 0;
   flex: 1;
 }
-
 
 /* Image on right */
 .accordion-image {
@@ -100,5 +107,12 @@
   .accordion-image {
     width: 100%;
   }
-}
 
+  .about-pg-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 2.2;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+}

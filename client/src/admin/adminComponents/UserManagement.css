@@ -1,0 +1,261 @@
+.user-management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.user-management-header h2 {
+  margin: 0 0 7px;
+  color: #243047;
+  font-size: 26px;
+}
+
+.user-management-header p,
+.user-card-heading p {
+  margin: 0;
+  color: #778078;
+  font-size: 14px;
+}
+
+.user-management-total {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px;
+  background: #eaf4ed;
+  color: #176b45;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.user-management-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.7fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.user-management-card {
+  min-width: 0;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e5e9e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.user-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 25px;
+}
+
+
+.user-heading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: #eaf4ed;
+  color: #176b45;
+  border-radius: 10px;
+  font-size: 19px;
+}
+
+.user-management-card .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 19px;
+}
+
+
+.user-management-note {
+  margin: 5px 0 20px;
+  color: #778078;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+.user-management-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.user-management-message.success {
+  background: #e6f5e9;
+  color: #166534;
+}
+
+.user-management-message.error {
+  background: #fce8e8;
+  color: #991b1b;
+}
+
+.message-close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.admin-list-heading {
+  justify-content: space-between;
+}
+
+.admin-list-heading>div:first-child {
+  min-width: 0;
+}
+
+.refresh-admins-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid #dce5de;
+  border-radius: 8px;
+  background: #fff;
+  color: #176b45;
+  cursor: pointer;
+}
+
+.refresh-admins-button:hover {
+  background: #eaf4ed;
+}
+
+.refresh-admins-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.spinning {
+  animation: admin-refresh-spin 1s linear infinite;
+}
+
+@keyframes admin-refresh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+.admin-user-name {
+  min-width: 115px;
+  color: #273b2e !important;
+  font-weight: 600;
+}
+
+.admin-user-email {
+  min-width: 175px;
+  overflow-wrap: anywhere;
+}
+
+.role-badge,
+.status-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.role-badge.admin {
+  background: #e8f0ff;
+  color: #2858a5;
+}
+
+.role-badge.superadmin {
+  background: #f1e8ff;
+  color: #7040a2;
+}
+
+.status-badge.active {
+  background: #e4f6e8;
+  color: #24733b;
+}
+
+.status-badge.inactive {
+  background: #fde8e7;
+  color: #a3332d;
+}
+
+.admin-table-empty {
+  padding: 35px 15px !important;
+  text-align: center;
+  color: #8a948c !important;
+}
+
+.admin-table-footer {
+  margin-top: 17px;
+  text-align: right;
+  color: #78827a;
+  font-size: 13px;
+}
+
+.admin-table-footer strong {
+  color: #176b45;
+}
+
+.reset-password-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #f5ede7;
+  color: #9e4a09;
+  border: none;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1100px) {
+  .user-management-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-management-page {
+    padding: 14px;
+  }
+
+  .user-management-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .user-management-header h2 {
+    font-size: 23px;
+  }
+
+  .user-management-card {
+    padding: 17px;
+  }
+}

@@ -2,63 +2,90 @@ import React from "react";
 import "./NationalRank.css";
 
 const NationalRank = () => {
+  const rankingLogos = [
+    {
+      src: "/assets/images/home/NAAC_Logo.webp",
+      alt: "NAAC Accreditation Logo - MIT-ADT University",
+      title: "NAAC Accreditation",
+    },
+    {
+      src: "/assets/images/home/Ranking1.webp",
+      alt: "NIRF National Ranking Badge - MIT-ADT University",
+      title: "NIRF Ranking",
+    },
+    {
+      src: "/assets/images/home/Ranking2.webp",
+      alt: "MIT-ADT University National Ranking Recognition",
+      title: "National Ranking Recognition",
+    },
+    {
+      src: "/assets/images/home/Ranking3.webp",
+      alt: "MIT-ADT University Award and Recognition",
+      title: "Award and Recognition",
+    },
+    {
+      src: "/assets/images/home/Ranking4.webp",
+      alt: "MIT-ADT University Excellence Award",
+      title: "Excellence Award",
+    },
+  ];
+
   return (
-    <section className="national-rank">
-
-
+    <section className="rank-container">
       <div className="rank-content">
-        {/* Right Side Logos */}
-        <div className="rank-logos">
-          <img
-            src="/assets/images/home/NAAC_Logo.png"
-            alt="NAAC Accreditation Logo - MIT-ADT University"
-            title="NAAC Accreditation"
-            className="RLogo"
-          />
-          <img
-            src="/assets/images/home/Ranking1.png"
-            alt="NIRF National Ranking Badge - MIT-ADT University"
-            title="NIRF Ranking"
-            className="RLogo"
-          />
-          <img
-            src="/assets/images/home/Ranking2.png"
-            alt="MIT-ADT University National Ranking Recognition"
-            title="National Ranking Recognition"
-            className="RLogo"
-          />
-          <img
-            src="/assets/images/home/Ranking3.png"
-            alt="MIT-ADT University Award and Recognition"
-            title="Award and Recognition"
-            className="RLogo"
-          />
-          <img
-            src="/assets/images/home/Ranking4.png"
-            alt="MIT-ADT University Excellence Award"
-            title="Excellence Award"
-            className="RLogo"
-          />
+        {/* <h2 className="title">
+            National Rankings & Recognition
+          </h2> */}
+        <img
+          src="/assets/images/home/award_4.png"
+          alt="National Awards and Recognitions"
+          className="national-rank-img"
+        />
+
+
+        <div className="rank-logos-wrapper">
+          <div className="rank-logos">
+            {[...rankingLogos, ...rankingLogos].map((logo, index) => (
+              <img
+                key={`${logo.src}-${index}`}
+                src={logo.src}
+                alt={index < rankingLogos.length ? logo.alt : ""}
+                title={logo.title}
+                aria-hidden={index >= rankingLogos.length}
+                className="RLogo"
+                width="200"
+                height="90"
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Left Side Text */}
-        <div className="rank-text">
-          <h2 className="title">National Ranking & Recognition</h2>
+
+
+        {/* <div className="rank-text">
+          <h2 className="title">
+            National Rankings & Recognition
+          </h2>
+
           <p>
-            The institute has a mandate to develop need base and global
-            competitive students entrepreneurship. The three-phase higher
-            education system comprising Graduation (B. Tech), Post-graduation
-            (M. Tech) and Ph. D. Tech. (Food Tech) is one of its kind in the
-            private education domain of Food Science and Technology discipline.
+            The institute is committed to developing skilled, industry-ready
+            graduates and fostering entrepreneurship to meet evolving industry
+            needs and global standards. Its higher education programs include
+            undergraduate (B.Tech.), postgraduate (M.Tech.), and doctoral (Ph.D.)
+            studies in Food Technology, providing students with opportunities
+            to build careers in the food science and technology sector.
           </p>
+
           <p>
-            lot of career opportunities in the Government sector like Food and
-            Drug Administration, Food Corporation of India, Food Safety and
-            Standards Authority of India etc., as well as techno-commercial
-            opportunities in public and private sectors such as manufacturing,
-            quality control and research and development.
+            Graduates can explore career opportunities in government organizations
+            such as the Food and Drug Administration, Food Corporation of India,
+            and Food Safety and Standards Authority of India (FSSAI). They can
+            also pursue technical and business-oriented roles in the public and
+            private sectors, including food manufacturing, quality control,
+            and research and development.
           </p>
-        </div>
+        </div> */}
 
 
       </div>

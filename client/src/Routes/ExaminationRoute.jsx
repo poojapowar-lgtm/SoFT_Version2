@@ -17,7 +17,7 @@ export const ExaminationRoute = (
 
         <Route
             path="admission-notice"
-            element={<NoticePage type="admission" title="Admissions Notices" />}
+            element={<NoticePage type="admission" title="Academics Notices" />}
         />
     </Route>
 );

@@ -1,20 +1,37 @@
 import React from "react";
 
-
-const Annoucement = () => {
+const Announcement = () => {
     return (
         <div>
-            <h2 className="innerpage-title">Admission Annoucement</h2>
-            <p>Admissions for Academic Year 2026–27 at School of Food Technology, MIT ADT University, Pune are now open. Candidates are invited to apply for Undergraduate, Postgraduate, and Doctoral programs in Food Technology and allied areas.</p>
+            <h2 className="innerpage-title">
+                Admission Announcement
+            </h2>
+
+            <p>
+                Admissions for the academic year 2027–28 at the School of Food
+                Technology, MIT-ADT University, Pune, are now open. Eligible
+                candidates are invited to apply for undergraduate, postgraduate,
+                and doctoral programs in Food Technology and allied fields.
+            </p>
+
             <div className="syllabus-section">
-                <p>The application portal is live. Interested candidates can</p>
-                {/* <button className="btn2">Registar</button> */}
-                <a href="https://www.digialm.com/EForms/configuredHtml/176/59974/Registration.html">
-                    <button className="btn">Apply Online</button>
+                <p>
+                    The application portal is now open. Interested candidates
+                    can apply online using the link below.
+                </p>
+
+                <a
+                    href="https://www.digialm.com/EForms/configuredHtml/176/59974/Registration.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <button className="btn" type="button">
+                        Apply Online
+                    </button>
                 </a>
             </div>
         </div>
     );
 };
 
-export default Annoucement;
+export default Announcement;

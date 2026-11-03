@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
-const auth = require("../middleware/auth");
+const auth = require("../middleware/verifyAdmin");
 
 
 // ADD ENQUIRY (Public - from website form)
@@ -53,17 +53,55 @@ router.get("/:id", auth, (req, res) => {
 });
 
 
-// DELETE ENQUIRY
+// ================= DELETE ALL ENQUIRIES =================
+// DELETE /api/enquiry/delete-all
+
+router.delete("/delete-all", auth, (req, res) => {
+  const sql = "DELETE FROM enquiries";
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error("Delete all enquiries error:", err);
+
+      return res.status(500).json({
+        message: "Failed to delete all enquiries.",
+      });
+    }
+
+    res.status(200).json({
+      message: "All enquiries deleted successfully.",
+      deletedCount: result.affectedRows,
+    });
+  });
+});
+
+
+// ================= DELETE SINGLE ENQUIRY =================
+// DELETE /api/enquiry/:id
+
 router.delete("/:id", auth, (req, res) => {
   db.query(
     "DELETE FROM enquiries WHERE id = ?",
     [req.params.id],
-    (err) => {
-      if (err) return res.status(500).json(err);
-      res.json("Enquiry deleted successfully");
+    (err, result) => {
+      if (err) {
+        console.error("Delete enquiry error:", err);
+        return res.status(500).json({
+          message: "Failed to delete enquiry.",
+        });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({
+          message: "Enquiry not found.",
+        });
+      }
+
+      res.json({
+        message: "Enquiry deleted successfully.",
+      });
     }
   );
 });
-
 
 module.exports = router;

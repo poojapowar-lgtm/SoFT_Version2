@@ -1,28 +1,11 @@
 .department-section {
   text-align: center;
-  padding: clamp(25px, 4vw, 45vw) clamp(20px, 4.5vw, 100px);
-  background: #f3ecd3;
+  margin: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
+  padding: clamp(15px, 2vw, 40px);
+  border-radius: clamp(8px, 1vw, 18px);
+  background: #E9E1C4;
 }
 
-/* Wrapper now gives space to buttons */
-.scroll-wrapper {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 2vw, 20px);
-}
-
-/* Buttons take space normally */
-.scroll-btn {
-  /* background: #008a00; */
-  color: #722327;
-  border: none;
-  padding: clamp(4px, 2vw, 8px) clamp(5px, 2vw, 10px);
-  cursor: pointer;
-  font-size: clamp(16px, 2vw, 22px);
-  border-radius: 50%;
-  flex-shrink: 0;
-  /* prevent shrinking */
-}
 
 /* Container */
 .department-container {
@@ -48,17 +31,22 @@
 /* Image */
 .department-card img {
   width: 95%;
-  height: clamp(220px, 25vw, 300px);
+  height: clamp(220px, 22vw, 300px);
+  display: block;
+  margin: 0 auto;
   object-fit: cover;
+  object-position: center;
   border-radius: 50%;
 }
 
 /* Text */
 .dep-name {
-  font-family: math;
-  color: #008a00;
-  letter-spacing: 0.8px;
-  font-size: clamp(16px, 2vw, 22px);
+  /* font-family: math; */
+  /* color: #470004; */
+  font-family: system-ui;
+  color: #004D00;
+  font-weight: 500;
+  font-size: clamp(16px, 1.5vw, 22px);
   margin: clamp(10px, 2vw, 12px) 0 0 0;
 }
 

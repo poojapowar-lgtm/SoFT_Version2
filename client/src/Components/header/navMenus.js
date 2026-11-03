@@ -13,7 +13,8 @@ export const navMenus = [
     title: "About Us",
     columns: [
       { name: "About MIT-ADT", to: "/aboutus/about-mit" },
-      { name: "Leadership Message", to: "/aboutus/leadership-message" },
+      { name: "Founder's Message", to: "/aboutus/founder-message" },
+      { name: "Exec. President's Message", to: "/aboutus/president-message" },
       { name: "About SoFT", to: "/aboutus/about-soft" },
       { name: "Principal Message", to: "/aboutus/principal-message" },
       { name: "Board of Management", to: "/aboutus/board-of-management" },
@@ -78,7 +79,7 @@ export const navMenus = [
     key: "admissions",
     title: "Admissions",
     columns: [
-      { name: "Admission Annoucement", to: "/admissions/annoucement" },
+      { name: "Admission Announcement", to: "/admissions/annoucement" },
       { name: "Admission Schedule", to: "/admissions/schedule" },
       { name: "Eligibility", to: "/admissions/eligibility" },
       { name: "Admission Procedure", to: "/admissions/procedure" },
@@ -106,7 +107,7 @@ export const navMenus = [
       { name: "Board of Research", to: "/research/board-of-research" },
       { name: "Research Paper Publication", to: "/research/research-paper-publication" },
       { name: "PHD Admissions", to: "/research/phd-admissions" },
-      { name: "Pentant & Publications", to: "/research/pentant-publications" },
+      { name: "Patent & Publications", to: "/research/Patent-publications" },
       { name: "Funded Projects", to: "/research/funded-projects" },
       { name: "Consultancy & Training", to: "/research/consultancy-training" },
       // { name: "Student Research", to: "/research/student-research" },
@@ -124,7 +125,7 @@ export const subMenus = [
     columns: [
       { name: " Examinations Schedule", to: "/examinations/examinations-schedule" },
       { name: "Examinations Notices", to: "/examinations/exam-notice" },
-      { name: "Admissions Notices", to: "/examinations/admission-notice" },
+      { name: "Academics Notices", to: "/examinations/admission-notice" },
     ],
   },
 
@@ -134,7 +135,7 @@ export const subMenus = [
     key: "alumni",
     title: "Alumni",
     columns: [
-      { name: "Alumni Report", to: "/alumni/alumni-report" },
+      // { name: "Alumni Report", to: "/alumni/alumni-report" },
       { name: "Alumni Success Stories", to: "/alumni/alumni-testimonials" },
       { name: "Alumni Startup", to: "/alumni/alumni-startup" },
     ],

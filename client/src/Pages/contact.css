@@ -16,7 +16,8 @@
 }
 
 .contact-title {
-   font-family: math;
+   /* font-family: math; */
+    font-family: system-ui;
   color: #722327;
   font-weight: 600;
   font-size: clamp(12px, 3vw, 24px);

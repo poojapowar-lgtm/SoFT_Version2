@@ -7,15 +7,16 @@
 
 .banner-image {
   position: relative;
+  margin: 0 clamp(25px, 5.5vw, 100px);
   width: 100%;
-  height: clamp(220px, 45vw, 800px);
+  aspect-ratio: 1200 / 450;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: clamp(8px, 1vw, 18px);
+  border: 2px solid white;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+  contain: layout paint;
 }
 
-
-/* ALL IMAGES */
 .banner-background {
   position: absolute;
   inset: 0;
@@ -25,73 +26,108 @@
   object-position: center;
   display: block;
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.02);
   transition:
-    opacity 1.2s ease-in-out,
-    transform 3s ease-in-out;
+    opacity 0.8s ease-in-out,
+    transform 1.5s ease-out;
   z-index: 1;
-  will-change: opacity, transform;
 }
 
-
-/* CURRENT IMAGE */
 .banner-background.active {
   opacity: 1;
   transform: scale(1);
 }
 
-/* IMAGE ZOOM */
-@keyframes bannerZoom {
-  0% {
-    transform: scale(1.03);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* BANNER CARD */
+/* Banner content */
 .banner-card {
   position: absolute;
-  bottom: clamp(15px, 4vw, 50px);
-  left: clamp(20px, 5vw, 100px);
-  padding: clamp(10px, 2vw, 20px) clamp(15px, 2vw, 30px);
+  bottom: clamp(15px, 2vw, 30px);
+  right: clamp(20px, 2vw, 50px);
+  padding: clamp(8px, 1.2vw, 15px) clamp(10px, 2vw, 20px);
   width: fit-content;
-  background: #5bce8b;
-  border-bottom-left-radius: clamp(15px, 4vw, 30px);
+  background: linear-gradient(135deg, #719400, #97C600, #97C600);
+  border-radius: clamp(15px, 4vw, 35px) 0 clamp(15px, 4vw, 35px) 0;
   z-index: 10;
-  animation: bannerCard 5s ease-in-out;
+  animation: bannerCard 0.6s ease-out;
 }
 
+.banner-title {
+  color: #002B47;
+  margin: 0;
+   font-family: system-ui;
+  font-size: clamp(10px, 1.5vw, 25px);
+  font-weight: 400;
+  line-height: 1.3;
+  font-style: italic;
+}
 
-/* CARD ANIMATION */
 @keyframes bannerCard {
-  0% {
-    opacity: 1;
+  from {
+    opacity: 0;
     transform: translateY(10px);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-
-/* TITLE */
-.banner-title {
-  margin: 0;
-  font-family: math;
-  font-size: clamp(14px, 2vw, 30px);
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 1.3;
+/* Tablet */
+@media (max-width: 1024px) {
+  .banner-image {
+    aspect-ratio: 16 / 6;
+  }
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+  .banner-card {
+  left: clamp(20px, 2vw, 50px);
+}
+
+  .banner-image {
+    height: 220px;
+    aspect-ratio: auto;
+    margin: 0;
+    border-radius: 0px;
+  }
+
+  .banner-background {
+    transform: scale(1.01);
+  }
+
+  .banner-background.active {
+    transform: scale(1);
+  }
+
+}
+
+/*
+ * Accessibility:
+ * Users who prefer reduced motion won't get
+ * image zoom/fade animation.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-background {
+    transition: none;
+    transform: none;
+  }
+
+  .banner-background.active {
+    transform: none;
+  }
+
+  .banner-card {
+    animation: none;
+  }
+}
+
 
 /* .banner-image {
   position: relative;
-  background: url("/public/assets/images/home/banner.jpg") center / cover no-repeat;
+  background: url("/public/assets/images/home/banner.webp") center / cover no-repeat;
   width: 100%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   height: clamp(220px, 45vw, 800px);
@@ -113,5 +149,5 @@
   margin: 0;
   font-size: clamp(14px, 2vw, 28px);
   font-weight: 500;
-} */
-
+} 
+ */

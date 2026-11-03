@@ -1,5 +1,6 @@
 .sidebar {
   width: clamp(200px, 25vw, 300px);
+  border-radius: clamp(8px, 1vw, 18px);
   margin-left: auto;
   padding: clamp(5px, 1.5vw, 25px) clamp(5px, 1vw, 15px);
   background: #f3ecd3;
@@ -24,9 +25,9 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: clamp(12px, 1vw, 20px);
-  padding: clamp(6px, 1vw, 12px) clamp(12px, 1.5vw, 18px);
-  color: #722327;
+  font-size: clamp(12px, 1.2vw, 18px);
+  padding: clamp(4px, 1vw, 12px) clamp(12px, 1.5vw, 18px);
+  color: #004d00;
   position: relative;
 }
 
@@ -45,40 +46,95 @@
   transition: 0.3s ease;
 }
 
-/* show arrow when active */
-.sidebar li.active a,
-.sidebar li:hover a {
-  font-weight: 600;
-  color: #004d00;
+
+/* Default tab style */
+.sidebar ul li a.sidebar-link {
+  color: #333;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
-.sidebar li.active .menu-arrow,
-.sidebar li:hover .menu-arrow {
-  opacity: 1;
-  color: #004d00;
-}
-
-/* when hovering other items remove active bold */
-.sidebar ul:hover li.active:not(:hover) a {
-  font-weight: normal;
-}
-
-/* hide active arrow when hovering other items */
-.sidebar ul:hover li.active:not(:hover) .menu-arrow {
+/* Hide arrow by default */
+.sidebar ul li a.sidebar-link .menu-arrow {
   opacity: 0;
+  color: #004d00;
+  transition: opacity 0.2s ease;
 }
+
+/* Active tab */
+.sidebar ul li a.sidebar-link.active {
+  color: #004d00;
+  font-weight: 600;
+}
+
+/* Active arrow */
+.sidebar ul li a.sidebar-link.active .menu-arrow {
+  opacity: 1;
+}
+
+/* Hover effect */
+.sidebar ul li a.sidebar-link:hover {
+  color: #004d00;
+  font-weight: 600;
+}
+
+.sidebar ul li a.sidebar-link:hover .menu-arrow {
+  opacity: 1;
+}
+
+/* When hovering another tab, keep the active tab's
+   styling and arrow visible */
+.sidebar ul:hover li a.sidebar-link.active {
+  color: #004d00;
+  font-weight: 600;
+}
+
+.sidebar ul:hover li a.sidebar-link.active .menu-arrow {
+  opacity: 1;
+}
+
+/* Mobile menu toggle button */
+.sidebar-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #004d00;
+  background: transparent;
+  border: none;
+  padding: 0px 10px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
 
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
+    border-radius: 0;
     margin-left: 0;
+    position: relative;
   }
 
-  /* Make UL grid (2 columns) */
+  /* Show the menu icon */
+  .sidebar-menu-toggle {
+    display: flex;
+  }
+
+  /* Hide menu items by default */
   .sidebar ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 2px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Show menu when icon is clicked */
+  .sidebar ul.sidebar-menu-open {
+    display: grid;
   }
 
   /* Remove bottom spacing (grid handles it) */
@@ -86,15 +142,20 @@
     margin-bottom: 0;
   }
 
-  
-  .sidebar li a:hover,
-  .sidebar li.active a {
-    border-bottom: 1px solid #722327;
+  .sidebar li a:hover {
+    border-bottom: 1px solid #004d00;
     color: #004d00;
     font-weight: 600;
   }
 
   .menu-arrow {
     display: none;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .sidebar ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

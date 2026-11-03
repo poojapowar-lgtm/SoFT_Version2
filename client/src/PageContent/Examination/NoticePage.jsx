@@ -65,6 +65,7 @@ const NoticePage = ({ type, title }) => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`View PDF: ${item.title}`}
+                  className="notice-link"
                 >
                   {item.link_text || "View PDF"}
                 </a>
@@ -76,6 +77,7 @@ const NoticePage = ({ type, title }) => {
                   href={item.link_url}
                   target="_blank"
                   rel="noreferrer"
+                  className="notice-link"
                 >
                   {item.link_text || "Open Link"}
                 </a>

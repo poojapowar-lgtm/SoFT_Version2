@@ -5,151 +5,153 @@ import "./pg_outcomes.css";
 const PgOutcomes = () => {
     const [activeTab, setActiveTab] = useState("outcomes");
 
-    // Outcomes Data (ARRAY)
-    const outcomesData = [
-        {
-            list: [
-                {
-                    title: "Discipline Specific Knowledge",
-                    desc: "Capability enhancement through learning fundamentals and cutting-edge aspect related to food technology by gaining knowledge in food science and allied specialized courses."
-                },
-                {
-                    title: "Problem Solving",
-                    desc: "Capacity to identify, analyze and resolve food industry need base problems and design solutions for complex problems that meet the specified needs with appropriate consideration for the food sustainability."
-                },
-                {
-                    title: "Critical Thinking",
-                    desc: "Competency development to think ‘out of the box’ and generate solutions for complex problems in unfamiliar contexts to resolve the challenges."
-                },
-                {
-                    title: "Communication Skills",
-                    desc: "Enhanced communication skills for effective transmission of technical knowledge to stockholders (farmers, industry, society) through development of vibrant ecosystem with face to face communication, research and review articles or social media."
-                },
-                {
-                    title: "Analytical Reasoning / Thinking",
-                    desc: "Ability to analyze and synthesize data from a variety of sources; draw valid conclusions and support them with evidence and examples, and address conflicting viewpoints."
-                },
-                {
-                    title: "Research-related Skills",
-                    desc: "Efficacy development of the students to plan, execute and report the results of an experiment or investigation as well as projects with articulation of societal benefit-based thought process."
-                },
-                {
-                    title: "Multicultural Competency and Inclusive Spirit",
-                    desc: "Capability to work effectively with multidisciplinary teams/ multicultural team and facilitate coordinated effort as a group or a team in the interests of a common cause and work efficiently as a member of a team. Gender sensitivity and adopting a gender-neutral approach, as also empathy for the less advantaged and the differently-abled including those with learning disabilities. Adoption of multicultural groups with demonstrations of values for betterment of diverse culture society."
-                },
-                {
-                    title: "Digital and Technolo",
-                    desc: "Capacity building technical skills to handle modern and sophisticated equipment, software, and IT tools for generation of need base products and processes."
-                },
-                {
-                    title: "Value Inculcation",
-                    desc: "Generation of holistic technocrats through inculcation of life skills, ethical practices to create vibrant human value systems-based thought process driven technological knowledge application mind set, exclusively for human welfare with due conservation of existing moral dimensions in every aspect of modern technology-based wealth generation."
-                },
-                {
-                    title: "Environment and Sustainability",
-                    desc: "Awareness about environmental issues related to food industries (pollution, climate change, hunger, and malnutrition) and trouble shoot them with effective suitable food processing, waste management, conservation and management of biological resources and work towards sustainable development."
-                },
-                {
-                    title: "Community Engagement and Services",
-                    desc: "Capability enhancement of student as food technologist, sharing the responsibility as an Indian citizen in community- engagement services and activities for promoting the wellbeing of society."
-                },
+// Outcomes Data (Array)
+const outcomesData = [
+  {
+    list: [
+      {
+        title: "Discipline-Specific Knowledge",
+        desc: "Enhancement of capabilities through learning the fundamentals and cutting-edge aspects of food technology, with a focus on food science and specialized allied courses.",
+      },
+      {
+        title: "Problem-Solving",
+        desc: "Ability to identify, analyse, and resolve problems based on the needs of the food industry and design solutions to complex problems that meet specified requirements while appropriately considering food sustainability.",
+      },
+      {
+        title: "Critical Thinking",
+        desc: "Development of the ability to think outside the box and generate solutions to complex problems in unfamiliar contexts to address various challenges.",
+      },
+      {
+        title: "Communication Skills",
+        desc: "Development of effective communication skills to convey technical knowledge to stakeholders, including farmers, industry professionals, and society, through face-to-face communication, research and review articles, and social media.",
+      },
+      {
+        title: "Analytical Reasoning and Thinking",
+        desc: "Ability to analyse and synthesize data from a variety of sources, draw valid conclusions supported by evidence and examples, and address conflicting viewpoints.",
+      },
+      {
+        title: "Research-Related Skills",
+        desc: "Development of students' abilities to plan, conduct, and report the results of experiments, investigations, and projects while incorporating a thought process focused on societal benefits.",
+      },
+      {
+        title: "Multicultural Competence and Inclusive Spirit",
+        desc: "Ability to work effectively in multidisciplinary and multicultural teams and contribute to coordinated efforts toward a common goal. This includes gender sensitivity, a gender-neutral approach, empathy for disadvantaged individuals and persons with disabilities, including those with learning disabilities, and respect for diverse cultures to promote an inclusive society.",
+      },
+      {
+        title: "Digital and Technological Skills",
+        desc: "Development of technical skills to operate modern and sophisticated equipment, software, and IT tools for developing need-based products and processes.",
+      },
+      {
+        title: "Value Inculcation",
+        desc: "Development of well-rounded technologists through the inculcation of life skills and ethical practices. This encourages a human-values-based mindset that applies technological knowledge for human welfare while preserving moral values in every aspect of technology-driven wealth creation.",
+      },
+      {
+        title: "Environment and Sustainability",
+        desc: "Awareness of environmental issues related to the food industry, including pollution, climate change, hunger, and malnutrition, and the ability to address them through appropriate food processing, waste management, conservation, and the management of biological resources to support sustainable development.",
+      },
+      {
+        title: "Community Engagement and Service",
+        desc: "Enhancement of students' capabilities as food technologists and responsible Indian citizens through participation in community engagement, services, and activities that promote societal well-being.",
+      },
+      {
+        title: "Lifelong Learning",
+        desc: "Ability to demonstrate the skills necessary for continuous self-education and independent, lifelong learning in response to technological changes, while developing the capacity to become an entrepreneur.",
+      },
+    ],
+  },
+  {
+    // subtitle: "Program-Specific Outcomes",
+    list: [
+      {
+        desc: "Comprehensive knowledge of various areas of Food Science and Technology, along with a coherent understanding of food processing, preservation, packaging, storage, and marketing of finished food products to meet industry standards.",
+      },
+      {
+        desc: "Practical knowledge and skills required to resolve industry-related problems, along with the ability to pursue self-employment and develop an entrepreneurial mindset for a successful professional career in Food Technology.",
+      },
+      {
+        desc: "Development of the skills and attitudes required to contribute effectively to the processing, packaging, and preservation of food products through a multidisciplinary approach while ensuring food safety and quality.",
+      },
+      {
+        desc: "Ability to apply critical thinking and scientific principles to address societal needs through the development of next-generation and value-added food products.",
+      },
+    ],
+  },
+];
 
-                {
-                    title: "Life-long Learning",
-                    desc: "Ability to demonstrate the skills necessary to continually educate oneself and engage in independent and life-long learning in the broadest context of technological change and also to build the capacity to emerge out as an entrepreneur."
-                },
 
-            ],
-        },
-        {
-            // subtitle: "Program Specific Outcomes",
-            list: [
-                {
-                    desc: "Comprehensive knowledge of various areas related to Food Science and Technology and a coherent understanding to process, preserve, package, store, and market finished food products with industrial-level perfection.",
-                },
-                {
-                    desc: "Practical knowledge required for resolving industry-based problems, along with skills for self-employment and an entrepreneurial mindset to excel in a professional career in Food Technology.",
-                },
-                {
-                    desc: "Skills and attitude required to contribute effectively in processing, packaging, and preservation of food products using a multidisciplinary approach while ensuring food safety and quality.",
-                },
-                {
-                    desc: "Ability to apply critical thinking and scientific principles to address societal needs through the development of next-generation and value-added food products.",
-                },
-            ],
-        },
-    ];
+// Table Data (Array)
+const tableData = [
+  {
+    headers: [
+      "Program Outcome No.",
+      "Program Outcome Description",
+      "Needs",
+    ],
+    rows: [
+      {
+        outcome: "PO1 - Discipline-Specific Knowledge",
+        desc: "Development of students' knowledge in Food Science and Technology, with special emphasis on strengthening their understanding of mathematics, science, engineering, management, and specialized food science courses. This knowledge enables them to address complex food technology challenges and formulate innovative, need-based processed food products.",
+        needs: "Global",
+      },
+      {
+        outcome: "PO2 - Problem Analysis and Solution",
+        desc: "Development of students' ability to identify demand- and supply-based market trends through literature reviews, formulate innovative ideas, verify conclusions through appropriate scaling, and apply mathematical, scientific, and engineering principles.",
+        needs: "National",
+      },
+      {
+        outcome: "PO3 - Design and Development of Solutions",
+        desc: "Enhancement of students' design capabilities to develop creative solutions to problems faced by the food industry. This includes introducing innovative food technology concepts and developing consumer-oriented food products in accordance with applicable food safety regulations, while considering cultural, societal, and environmental factors.",
+        needs: "Regional",
+      },
+      {
+        outcome: "PO4 - Conducting Investigations of Complex Problems",
+        desc: "Development of students' ability to conduct independent applied research, design appropriate experimental setups, effectively use analytical tools, and interpret data to synthesize information and draw valid conclusions.",
+        needs: "Local",
+      },
+      {
+        outcome: "PO5 - Modern Tool Usage",
+        desc: "Encouragement of students to develop the skills required to operate modern and sophisticated equipment, software, and IT tools for food formulation prediction and modelling. Students also learn to understand the limitations of these tools and their role in complying with food safety regulations.",
+        needs: "National",
+      },
+      {
+        outcome: "PO6 - Food Technologists and Society",
+        desc: "Development of students as responsible food technologists and Indian citizens who understand the importance of food quality and sustainability in promoting a healthy society. Students also develop knowledge of recent technologies and the ability to consider others' viewpoints, mediate conflicts, and reach conclusions through teamwork.",
+        needs: "National",
+      },
+      {
+        outcome: "PO7 - Ethics",
+        desc: "Development of students' ethical practices and values, encouraging the application of technological knowledge for human welfare while preserving moral principles in decisions related to process and product development.",
+        needs: "Local",
+      },
+      {
+        outcome: "PO8 - Environment and Sustainability",
+        desc: "Development of entrepreneurial skills, expertise, and an innovative mindset among students to address global environmental changes through food technology innovations, particularly in the food processing sector, while promoting long-term sustainability.",
+        needs: "Global",
+      },
+      {
+        outcome: "PO9 - Communication",
+        desc: "Holistic development of students, with particular emphasis on enhancing communication skills to convey scientific and technical knowledge to stakeholders, including farmers, industry professionals, and society. This is achieved through social media, articles, blogs, face-to-face communication, and research and review publications.",
+        needs: "Regional",
+      },
+      {
+        outcome: "PO10 - Individual and Teamwork",
+        desc: "Development of students' leadership and coordination skills to manage internal and external research projects and encourage multidisciplinary collaboration.",
+        needs: "Regional",
+      },
+      {
+        outcome: "PO11 - Lifelong Learning",
+        desc: "Development of students' capacity for continuous learning as next-generation food technologists through self-motivation and innovative technologies, enabling them to respond effectively to emerging challenges, including pandemic situations, through robust food technology solutions.",
+        needs: "National",
+      },
+      {
+        outcome: "PO12 - Startup Skills and Management",
+        desc: "Holistic development of students' entrepreneurial capabilities to initiate skill-based startups and manage them effectively through an efficient management framework.",
+        needs: "Local",
+      },
+    ],
+  },
+];
 
-    // Table Data (ARRAY)
-    const tableData = [
-        {
-            headers: ["Program Outcome No.", "Program Outcome Description", "needs"],
-            rows:
-                [
-                    {
-                        outcome: "PO1-Discipline specific knowledge",
-                        desc: "Development of the students in food science and technology with special reference to capability enhancement through cutting edge knowledge of fundamentals in mathematics, science, engineering, management and food science base specialized courses to resolve complex food technology challenges and also to formulate need based innovative processed food products.",
-                        needs: "Global"
-                    },
-                    {
-                        outcome: "PO2-Problem analysis and solution",
-                        desc: "Transformation of the students capable enough to identify demand and supply base marketing trends, through literature cited as a base to formulate innovative ideas, verifying scaling driven conclusions, over mathematics, science, and engineering base applications.",
-                        needs: "National"
-                    },
-                    {
-                        outcome: "PO3-Design/development of solutions",
-                        desc: "Design capability enhancement of students for creative solutions of food industry need base problems through introduction of food technology driven new ideas that may compensate with appropriate innovation of consumer-based food products in coordination with regulatory authority notified context of food safety, cultural, societal, and environmental transition considerations.",
-                        needs: "Regional"
-                    },
-                    {
-                        outcome: "PO4-Conduction of investigations for complex problems",
-                        desc: "Efficacy development of the students coiling around independent applied research undertaking capability with specialty design of experimental set up, unique utility of analytical tool and data interpretation to enable synthesis of information for valid conclusions.",
-                        needs: "Local"
-                    },
-                    {
-                        outcome: "PO5-Modern tool usage",
-                        desc: "Innate motivation of students for capacity building to handle modern and sophisticated equipment’s, software’s and IT tools for prediction and modelling of food formulation to compensate with regulatory mechanism of food safety through understanding of limitations of said equipment’s and software’s.",
-                        needs: "National"
-                    },
-                    {
-                        outcome: "PO6-Food technologist and Society",
-                        desc: "Students’ upliftment as food technologists sharing the responsibility as an Indian citizen updated with quality and sustainability of food products for building up of unique society as a healthy citizen. Enrichment with recent technologies capable to elicit views of others, mediate conflicts and lead in drawing conclusions as a group activity.",
-                        needs: "National"
-                    },
-                    {
-                        outcome: "PO7-Ethics",
-                        desc: "Specialty grooming of the students with ethical practices to generate vibrant value systems coiling around application of technological knowledge exclusively for human welfare with due conservation of existing moral dimensions in every aspect of either process and product development driven decisions.",
-                        needs: "Local"
-                    },
-                    {
-                        outcome: "PO8-Environment and sustainability",
-                        desc: "Food technology enriched entrepreneurship based on skill, expertise and mindset change of students capable enough to entrap global environmental transition as a key factor to rejuvenate food technological innovations exclusively in the interest of food processing sector for far sighted sustainability mission.",
-                        needs: "Global"
-                    },
-                    {
-                        outcome: "PO9-Communication",
-                        desc: "Holistic development of the students with special reference to enhanced communication skill to transfer science and technology base technical knowledge to stockholders (farmers, industry, society) through development of vibrant ecosystem with social media (articles, blogs, face to face communication and by writing research and review articles).",
-                        needs: "Regional"
-                    },
-                    {
-                        outcome: "PO10-Individual and team work",
-                        desc: "Personalized development of the students as a lead manager to coordinate in inhouse and outsource research projects to stimulate multidisciplinary mode of application.",
-                        needs: "Regional"
-                    },
-                    {
-                        outcome: "PO11-Life-long learning",
-                        desc: "New edge leaning capacity building of students as a new generation food technologist jointly based on self-motivation and innovative technology to counteract any type of pandemic situation through robust food technology development.",
-                        needs: "National"
-                    },
-                    {
-                        outcome: "PO12-Start-up skills and management",
-                        desc: "Three-dimensional development of the student through entrepreneurship capability for skill- based start-up initiation in coordination with zero error managerial ecosystem.",
-                        needs: "Local"
-                    },
-                ]
-
-        },
-    ];
 
     return (
         <div className="pg-container">
@@ -194,10 +196,9 @@ const PgOutcomes = () => {
                                         </div>
 
                                         <div className="pg-outcomes-card">
-
                                             {item.title ? (
                                                 <>
-                                                    <h4>{item.title}</h4>
+                                                    <p style={{margin:"0px"}}><strong>{item.title}</strong></p>
                                                     <p>{item.desc}</p>
                                                 </>
                                             ) : (

@@ -8,85 +8,173 @@ const Facilities = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const data = [
-    {
-      title: "Food Process and Product Technology Laboratory (FPPT)",
-      image: "/images/vision.jpg",
-      content: (
-        <>
-          <p>
-            The Department aims of promoting innovation in food sector and catalyzing the growth of food processing industry in India and in global context. The existing infrastructure of Food Product and Process Technology laboratory is competent enough to satisfy the need of undergraduate in various aspects. As a part of this the department has research programs (M. Tech and Ph.D.) in frontline areas of Food Science and Technology. To pursue excellence in education and research in specialized areas of Food technology relevant to the
-          </p>
-          <p>sustainable development of process industries requires more competent technology in these core areas. With well-equipped laboratories, and active industry collaborations, the department emphasizes research, innovation, entrepreneurship, and the development of processed foods ex. functional and fortified foods to meet evolving consumer and industry needs.</p>
-        </>
-      ),
-    },
-    {
-      title: "Food Safety and Quality Nutrition (FSQN) - Food Chemistry Laboratory",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>
-            A Food Chemistry Lab is a specialized facility where scientific experiments are conducted to understand the chemical composition and properties of food, as well as the effects of processing, storage, and other factors on food quality. These labs typically focus on analysing the nutrients and other compounds such as allergen, antinutritional factors that affect food safety, nutrition, and taste. As consumer demands for healthier, more natural, and environmentally conscious food options grow, food chemistry will continue to evolve to meet these needs.
-          </p>
-        </>
-      ),
-    },
-    {
-      title: "Food Safety and Quality Nutrition (FSQN) - Food Microbiology Laboratory",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>Food microbiology labs are integral to the food industry and public health, providing crucial information that affects the safety, quality and sustainability of food production. From detecting pathogens and spoilage organisms to advancing fermentation processes and preserving food, these labs ensure that the food we consume is safe, nutritious, and of high quality. By fostering research, innovation, and education in food microbiology, these labs contribute to improving global food systems and minimizing health risks associated with foodborne diseases.
-          </p>
-        </>
-      ),
-    },
-    {
-      title: "Patronage of Traditional Specialty Food Laboratory",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>The Traditional and Specialty Foods Laboratory at the School of Food Technology is a dedicated facility for hands-on training in the preparation, processing, and evaluation of traditional, specialty, and heritage food products. It supports practical work for courses such as Traditional Foods, Specialty Foods, Indian Heritage Foods, and New Product Development. The lab is equipped with modern food preparation and processing tools that enable students to standardize recipes, develop innovative products, and study region-specific
-          </p>
-          <p>food techniques. Students gain experiential learning in product formulation, sensory evaluation, and value addition while preserving traditional knowledge. This laboratory serves as a platform to integrate cultural food heritage with scientific product development approaches.</p>
-        </>
-      ),
-    },
-    {
-      title: "M. Tech. Research Laboratory",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>The Department aims of promoting innovation in food sector and catalyzing the growth of food processing industry in India and in global context. The existing infrastructure of Food Product and Process Technology laboratory is competent enough to satisfy the need of undergraduate in various aspects. As a part of this the department has research programs (M. Tech and Ph.D.) in frontline areas of Food Science and Technology. To pursue excellence in education and research in specialized areas of Food technology relevant to the
-          </p>
-          <p>sustainable development of process industries requires more competent technology in these core areas. With well-equipped laboratories, and active industry collaborations, the department emphasizes research, innovation, entrepreneurship, and the development of processed foods ex. functional and fortified foods to meet evolving consumer and industry needs.</p>
-        </>
-      ),
-    },
-    {
-      title: "Agrobase Plant Laboratory",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>The Department of Agrobase Plant Operations provides hands-on practical training in food processing and value addition of agricultural commodities. Students gain experiential learning through operations such as cleaning, grading, milling, extraction, fermentation, thermal processing, and innovative product formulation. The department focuses on transforming raw materials into diversified, nutritionally enhanced, and market-ready food products. Emphasis is placed on quality control, process optimization, and pilot-scale
-          </p>
-          <p>production to simulate industrial practices. The facility bridges theoretical concepts with real-time applications while fostering technical competence and entrepreneurial skills.</p>
-        </>
-      ),
-    },
-    {
-      title: "Computer Lab",
-      image: "/images/mission.jpg",
-      content: (
-        <>
-          <p>The Computer Laboratory of the Food College is well-equipped with modern computer systems and high-speed internet connectivity to support academic and research activities. The lab is designed to facilitate practical sessions related to data analysis, food process modelling, statistical software applications, and research work. It provides access to essential software tools required for food technology studies, project work, and report preparation. The laboratory offers a conducive learning environment that enhances
-          </p>
-          <p>students’ technical skills and digital proficiency in the field of food science and technology.</p>
-        </>
-      ),
-    },
-  ];
+
+const data = [
+  {
+    title: "Food Process and Product Technology Laboratory (FPPT)",
+    image: "/images/vision.webp",
+    content: (
+      <>
+        <p>
+          The Food Process and Product Technology Laboratory aims to promote
+          innovation in the food sector and contribute to the growth of the
+          food processing industry in India and globally. Its infrastructure
+          supports undergraduate practical training in various aspects of
+          food science and technology. The department also offers research
+          programmes at the M.Tech. and Ph.D. levels in advanced areas of food
+          science and technology.
+        </p>
+        <p>
+          The laboratory supports education and research in specialized areas
+          of food technology, contributing to the sustainable development of
+          the food processing industry. With well-equipped facilities and
+          active industry collaborations, the department emphasizes research,
+          innovation, and entrepreneurship. It also encourages the development
+          of value-added food products, including functional and fortified
+          foods, to meet evolving consumer preferences and industry needs.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Food Safety, Quality and Nutrition (FSQN) – Food Chemistry Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The Food Chemistry Laboratory is a specialized facility where
+          scientific experiments are conducted to study the chemical
+          composition and properties of food, as well as the effects of
+          processing, storage, and other factors on food quality. The
+          laboratory focuses on analysing nutrients and other food compounds,
+          including allergens and antinutritional factors, that influence
+          food safety, nutritional value, and sensory properties. As consumer
+          demand for healthier, more natural, and environmentally responsible
+          food products continues to grow, food chemistry plays an important
+          role in supporting product quality, safety, and innovation.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Food Safety, Quality and Nutrition (FSQN) – Food Microbiology Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The Food Microbiology Laboratory plays an important role in food
+          safety, quality assurance, and public health. It supports the study
+          and detection of foodborne pathogens and spoilage microorganisms,
+          while also contributing to research on fermentation, food
+          preservation, and microbial control. Through practical training,
+          research, and innovation, the laboratory helps students understand
+          how microbiological factors influence food quality and safety.
+          These activities contribute to the development of safer food
+          production practices and help reduce the risks associated with
+          foodborne diseases.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Traditional and Specialty Foods Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The Traditional and Specialty Foods Laboratory at the School of
+          Food Technology provides hands-on training in the preparation,
+          processing, and evaluation of traditional, specialty, and heritage
+          food products. It supports practical learning in areas such as
+          traditional foods, specialty foods, Indian heritage foods, and new
+          product development. The laboratory is equipped to support food
+          preparation and processing activities, enabling students to
+          standardize recipes, develop innovative products, and explore
+          region-specific food preparation techniques.
+        </p>
+        <p>
+          Students gain practical experience in product formulation, sensory
+          evaluation, and value addition while learning about the preservation
+          of traditional food knowledge. The laboratory provides a platform
+          for integrating cultural food heritage with scientific approaches
+          to food processing and product development.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "M.Tech. Research Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The M.Tech. Research Laboratory supports postgraduate research and
+          innovation in food science and technology. It provides a learning
+          environment for students to explore specialized research areas
+          related to food processing, product development, and food quality.
+          The laboratory supports research activities aimed at addressing
+          emerging challenges and opportunities in the food processing
+          industry.
+        </p>
+        <p>
+          With appropriate laboratory facilities and opportunities for
+          research collaboration, students can develop their analytical,
+          experimental, and problem-solving skills. The laboratory encourages
+          scientific inquiry, innovation, and the development of value-added
+          food products, including functional and fortified foods, in response
+          to evolving consumer and industry needs.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Agro-Based Plant Operations Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The Agro-Based Plant Operations Laboratory provides practical
+          training in food processing and value addition of agricultural
+          commodities. Students gain hands-on experience in operations such
+          as cleaning, grading, milling, extraction, fermentation, thermal
+          processing, and product formulation. The laboratory focuses on
+          transforming agricultural raw materials into diversified,
+          nutritionally enhanced, and market-ready food products. Emphasis
+          is placed on quality control, process optimization, and pilot-scale
+          production to help students understand industrial practices.
+        </p>
+        <p>
+          The facility connects theoretical concepts with practical
+          applications while helping students develop technical competence,
+          problem-solving abilities, and entrepreneurial skills relevant to
+          the food processing industry.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Computer Laboratory",
+    image: "/images/mission.webp",
+    content: (
+      <>
+        <p>
+          The Computer Laboratory at the School of Food Technology supports
+          academic, practical, and research activities. It provides a
+          computing environment for tasks such as data analysis, food process
+          modelling, statistical analysis, project work, and report
+          preparation. The laboratory helps students use relevant digital
+          tools and software applications to support their studies and
+          research in food science and technology.
+        </p>
+        <p>
+          The facility promotes digital proficiency, analytical thinking, and
+          technical skills, helping students apply computing tools to
+          academic projects and food technology applications.
+        </p>
+      </>
+    ),
+  },
+];
 
   return (
     <div>

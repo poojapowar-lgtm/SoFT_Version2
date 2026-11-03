@@ -1,46 +1,62 @@
 import React from "react";
 import "./global.css";
+// import Facilities from "./Facilities";
 
 const Global = () => {
+
   const globalData = [
     {
-      icon: "/assets/images/icons/hunger.png",
+      icon: "/assets/images/icons/hunger.webp",
       title: "Zero Hunger",
     },
-
     {
-      icon: "/assets/images/icons/global-warming.png",
-      title: "Climate Change",
+      icon: "/assets/images/icons/global-warming.webp",
+      title: "Climate Action",
     },
     {
-      icon: "/assets/images/icons/responsible-consumption.png",
-      title: "Responsible Consumption & Production",
+      icon: "/assets/images/icons/responsible-consumption.webp",
+      title: "Sustainable Consumption",
+      //  title: "Responsible Consumption & Production",
     },
     {
-      icon: "/assets/images/icons/heart.png",
-      title: "Good health & well being",
+      icon: "/assets/images/icons/heart.webp",
+      title: "Good Health & Well-Being",
     },
     {
-      icon: "/assets/images/icons/ecosystem.png",
+      icon: "/assets/images/icons/ecosystem.webp",
       title: "Life on Land",
     },
   ];
 
   return (
-    <section className="global-section">
-      <h2 className="title">Advancing Global Sustainability Through Food Technology Education & Research</h2>
+    <div className="global-main">
+      <section className="global-section">
+        <h2 className="title" style={{ textAlign: "center", margin: "0 auto 15px auto" }}>
+          Advancing Global Sustainability
+        </h2>
+        <h3 className="global-subtitle">Through Food Technology Education &
+          Research</h3>
 
-      <div className="global-container">
-        {globalData.map((item, index) => (
-          <div className="global-card" key={index}>
-            <div className="global-icon">
-              <img src={item.icon} alt={item.title} />
+        <div className="global-container">
+          {globalData.map((item, index) => (
+            <div className="global-card" key={index}>
+              <div className="global-icon">
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  width="65"
+                  height="65"
+                />
+              </div>
+
+              <h4 className="global-title">{item.title}</h4>
             </div>
-            <h4 className="global-title">{item.title}</h4>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+      {/* <Facilities /> */}
+    </div>
+
   );
 };
 

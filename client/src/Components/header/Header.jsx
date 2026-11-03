@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { RiHome3Fill } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaTimes } from "react-icons/fa";
+// import { FaTimes } from "react-icons/fa";
+import { IoMdCloseCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import socialIconsData from "../socialIconsData";
@@ -27,9 +28,24 @@ const Header = () => {
 
       {/* Left Logo Section */}
       <div className="logo-section">
-        <img src="/assets/images/home/mit_logo_black.webp" alt="MIT-ADT University Logo" title="MIT-ADT University" className="logo1" />
+        {/* <img
+          src="/assets/images/home/mit_logo_black.webp"
+          alt="MIT-ADT University Logo"
+          className="logo1"
+          width="180"
+          height="70"
+          decoding="async"
+        /> */}
+
         <div className="logo2-section">
-          <img src="/assets/images/home/SoFT_Logo.png" alt="MIT School of Food Technology Logo" title="MIT School of Food Technology" className="logo2" />
+          <img
+            src="/favicon_new.png"
+            alt="MIT School of Food Technology Logo"
+            className="logo2"
+            width="110"
+            height="85"
+            decoding="async"
+          />
           <div className="logo-text">
             <h1 className="logo-title">School of <br />Food Technology</h1>
           </div>
@@ -91,13 +107,16 @@ const Header = () => {
 
       {/* Mobile Sidebar */}
       {!isOpen && (
-        <div className="hamburger" onClick={() => setIsOpen(true)}>
-          <GiHamburgerMenu />
+        <div className="ham-container">
+          <div className="hamburger" onClick={() => setIsOpen(true)}>
+            <GiHamburgerMenu />
+          </div>
         </div>
+
       )}
 
       <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
-        <div className="close-btn" onClick={closeMenu}><FaTimes /></div>
+        <div className="close-btn" onClick={closeMenu}><IoMdCloseCircle /></div>
 
 
         <ul className="mobile-main-navbar">
@@ -159,15 +178,26 @@ const Header = () => {
         </ul>
 
         <div className="address">
-          <p><b>Address:</b><br/>MIT-ADT Campus, Rajbaugh, Solapur – Pune Highway Near Bharat
-            Petrol Pump, Loni-Kalbhor, Maharashtra – 412201</p>
+          <p>
+            <b>Address:</b><br />
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=MIT-ADT+University+Loni-Kalbhor+Maharashtra+412201"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="address-link"
+              style={{ textDecoration: "none" }}
+            >
+              MIT-ADT Campus, Rajbaug, Pune–Solapur Highway, near Bharat Petrol Pump, Loni Kalbhor, Maharashtra 412201
+            </a>
+          </p>
+
 
           <div className="footer-social">
-            <div className="footer-social-icons">
+            <div className="footer-social-box">
               {socialIconsData.map(({ url, network, bgColor }, index) => (
                 <SocialIcon
                   key={index}
-                  className="foot-social-icons"
+                  className="footer-social-icons"
                   url={url}
                   network={network}
                   bgColor={bgColor}
@@ -175,6 +205,7 @@ const Header = () => {
               ))}
             </div>
           </div>
+
         </div>
 
       </div>

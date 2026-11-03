@@ -1,0 +1,837 @@
+/* =================LOGIN ================= */
+.page-title {
+  font-family: sans-serif;
+  color: white;
+  font-size: 25px;
+  margin-right: auto;
+  font-weight: 600;
+}
+
+
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f9;
+}
+
+.login-card {
+  display: flex;
+  width: 750px;
+  height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #166534, #16a34a);
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.login-left p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: white;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.login-right input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Button */
+.login-right button {
+  width: 100%;
+  padding: 10px;
+  background: #174a35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-right button:hover {
+  background: white;
+  color: #174a35;
+  border: 1px solid #174a35;
+}
+
+
+/* ================= ADMIN PANEL================= */
+.admin-container {
+  display: flex;
+  /* height: 100vh; */
+  font-family: system-ui;
+}
+
+.header-notification-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 50%;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header-notification-btn:hover {
+  background: rgba(186, 202, 186, 0.1);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ================= SIDEBAR ================= */
+.admin-sidebar {
+  background: linear-gradient(135deg, #166534, #16a34a);
+  color: white;
+  padding: 35px 25px;
+}
+
+.admin-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0;
+  padding: 0px 10px 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.admin-logo svg {
+  flex-shrink: 0;
+  font-size: 40px;
+}
+
+.admin-logo h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+
+
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.admin-sidebar ul li:hover {
+  background: white;
+  color: #174a35;
+}
+
+/* Parent menu item */
+/* Parent menu container */
+.admin-sidebar .sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Menu name */
+.admin-sidebar .sidebar-item-name {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.admin-sidebar .dropdown-icon {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-left: auto;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Remove hover-only visibility rules */
+.admin-sidebar .sidebar-item:hover .dropdown-icon {
+  background: white;
+  color: #174a35;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Active/open dropdown menu */
+.admin-sidebar .sidebar-item.dropdown-open {
+  background: transparent;
+  font-weight: 600;
+  border: 1px solid whitesmoke;
+  box-sizing: border-box;
+}
+
+
+/* Icon hover */
+.admin-sidebar .dropdown-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Active arrow hover */
+.admin-sidebar .sidebar-item.dropdown-open .dropdown-icon:hover {
+  background: rgb(1, 48, 1);
+}
+
+/* Submenu container */
+.admin-sidebar .sidebar-submenu {
+  list-style: none;
+  padding: 5px 0 8px 15px;
+  margin: 0;
+  background: #174a35;
+  border-radius: 0 0 6px 6px;
+}
+
+/* Submenu items */
+.admin-sidebar .sidebar-submenu li {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+
+/* =================ADMIN-MAIN ================= */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Bar */
+.admin-topbar {
+  width: 100%;
+  background: linear-gradient(135deg, #166534, #16a34a);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #eee;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f4f6f9;
+  padding: 12px;
+  margin-right: 50px;
+  border-radius: 30px;
+}
+
+.admin-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.admin-info svg {
+  font-size: 45px;
+  color: #3b82f6;
+}
+
+.admin-info span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.admin-email {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.logout-btn {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+}
+
+.logout-btn:active {
+  transform: scale(0.95);
+}
+
+/* =================ADMIN-PAGE ================= */
+.admin-page {
+  padding: 40px;
+  color: #26352d;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 20px;
+}
+
+.card-heading {
+  font-size: 25px;
+  margin-top: 0;
+}
+
+.admin-card {
+  background: #fff;
+  height: max-content;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: #243047;
+}
+
+.card-title {
+  margin: 10px 0;
+  color: #173b2b;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 14px;
+  color: #778078;
+}
+
+form label {
+  display: block;
+  margin-bottom: 12px;
+  color: #34443a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+form label input,
+form label textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 13px;
+  border: 1px solid #d5ddd7;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  background: #fff;
+}
+
+form textarea {
+  resize: vertical;
+  font-size: 14px;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  font-size: 11px;
+}
+
+/* Button */
+.form-btn {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  padding: 10px;
+  width: 60%;
+  background: #174a35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-btn :hover {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.export-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.export-delete-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .export-delete {
+    flex-wrap: wrap;
+  }
+
+  .export-delete-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+
+.delete-all-btn {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.delete-all-btn:hover {
+  background: #b91c1c;
+}
+
+.delete-all-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.excel-upload-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.excel-upload-row input[type="file"] {
+  max-width: 280px;
+}
+
+.excel-upload-row button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* =================NEWS ================= */
+.image-preview {
+  position: relative;
+  width: 150px;
+  margin-top: 10px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Close Icon */
+.remove-icon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.remove-icon:hover {
+  background: darkred;
+}
+
+.image-preview-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ================= TABLE CONTAINER ================= */
+/* Wrapper for scroll */
+.admin-table-wrapper {
+  max-height: 550px;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Table */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+
+.admin-table thead {
+  background: #dae6dd;
+}
+
+.admin-table th {
+  padding: 13px 12px;
+  color: #405247;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e9e4;
+}
+
+.admin-table td {
+  padding: 14px 12px;
+  color: #58645c;
+  border-bottom: 1px solid #edf0ed;
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgb(249, 252, 249);
+  transition: 0.2s ease;
+}
+
+.admin-table a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.admin-table a:hover {
+  text-decoration: underline;
+}
+
+.admin-table button {
+  padding: 5px 10px;
+  margin: 0 5px 5px 0;
+  border: none;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Edit button */
+.admin-table button:first-child {
+  background: #28a745;
+  color: #fff;
+}
+
+/* Delete button */
+.admin-table button:last-child {
+  background: rgb(241, 79, 20);
+  color: #fff;
+}
+
+.admin-table button:hover {
+  opacity: 0.85;
+}
+
+/* no data*/
+.admin-table td[colspan] {
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: #777;
+}
+
+.admin-alert success {
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.admin-alert success.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+
+/* ================= ENQUIRY ================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.export-btn {
+  display: inline-flex;
+  margin-left: 50px;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 18px;
+  background: #174a35;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.export-btn :hover {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  transform: translateY(-2px);
+}
+
+.export-btn svg {
+  font-size: 20px;
+}
+
+
+/* =================SWITCH BUTTONS ================= */
+.switch-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.switch-btn {
+  background: #dae6dd;
+  color: rgb(1, 20, 1);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.switch-btn:hover,
+.switch-btn.active {
+  background: none;
+  border: 1px solid green;
+  color: darkgreen;
+}
+
+
+.table-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.preview-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 10px 0;
+  display: block;
+}
+
+/* sample excel sheet button */
+.excel-note {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.excel-note strong {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Download Button */
+.sample-excel-btn {
+  margin-top: 8px;
+  padding: 7px 14px;
+  border: 1px solid #0b6b43;
+  border-radius: 5px;
+  color: darkgreen;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.sample-excel-btn:hover {
+  background-color: #095a38;
+  border-color: #095a38;
+  transform: translateY(-1px);
+}
+
+/* Active */
+.sample-excel-btn:active {
+  transform: translateY(0);
+}
+
+
+/* Date filter for export button */
+.date-filter-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.date-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.date-filter label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+.date-filter input {
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+  outline: none;
+}
+
+.date-filter input:focus {
+  border-color: #0b6b43;
+}
+
+.clear-filter-btn {
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.clear-filter-btn:hover {
+  background: #f5f5f5;
+}
+
+.approval-status-btn {
+  margin: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.approval-status-btn.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.approval-status-btn.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.approval-status-btn.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}

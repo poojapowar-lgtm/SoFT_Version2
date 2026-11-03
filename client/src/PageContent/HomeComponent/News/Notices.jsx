@@ -8,6 +8,7 @@ const Notices = () => {
     const [activeTab, setActiveTab] = useState("admission");
     const [newsList, setNewsList] = useState([]);
     const [shouldScroll, setShouldScroll] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
 
     const scrollRef = useRef(null);
 
@@ -29,16 +30,14 @@ const Notices = () => {
         fetchNews();
     }, [activeTab]);
 
-    // Check if news content requires scrolling
+    // Check whether notices require scrolling
     useEffect(() => {
         const container = scrollRef.current;
 
         if (!container) return;
 
-        // Reset scroll position when tab/news changes
         container.scrollTop = 0;
 
-        // Wait for DOM to render
         const checkOverflow = () => {
             setShouldScroll(
                 container.scrollHeight > container.clientHeight
@@ -47,18 +46,16 @@ const Notices = () => {
 
         checkOverflow();
 
-        // Also check after a short delay in case content/images
-        // need time to render
         const timeout = setTimeout(checkOverflow, 100);
 
         return () => clearTimeout(timeout);
     }, [newsList]);
 
-    // Automatic seamless scrolling
+    // Automatic seamless scrolling with pause support
     useEffect(() => {
         const container = scrollRef.current;
 
-        if (!container || !shouldScroll) return;
+        if (!container || !shouldScroll || isPaused) return;
 
         const scrollSpeed = 0.5;
         let animationFrame;
@@ -66,9 +63,11 @@ const Notices = () => {
         const scrollStep = () => {
             container.scrollTop += scrollSpeed;
 
-            // Because the list is duplicated,
-            // reset after the first list has passed.
-            if (container.scrollTop >= container.scrollHeight / 2) {
+            // Reset when the first list has passed
+            if (
+                container.scrollTop >=
+                container.scrollHeight / 2
+            ) {
                 container.scrollTop = 0;
             }
 
@@ -80,7 +79,7 @@ const Notices = () => {
         return () => {
             cancelAnimationFrame(animationFrame);
         };
-    }, [shouldScroll, newsList]);
+    }, [shouldScroll, newsList, isPaused]);
 
     // Format date
     const formatDate = (dateString) => {
@@ -174,34 +173,41 @@ const Notices = () => {
                 <div className="news-btn">
                     <button
                         className={`btn ${activeTab === "admission"
-                            ? "active"
-                            : ""
+                                ? "active"
+                                : ""
                             }`}
-                        onClick={() =>
-                            setActiveTab("admission")
-                        }
+                        onClick={() => {
+                            setIsPaused(false);
+                            setActiveTab("admission");
+                        }}
                     >
-                        Admission
+                        Academics
                     </button>
 
                     <button
                         className={`btn ${activeTab === "examination"
-                            ? "active"
-                            : ""
+                                ? "active"
+                                : ""
                             }`}
-                        onClick={() =>
-                            setActiveTab("examination")
-                        }
+                        onClick={() => {
+                            setIsPaused(false);
+                            setActiveTab("examination");
+                        }}
                     >
                         Examination
                     </button>
                 </div>
             </div>
 
-            {/* Notices */}
+            {/* Notices List */}
             <div
                 className="notices-list"
                 ref={scrollRef}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onWheel={() => setIsPaused(true)}
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
             >
                 {newsList.length === 0 ? (
                     <p style={{ padding: "10px" }}>
@@ -218,7 +224,7 @@ const Notices = () => {
                             )
                         )}
 
-                        {/* Duplicate ONLY when scrolling is required */}
+                        {/* Duplicate notices for seamless scrolling */}
                         {shouldScroll &&
                             newsList.map((item, index) =>
                                 renderNotice(
@@ -235,9 +241,7 @@ const Notices = () => {
             <div className="view-all-container">
                 <button
                     className="btn"
-                    onClick={() =>
-                        navigate(noticeRoute)
-                    }
+                    onClick={() => navigate(noticeRoute)}
                 >
                     View All
                 </button>

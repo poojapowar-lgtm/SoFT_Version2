@@ -1,7 +1,3 @@
-.skill-grid {
-  background: white;
-  padding: clamp(8px, 1.5vw, 15px);
-}
 
 /* IMAGES */
 .skill-image-wrapper {
@@ -13,13 +9,24 @@
 }
 
 .skill-image-wrapper img {
-  height: clamp(180px, 15vw, 250px);
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  aspect-ratio: 400 / 250;
   object-fit: cover;
   border-radius: 10px;
 }
+
 
 @media (max-width: 768px) {
   .skill-image-wrapper {
     flex-direction: column;
   }
+
+  .skill-image-wrapper img {
+    width: 90%;
+    height: 150px;
+  }
+
 }

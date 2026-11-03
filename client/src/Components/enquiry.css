@@ -3,16 +3,16 @@
   position: fixed;
   right: 0;
   top: 50%;
-  transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-lr;
-  font-size: clamp(12px, 1.5vw, 18px);
+  transform: translateY(-50%);
+  font-size: clamp(11px, 1.2vw, 17px);
   padding: clamp(10px, 1vw, 20px) clamp(5px, 0.5vw, 10px);
-  background: red;
+  background: linear-gradient(135deg, #8a2b2f 0%, #9b3a3f 50%, #5a191d 100%);
   color: white;
   border: none;
   cursor: pointer;
   z-index: 9999;
-  border-radius: 0 6px 6px 0;
+  border-radius: 6px 0 0 6px;
 }
 
 /* Modal Background */
@@ -50,7 +50,7 @@
 }
 
 .enquiry-top {
-  background: #722327;
+  background: #0c3112;
   border-top-left-radius: 15px;
   padding: clamp(8px, 2.5vw, 20px);
 }
@@ -92,12 +92,22 @@
 }
 
 
+.enquiry-captcha {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+@media (max-width: 360px) {
+  .enquiry-captcha {
+    justify-content: flex-start;
+    transform-origin: left center;
+  }
+}
 
 @media (max-width: 768px) {
-  .banner-card {
-    max-width: 90%;
-  }
-
   .enquiry-modal {
     justify-content: center;
   }

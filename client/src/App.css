@@ -1,25 +1,26 @@
 .App {
-  background-color: #faf7ee;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #FBF6E5;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  font-family: system-ui;
 }
 
 /* Title */
-
 .title {
   position: relative;
   display: block;
   width: fit-content;
-  margin: 0 auto clamp(15px, 1.5vw, 30px) auto;
-  font-family: math;
+  margin: clamp(14px, 1.2vw, 24px) 0;
   color: #004d00;
-  font-size: clamp(20px, 2.5vw, 35px);
+  font-family: system-ui;
+  font-size: clamp(16px, 2.1vw, 32px);
   font-weight: 500;
-  text-align: center;
+  /* text-shadow: 1px 2px 3px rgba(0, 77, 0, 0.18); */
+  text-align: left;
 }
 
 
 /* Underline */
-.title::after {
+/* .title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -28,23 +29,26 @@
   height: 1px;
   background: rgb(152, 224, 123);
   transform: translateX(-50%);
-}
+} */
 
 /* Paragraph — scoped to .App only */
 .App p {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+   font-family: system-ui;
   line-height: clamp(20px, 2vw, 26px);
-  font-size: clamp(10.5px, 1.2vw, 14.5px);
+  font-size: clamp(10px, 1vw, 16px);
+  text-align: justify;
   line-height: 1.8;
 }
 
 .App strong {
   font-family: system-ui;
-  color: #722327;
+  color: #153816;
   font-weight: 500;
   line-height: clamp(20px, 2vw, 26px);
-  font-size: clamp(11.5px, 1.2vw, 17px);
+  font-size: clamp(10.5px, 1.2vw, 15px);
 }
+
 
 
 /* List */
@@ -53,9 +57,10 @@
 }
 
 .page-list li {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  line-height: clamp(24px, 2.2vw, 30px);
-  font-size: clamp(10.5px, 1.2vw, 14.5px);
+   font-family: system-ui;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  line-height: clamp(15px, 2vw, 30px);
+  font-size: clamp(10px, 1vw, 15px);
 }
 
 .page-content-btns {
@@ -66,36 +71,41 @@
 
 /* Primary Button */
 .btn {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: linear-gradient(135deg, #056d05, #00a86b);
+   font-family: system-ui;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  background: #008A00;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(16, 77, 4, 0.4);
-  padding: clamp(5px, 1vw, 8px) clamp(10px, 2vw, 20px);
+  box-shadow: 0 2px 4px rgba(16, 77, 4, 0.4);
+  padding: clamp(4px, 0.4vw, 6px) clamp(8px, 1.5vw, 20px);
   border: none;
-  border-radius: clamp(8px, 2vw, 18px);
-  font-size: clamp(9px, 1.2vw, 14px);
+  border-radius: clamp(8px, 2vw, 16px);
+  font-size: clamp(8.5px, 0.8vw, 13px);
   cursor: pointer;
   transition: 0.3s ease;
   margin-top: 0;
+  text-decoration: none;
 }
 
 .btn:hover,
 .btn.active {
-  background: none;
-  border: 1px solid #008a00;
-  color: #722327;
+  background: #004D00;
+  color: #FBF6E5;
+  transform: scale(1.05);
 }
 
 
 .btn2 {
   border: 1px solid #008a00;
   color: #008a00;
-  padding: clamp(5px, 1vw, 12px) clamp(12px, 3vw, 24px);
-  border-radius: clamp(8px, 2vw, 16px);
-  font-size: clamp(9px, 1.2vw, 14px);
-  font-weight: 500;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(16, 77, 4, 0.4);
+  padding: clamp(4px, 0.4vw, 8px) clamp(8px, 1.5vw, 20px);
+  border: none;
+  border-radius: clamp(8px, 2vw, 18px);
+  font-size: clamp(9px, 0.8vw, 14px);
   cursor: pointer;
   transition: 0.3s ease;
+  margin-top: 0;
 }
 
 .btn2:hover {
@@ -113,9 +123,9 @@
   position: absolute;
   top: clamp(10px, 1.5vw, 15px);
   right: clamp(10px, 1.5vw, 15px);
-  font-size: clamp(15px, 2vw, 25px);
-  color: #722327;
-  background: #fff;
+  font-size: clamp(18px, 2vw, 25px);
+  color: green !important;
+  background: white;
   border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
@@ -128,8 +138,6 @@
 .close-btn:hover,
 .enquiry-close-btn:hover,
 .page-close-btn:hover {
-  color: green !important;
-  background: white;
   transform: scale(1.1);
 }
 
@@ -140,6 +148,37 @@
   overflow-y: auto;
   overflow-x: auto;
   padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #9ca09a #f3ecd3;
+}
+
+/* Chrome, Edge, Safari */
+.table-responsive::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f3ecd3;
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      #8bb653,
+      #315e25);
+  border-radius: 10px;
+  border: 1px solid #f3ecd3;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+      #527a35,
+      #153816);
+}
+
+.table-responsive::-webkit-scrollbar-corner {
+  background: #f3ecd3;
 }
 
 /* TABLE */
@@ -151,7 +190,6 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border: 1px solid #ddd;
 }
 
 /* HEADER */
@@ -159,24 +197,38 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background: linear-gradient(135deg, #722327, #9b3a3f);
-  color: #fff;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  /* background: linear-gradient(135deg, #722327, #9b3a3f); */
+  background-color: #f3ecd3;
+  border-left: 2.5px solid #ffffff;
+  border-right: 2.5px solid #ffffff;
+  color: #153816;
+  font-weight: 600;
+  text-align: left;
   text-transform: uppercase;
 }
 
 /* CELLS */
 .common-table th,
 .common-table td {
-  padding: clamp(4px, 1.2vw, 10px) clamp(8px, 1.2vw, 14px);
-  font-size: clamp(9px, 1.3vw, 14px);
-  border: 1px solid gray;
+  padding: clamp(4px, 0.5vw, 10px) clamp(8px, 1vw, 14px);
+  font-size: clamp(8.5px, 0.8vw, 13px);
 }
 
 .common-table td {
   text-align: left;
+  border: 1px solid gray;
+}
+
+.common-table td a {
+  color: #198754;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.common-table td a:hover {
+  color: #0d6efd;
+  text-decoration: underline;
 }
 
 .common-table tr {
@@ -193,7 +245,6 @@
   transition: 0.2s ease;
 }
 
-.common-table th,
 .common-table td {
   border: none;
 }
@@ -208,7 +259,8 @@
 }
 
 .table-title {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-family: system-ui;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   color: #004d00;
   font-weight: 500;
   text-align: center;
@@ -222,12 +274,68 @@
   word-break: normal;
 }
 
-.VAC-header th {
-  max-width: 150px;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: normal;
+.calendar-event-list ol,
+.calendar-event-list ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style-position: inside;
 }
+
+.calendar-event-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.calendar-event-list p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: clamp(8.5px, 1.3vw, 13px);
+}
+
+
+/*=============== Dots============== */
+.slider-dots {
+  text-align: center;
+  margin-top: clamp(10px, 2vw, 15px);
+}
+
+.dots {
+  margin-top: clamp(16px, 2vw, 22px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: clamp(4.5px, 0.65vw, 7px);
+  height: clamp(4.5px, 0.65vw, 7px);
+  margin: 0 clamp(3px, 0.4vw, 6px);
+  display: inline-block;
+  border-radius: 50%;
+  background: #d3d3d3;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  width: clamp(6px, 0.85vw, 9px);
+  height: clamp(6px, 0.85vw, 9px);
+  background: rgb(128, 93, 5);
+  transform: scale(1.1);
+}
+
+.dot:hover {
+  background: #008000;
+}
+
+
+.syllabus-section {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: clamp(10px, 2vw, 15px);
+}
+
 
 @media (max-width: 600px) {
 

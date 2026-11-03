@@ -1,35 +1,37 @@
 import React, { useState } from "react";
 import InnerBanner from "../Components/inner_banner/InnerBanner";
 import axios from "axios";
-import SEOMeta from "../Components/SEOMeta";
+import SEOMeta from "../Components/SEO/SEOMeta";
 import "./contact.css";
 import "./pages.css";
 import "./board_body.css";
 
 const ContactUs = () => {
-    const boardData = [
-        {
-            title: "Address",
-            desc:
-                "School of Food Technology, MANET hostel,\nRajbaug Campus, Loni Kalbhor, Maharashtra 412201",
-        },
-        {
-            title: "MIT-SoFT Virtual Number",
-            desc: "+91 9021080141",
-        },
-        {
-            title: "Admission Email",
-            desc: "admissions.mitsoft@mituniversity.edu.in",
-        },
-        {
-            title: "MIT-ADT Official Website",
-            desc: "www.mituniversity.ac.in",
-        },
-        {
-            title: "MIT-ADT Virtual Number",
-            desc: "+91 9595124234",
-        },
-    ];
+
+const boardData = [
+    {
+        title: "Address",
+        desc:
+            "School of Food Technology, MANET Hostel, Rajbaug Campus, Loni Kalbhor, Maharashtra 412201",
+    },
+    {
+        title: "MIT-SoFT Virtual Number",
+        desc: "+91 9021080141",
+    },
+    {
+        title: "Admission Email",
+        desc: "admissions.mitsoft@mituniversity.edu.in",
+    },
+    {
+        title: "MIT-ADT Official Website",
+        desc: "www.mituniversity.ac.in",
+    },
+    {
+        title: "MIT-ADT Virtual Number",
+        desc: "+91 9595124234",
+    },
+];
+
 
     // const [formData, setFormData] = useState({
     //     name: "",
@@ -80,7 +82,7 @@ const ContactUs = () => {
         <>
             <SEOMeta title="Contact Us" path="/contact" />
             <InnerBanner
-                bgImage="/assets/images/home/inner_bnr.jpg"
+                bgImage="/assets/banner_gif/inner_bnr.jpg"
                 title="Contact Us"
             />
 

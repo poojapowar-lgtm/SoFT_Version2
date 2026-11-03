@@ -41,8 +41,17 @@ const AlumniStartup = () => {
                   <td>{item.name}</td>
                   <td>{item.passing_year}</td>
                   <td>{item.startup_name}</td>
-                  <td>{item.contact_number}</td>
-                  <td>{item.email}</td>
+                  <td>
+                    <a href={`tel:${item.contact_number}`}>
+                      {item.contact_number}
+                    </a>
+                  </td>
+
+                  <td>
+                    <a href={`mailto:${item.email}`}>
+                      {item.email}
+                    </a>
+                  </td>
                   <td>
                     {item.certificate_file && (
                       <a
@@ -53,15 +62,17 @@ const AlumniStartup = () => {
                         View File
                       </a>
                     )}
-                    {item.certificate_link && (
-                      <a
-                        href={item.certificate_link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View Link
-                      </a>
-                    )}
+
+                    {item.certificate_link &&
+                      /^https?:\/\//i.test(item.certificate_link) && (
+                        <a
+                          href={item.certificate_link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View Link
+                        </a>
+                      )}
                   </td>
                 </tr>
               ))

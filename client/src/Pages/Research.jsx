@@ -2,32 +2,31 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import InnerBanner from "../Components/inner_banner/InnerBanner";
 import Sidebar from "../Components/sidebar/Sidebar";
-import SEOMeta from "../Components/SEOMeta";
+import SEOMeta from "../Components/SEO/SEOMeta";
 import "./pages.css";
 
 const Research = () => {
   const location = useLocation();
 
-  const menu = [
+const menu = [
     { name: "School Research Committee", path: "board-of-research" },
     { name: "Research Paper Publication", path: "research-paper-publication" },
-    { name: "PHD Admissions", path: "phd-admissions" },
-    { name: "Pentant & Publications", path: "pentant-publications" },
+    { name: "PhD Admissions", path: "phd-admissions" },
+    { name: "Patent & Publications", path: "Patent-publications" },
     { name: "Funded Projects", path: "funded-projects" },
     { name: "Consultancy & Training", path: "consultancy-training" },
-    // { name: "Student Research", path: "student-research" },
-  ];
+];
 
-  // Title mapping
-  const titleMap = {
-    "board-of-research": "Board of Research",
+// Title mapping
+const titleMap = {
+    "board-of-research": "School Research Committee",
     "research-paper-publication": "Research Paper Publication",
-    "phd-admissions": "PHD Admissions",
-    "pentant-publications": "Pentant & Publications",
+    "phd-admissions": "PhD Admissions",
+    "Patent-publications": "Patent & Publications",
     "funded-projects": "Funded Projects",
     "consultancy-training": "Consultancy & Training",
-    // "student-research": "Student Research",
-  };
+};
+
 
   // Get dynamic title based on route
   const getTitle = () => {
@@ -40,7 +39,7 @@ const Research = () => {
 
   const title = getTitle();
 
-  const bgImage = "/assets/images/home/inner_bnr.jpg";
+  const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
   return (
     <>

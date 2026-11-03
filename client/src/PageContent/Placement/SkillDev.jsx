@@ -3,46 +3,47 @@ import "./skill.css";
 
 const SkillDev = () => {
 
-  const section1 = [
-    "School of Food Technology conducted a Pre-Placement Group Discussion and Professional Skill Development Session for the final-year M.Tech. Food Technology and Food Safety & Quality Management (FSQM) students.",
-    "Name of Session : Pre-placement Group Discussion & Professional skill",
-    "Conducted By : SCIL Expert Team",
-    "Name of Session Expert/Trainer : Prof. Anuradha Swain, Practice Leader – Professional Skills",
-    "The session is specially conducted for M.Tech students to prepare them for Group Discussion (GD) rounds and to enhance their professional skills. The training will include practice through mind games, discussion on current and expected GD topics, and insights into what industry HR professionals expect during GD rounds. The session also aims to build leadership qualities, initiative-taking ability, confidence, teamwork, and professional manners among students."
-  ];
+const section1 = [
+  "The School of Food Technology conducted a pre-placement group discussion and professional skills development session for final-year M.Tech. students specializing in Food Technology and Food Safety & Quality Management (FSQM).",
+  "Session Title: Pre-Placement Group Discussion & Professional Skills Development",
+  "Conducted By: SCIL Expert Team",
+  "Session Expert/Trainer: Prof. Anuradha Swain, Practice Leader – Professional Skills",
+  "The session was specifically designed to prepare M.Tech. students for group discussion (GD) rounds and enhance their professional skills. The training included mind games, discussions on current and anticipated GD topics, and insights into industry HR professionals' expectations during GD rounds. It also aimed to develop leadership qualities, initiative, confidence, teamwork, and professional etiquette among students.",
+];
 
-  const section2 = [
-    "A career advancement special session was organized as part of the Group discussion and mock personal interview practice for M.Tech.Food Technology and FSQM students in preparation for the upcoming Döhler India Placement Drive for the position of Specialist – Product Documentation.",
-    "The session was well-received and effectively conducted by the SCIL Expert team. Students appreciated the effort and found the experience valuable for their upcoming placement process. The interactive format and expert feedback contributed significantly to students' readiness and self-assurance"
-  ];
+const section2 = [
+  "A special career advancement session was organized for M.Tech. students specializing in Food Technology and Food Safety & Quality Management (FSQM). The session included group discussion exercises and mock personal interviews to prepare students for the upcoming Döhler India placement drive for the position of Specialist – Product Documentation.",
+  "The session was effectively conducted by the SCIL expert team and received positive feedback from students. Participants found the experience valuable in preparing for the upcoming placement process. The interactive format and expert feedback helped strengthen students' confidence and interview readiness.",
+];
 
-  const section3 = [
-    "A special Soft Skills & Career Readiness and Behavioral Skills session was conducted by the expert team from MIT School of Corporate Innovation & Leadership (SCIL). The session was led by Ms. Sherin Mathew, an experienced corporate trainer and skill development expert, with the objective of enhancing students’ professional competencies and industry preparedness.",
-    "The session focused on developing essential employability skills required in today’s competitive corporate environment."
-  ];
+const section3 = [
+  "A special session on soft skills, career readiness, and behavioral skills was conducted by the expert team from the MIT School of Corporate Innovation & Leadership (SCIL). The session was led by Ms. Sherin Mathew, an experienced corporate trainer and skill development expert, with the objective of enhancing students' professional competencies and industry readiness.",
+  "The session focused on developing essential employability skills needed to succeed in today's competitive corporate environment.",
+];
 
-  const keyAreas = [
-    "Effective communication skills",
-    "Professional etiquette and workplace behavior",
-    "Personality development and confidence building",
-    "Teamwork and leadership qualities",
-    "Interview techniques and career planning",
-    "Emotional intelligence and positive attitude"
-  ];
+const keyAreas = [
+  "Effective communication skills",
+  "Professional etiquette and workplace behavior",
+  "Personality development and confidence building",
+  "Teamwork and leadership skills",
+  "Interview techniques and career planning",
+  "Emotional intelligence and a positive attitude",
+];
+
 
   const images1 = [
-    { src: "/assets/images/skills-1.png", alt: "Pre-Placement Group Discussion Session - MIT SoFT", title: "Pre-Placement Group Discussion" },
-    { src: "/assets/images/skills-2.png", alt: "Professional Skill Development Session - MIT SoFT", title: "Professional Skill Development" },
+    { src: "/assets/images/skills-1.webp", alt: "Pre-Placement Group Discussion Session - MIT SoFT", title: "Pre-Placement Group Discussion" },
+    { src: "/assets/images/skills-2.webp", alt: "Professional Skill Development Session - MIT SoFT", title: "Professional Skill Development" },
   ];
 
   const images2 = [
-    { src: "/assets/images/skills-3.png", alt: "Mock Personal Interview Practice - MIT SoFT", title: "Mock Personal Interview Practice" },
-    { src: "/assets/images/skills-4.png", alt: "Group Discussion Practice for Placement - MIT SoFT", title: "Group Discussion Practice" },
+    { src: "/assets/images/skills-3.webp", alt: "Mock Personal Interview Practice - MIT SoFT", title: "Mock Personal Interview Practice" },
+    { src: "/assets/images/skills-4.webp", alt: "Group Discussion Practice for Placement - MIT SoFT", title: "Group Discussion Practice" },
   ];
 
   const images3 = [
-    { src: "/assets/images/skills-5.png", alt: "Soft Skills and Career Readiness Session - MIT SoFT", title: "Soft Skills and Career Readiness" },
-    { src: "/assets/images/skills-6.png", alt: "Behavioral Skills Training Session - MIT SoFT", title: "Behavioral Skills Training" },
+    { src: "/assets/images/skills-5.webp", alt: "Soft Skills and Career Readiness Session - MIT SoFT", title: "Soft Skills and Career Readiness" },
+    { src: "/assets/images/skills-6.webp", alt: "Behavioral Skills Training Session - MIT SoFT", title: "Behavioral Skills Training" },
   ];
 
   const renderList = (data) => (
@@ -56,7 +57,15 @@ const SkillDev = () => {
   const renderImages = (imageList) => (
     <div className="skill-image-wrapper">
       {imageList.map((img, i) => (
-        <img key={i} src={img.src} alt={img.alt} title={img.title} />
+        <img
+          key={i}
+          src={img.src}
+          alt={img.alt}
+          width="400"
+          height="250"
+          loading="lazy"
+          decoding="async"
+        />
       ))}
     </div>
   );

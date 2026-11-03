@@ -2,17 +2,18 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import InnerBanner from "../Components/inner_banner/InnerBanner";
 import Sidebar from "../Components/sidebar/Sidebar";
-import SEOMeta from "../Components/SEOMeta";
 import "./pages.css";
+import SEOMeta from "../Components/SEO/SEOMeta";
 
 const AboutUs = () => {
   const location = useLocation();
 
   const menu = [
     { name: "About MIT-ADT", path: "about-mit" },
-    { name: "Leadership Message", path: "leadership-message" },
+    { name: "Founder's Message", to: "/aboutus/founder-message" },
+    { name: "Exec. President's Message", to: "/aboutus/president-message" },
     { name: "About SoFT", path: "about-soft" },
-    { name: "Principal Message", path: "principal-message" },
+    { name: "Principal's Message", path: "principal-message" },
     { name: "Board of Management", path: "board-of-management" },
     { name: "Governing Body", path: "governing-body" },
   ];
@@ -20,12 +21,14 @@ const AboutUs = () => {
   // Title mapping
   const titleMap = {
     "about-mit": "About MIT-ADT",
-    "leadership-message": "Leadership Message",
+    "founder-message": "Founder's Message",
+    "president-message": "Exec. President's Message",
     "about-soft": "About SoFT",
-    "principal-message": "Principal Message",
+    "principal-message": "Principal's Message",
     "board-of-management": "Board of Management",
     "governing-body": "Governing Body",
   };
+
 
   // Get dynamic title based on route
   const getTitle = () => {
@@ -38,7 +41,7 @@ const AboutUs = () => {
 
   const title = getTitle();
 
-  const bgImage = "/assets/images/home/inner_bnr.jpg";
+  const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
   return (
     <>

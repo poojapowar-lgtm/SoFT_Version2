@@ -2,7 +2,9 @@
 .logo-slider {
   overflow: hidden;
   position: relative;
-  padding: clamp(15px, 2.5vw, 40px) clamp(25px, 5.5vw, 100px);
+  padding: clamp(10px, 2vw, 20px);
+  background: #ffffff9c;
+  margin-top: clamp(10px, 2vw, 20px);
 }
 
 /* TRACK */
@@ -16,7 +18,7 @@
 
 /* LOGO IMAGE */
 .logo-card img {
-  height: clamp(35px, 5vw, 75px);
+  height: clamp(35px, 4vw, 75px);
   width: auto;
   object-fit: contain;
   transition: all 0.4s ease;

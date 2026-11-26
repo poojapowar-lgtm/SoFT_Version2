@@ -10,7 +10,6 @@ const AboutProgram = ({
   return (
     <section className="about-programme">
       <h2 className="innerpage-title">{title}</h2>
-      {/* <h4 className="innerpage-subtitle">About Program :</h4> */}
       <div className="about-pg-container">
         {image && (
           <div className="about-pg-img">

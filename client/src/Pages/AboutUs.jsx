@@ -43,9 +43,14 @@ const AboutUs = () => {
 
   const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
+  const breadcrumbs = [
+    { name: "About", path: "/aboutus/about-mit" },
+    { name: title, path: location.pathname },
+  ];
+
   return (
     <>
-      <SEOMeta title={title} path={location.pathname} />
+      <SEOMeta title={title} path={location.pathname} breadcrumbs={breadcrumbs} />
       <InnerBanner bgImage={bgImage} title={title} />
 
       <div className="page-layout">

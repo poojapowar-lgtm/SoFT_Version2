@@ -1,13 +1,13 @@
 /* GRID */
 .faculty-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 25vw, 210px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 12vw, 200px), 1fr));
   gap: clamp(10px, 1.5vw, 30px);
 }
 
 .faculty-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(238, 236, 236, 0.15);
 }
 
 /* IMAGE WRAPPER */
@@ -20,12 +20,12 @@
 
 .faculty-img img {
   display: block;
-  border-radius: 18px;
-  width: 140px;
-  height: 140px;
+  border-radius: 50%;
+  width: clamp(100px, 10vw, 140px);
+  height: clamp(100px, 10vw, 140px);
   max-width: 100%;
   aspect-ratio: 1 / 1;
-  /* border-radius: 50%; */
+  border: 2px solid white;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -39,7 +39,7 @@
 
 .faculty-name {
   color: #004d00;
-  font-size: clamp(9px, 1.2vw, 14px);
+  font-size: clamp(9.5px, 1.2vw, 16px);
   font-weight: 600;
   margin: 5px 0;
 }
@@ -75,7 +75,7 @@
 .faculty-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(54, 54, 54, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,44 +85,60 @@
 
 .modal-content {
   position: relative;
-  background: #fff;
-  width: clamp(280px, 40vw, 420px);
-  padding: clamp(20px, 3vw, 30px);
-  border-radius: 16px;
+  max-width: clamp(300px, 40vw, 550px);
   text-align: center;
   animation: scaleIn 0.3s ease;
 }
 
+.modal-image-section {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 25px);
+  padding: clamp(10px, 1vw, 15px);
+  border-radius: 16px 16px 0 0;
+  background-image: url("/public/assets/images/home/speak1.webp");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+/* Image Section */
+.modal-details-section {
+  border-radius: 0 0 16px 16px;
+  width: 100%;
+  background: white;
+  border-top: 1px solid #eeeeee;
+  padding: 5px clamp(10px, 1.5vw, 18px);
+}
 
 /* IMAGE IN MODAL */
 .modal-img {
-  width: clamp(110px, 15vw, 150px);
-  height: clamp(110px, 15vw, 150px);
+  width: clamp(90px, 15vw, 130px);
+  height: clamp(100px, 15vw, 140px);
+  border-radius: clamp(10px, 1vw, 15px);
   object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 15px;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .faculty-img img {
-    width: 120px;
-    height: 120px;
-  }
+.modal-designation {
+  line-height: clamp(20px, 2vw, 26px);
+  font-size: clamp(11px, 1vw, 18px);
+  font-family: system-ui;
+  color: #765b00;
+  border-bottom: 2px solid #abdf02;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .faculty-img img {
-    width: 100px;
-    height: 100px;
-  }
+.modal-expertise,
+.modal-designation {
+  text-align: justify;
 }
 
-/* Small mobile */
-@media (max-width: 480px) {
-  .faculty-img img {
-    width: 90px;
-    height: 90px;
-  }
+.modal-expertise {
+  font-family: system-ui;
+  color: #3d2f00;
+  line-height: clamp(20px, 2vw, 26px);
+  font-size: clamp(10px, 1vw, 16px);
+  text-align: justify;
+  line-height: 1.8;
 }

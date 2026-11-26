@@ -6,8 +6,10 @@ import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./Components/ScrollToTop";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/header/Header";
-import MainRoutes from "./Routes/MainRoutes";
-import StudentGrievance from "./admin/adminPages/StudentGrievance";
+const MainRoutes = lazy(() => import("./Routes/MainRoutes"));
+const StudentGrievance = lazy(
+  () => import("./admin/adminPages/StudentGrievance")
+)
 
 
 const Login = lazy(() => import("./admin/adminComponents/Login"));
@@ -27,6 +29,7 @@ const Dashboard = lazy(() => import("./admin/adminComponents/Dashboard"));
 
 const News = lazy(() => import("./admin/adminPages/News"));
 const Events = lazy(() => import("./admin/adminPages/Events"));
+const UpcomingEventsAdmin = lazy(() => import("./admin/adminPages/UpcomingEventsAdmin"));
 const EnquiryTable = lazy(() => import("./admin/adminPages/EnquiryTable"));
 const Members = lazy(() => import("./admin/adminPages/Members"));
 const StudentSpeakAdmin = lazy(() => import("./admin/adminPages/StudentSpeakAdmin"));
@@ -46,6 +49,8 @@ const ExaminationScheduleAdmin = lazy(() => import("./admin/adminPages/Examinati
 
 const AcademicCalendarAdmin = lazy(() => import("./admin/adminPages/AcademicCalendarAdmin"));
 const FAQAdmin = lazy(() => import("./admin/adminPages/FAQAdmin"));
+
+const AchievementsAdmin = lazy(() => import("./admin/adminPages/AchievementsAdmin"));
 
 
 
@@ -76,7 +81,11 @@ function App() {
               element={
                 <div className="App">
                   <Header />
-                  <MainRoutes />
+
+                  <Suspense fallback={<Fallback />}>
+                    <MainRoutes />
+                  </Suspense>
+
                   <Footer />
                 </div>
               }
@@ -96,6 +105,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="news" element={<News />} />
               <Route path="events" element={<Events />} />
+              <Route path="upcoming-events" element={<UpcomingEventsAdmin />} />
               <Route path="enquiry" element={<EnquiryTable />} />
               <Route path="members" element={<Members />} />
               <Route path="student-speak" element={<StudentSpeakAdmin />} />
@@ -116,6 +126,8 @@ function App() {
               <Route path="academic-calendar" element={<AcademicCalendarAdmin />} />
               <Route path="faq" element={<FAQAdmin />} />
               <Route path="student-grievance" element={<StudentGrievance />} />
+
+              <Route path="achievements" element={<AchievementsAdmin />} />
 
               {/* Superadmin-only adminPages */}
               <Route

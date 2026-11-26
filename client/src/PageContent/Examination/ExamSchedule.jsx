@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../PageContent/HomeComponent/News/news.css";
+import API_BASE from "../../utils/apiBase";
 
 const ExamSchedule = () => {
     const [examSchedule, setExamSchedule] = useState([]);
@@ -12,7 +12,7 @@ const ExamSchedule = () => {
         const fetchExamSchedule = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/api/examination-schedule"
+                    `${API_BASE}/api/examination-schedule`
                 );
 
                 setExamSchedule(

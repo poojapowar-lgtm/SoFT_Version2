@@ -4,6 +4,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import "./enquiry.css";
+import API_BASE from "../utils/apiBase";
 
 const EnquiryForm = ({ onClose }) => {
   const recaptchaRef = useRef(null);
@@ -37,7 +38,7 @@ const EnquiryForm = ({ onClose }) => {
       setIsSubmitting(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/enquiry",
+        `${API_BASE}/api/enquiry`,
         {
           ...formData,
           recaptchaToken: captchaToken,

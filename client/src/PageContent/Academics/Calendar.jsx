@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const Calendar = () => {
   const [calendarData, setCalendarData] = useState([]);
@@ -12,7 +13,7 @@ const Calendar = () => {
     const fetchCalendar = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/academic-calendar"
+          `${API_BASE}/api/academic-calendar`
         );
 
         setCalendarData(res.data);

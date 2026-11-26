@@ -18,6 +18,5 @@ export const ResearchRoute = (
     <Route path="funded-projects" element={<FundedProjects />} />
     <Route path="phd-admissions" element={<PHDAdmissions />} />
     <Route path="consultancy-training" element={<Consultancy />} />
-    {/* <Route path="student-research" element={<StudentResearch />} /> */}
   </Route>
 );

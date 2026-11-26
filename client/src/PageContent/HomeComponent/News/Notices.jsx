@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { PiNewspaperFill  } from "react-icons/pi";
+import API_BASE from "../../../utils/apiBase";
 
 const Notices = () => {
     const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Notices = () => {
     const fetchNews = async () => {
         try {
             const res = await axios.get(
-                `http://localhost:5000/api/news?type=${activeTab}`
+                `${API_BASE}/api/news?type=${activeTab}`
             );
 
             setNewsList(res.data);
@@ -57,7 +59,7 @@ const Notices = () => {
 
         if (!container || !shouldScroll || isPaused) return;
 
-        const scrollSpeed = 0.5;
+        const scrollSpeed = 1;
         let animationFrame;
 
         const scrollStep = () => {
@@ -112,7 +114,7 @@ const Notices = () => {
     // Routes
     const noticeRoute =
         activeTab === "admission"
-            ? "/examinations/admission-notice"
+            ? "/examinations/academics-notice"
             : "/examinations/exam-notice";
 
     // Render individual notice
@@ -136,7 +138,7 @@ const Notices = () => {
 
                     {item.file_path && (
                         <a
-                            href={`http://localhost:5000${item.file_path}`}
+                            href={`${API_BASE}${item.file_path}`}
                             target="_blank"
                             rel="noreferrer"
                             className="notice-link"
@@ -164,88 +166,91 @@ const Notices = () => {
     return (
         <div className="notices">
 
-            {/* Header */}
-            <div className="section-header">
-                <h2 className="title">
-                    News & Notices
-                </h2>
-
-                <div className="news-btn">
-                    <button
-                        className={`btn ${activeTab === "admission"
+            <div className="notices-section">
+                {/* Header */}
+                <div className="section-header">
+                    <h2 className="title">
+                        <PiNewspaperFill  className="title-icon" />
+                        News, <span>Notices</span>
+                    </h2>
+                    <div className="news-btn">
+                        <button
+                            className={`btn ${activeTab === "admission"
                                 ? "active"
                                 : ""
-                            }`}
-                        onClick={() => {
-                            setIsPaused(false);
-                            setActiveTab("admission");
-                        }}
-                    >
-                        Academics
-                    </button>
+                                }`}
+                            onClick={() => {
+                                setIsPaused(false);
+                                setActiveTab("admission");
+                            }}
+                        >
+                            Academics
+                        </button>
 
-                    <button
-                        className={`btn ${activeTab === "examination"
+                        <button
+                            className={`btn ${activeTab === "examination"
                                 ? "active"
                                 : ""
-                            }`}
-                        onClick={() => {
-                            setIsPaused(false);
-                            setActiveTab("examination");
-                        }}
+                                }`}
+                            onClick={() => {
+                                setIsPaused(false);
+                                setActiveTab("examination");
+                            }}
+                        >
+                            Examination
+                        </button>
+                    </div>
+                </div>
+
+                {/* Notices List */}
+                <div
+                    className="notices-list"
+                    ref={scrollRef}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    onWheel={() => setIsPaused(true)}
+                    onTouchStart={() => setIsPaused(true)}
+                    onTouchEnd={() => setIsPaused(false)}
+                >
+                    {newsList.length === 0 ? (
+                        <p style={{ padding: "10px" }}>
+                            No notices available
+                        </p>
+                    ) : (
+                        <>
+                            {/* Original notices */}
+                            {newsList.map((item, index) =>
+                                renderNotice(
+                                    item,
+                                    index,
+                                    "original"
+                                )
+                            )}
+
+                            {/* Duplicate notices for seamless scrolling */}
+                            {shouldScroll &&
+                                newsList.map((item, index) =>
+                                    renderNotice(
+                                        item,
+                                        index,
+                                        "duplicate"
+                                    )
+                                )}
+                        </>
+                    )}
+                </div>
+
+                {/* View All */}
+                <div className="view-all-container">
+                    <button
+                        className="btn"
+                        onClick={() => navigate(noticeRoute)}
                     >
-                        Examination
+                        View All
                     </button>
                 </div>
             </div>
 
-            {/* Notices List */}
-            <div
-                className="notices-list"
-                ref={scrollRef}
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-                onWheel={() => setIsPaused(true)}
-                onTouchStart={() => setIsPaused(true)}
-                onTouchEnd={() => setIsPaused(false)}
-            >
-                {newsList.length === 0 ? (
-                    <p style={{ padding: "10px" }}>
-                        No notices available
-                    </p>
-                ) : (
-                    <>
-                        {/* Original notices */}
-                        {newsList.map((item, index) =>
-                            renderNotice(
-                                item,
-                                index,
-                                "original"
-                            )
-                        )}
-
-                        {/* Duplicate notices for seamless scrolling */}
-                        {shouldScroll &&
-                            newsList.map((item, index) =>
-                                renderNotice(
-                                    item,
-                                    index,
-                                    "duplicate"
-                                )
-                            )}
-                    </>
-                )}
-            </div>
-
-            {/* View All */}
-            <div className="view-all-container">
-                <button
-                    className="btn"
-                    onClick={() => navigate(noticeRoute)}
-                >
-                    View All
-                </button>
-            </div>
 
         </div>
     );

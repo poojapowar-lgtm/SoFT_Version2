@@ -1,23 +1,9 @@
 /* SECTION */
 .global-section {
-  margin: clamp(12px, 2.5vw, 40px) clamp(10px, 10vw, 150px);
-  text-align: center;
-}
-
-.global-subtitle{ 
-margin-top: 0;
-font-weight: 400;
-font-size:  clamp(10px, 1.5vw, 18px);
-}
-/* MAIN CONTAINER */
-.global-container {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  gap: clamp(15px, 2vw, 32px);
-  padding: clamp(18px, 3vw, 42px);
+  margin: clamp(20px, 2.5vw, 45px) clamp(20px, 5.5vw, 100px) 0 clamp(20px, 5.5vw, 100px);
+  padding: clamp(10px, 1vw, 20px) clamp(15px, 2vw, 40px);
   border-radius: clamp(10px, 1.5vw, 22px);
+  text-align: center;
   background-image:
     linear-gradient(110deg,
       rgba(34, 75, 14, 0.20),
@@ -33,12 +19,29 @@ font-size:  clamp(10px, 1.5vw, 18px);
   overflow: hidden;
 }
 
+.global-subtitle {
+  margin: clamp(5px, 1vw, 15px) 0;
+  font-weight: 400;
+  font-size: clamp(10px, 1.5vw, 18px);
+}
+
+/* MAIN CONTAINER */
+.global-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: clamp(15px, 2vw, 32px);
+  padding: clamp(5px, 1vw, 15px) 0;
+
+}
+
 /* CARD */
 .global-card {
   flex: 1 1 0;
   min-width: 0;
   max-width: clamp(180px, 16vw, 220px);
-  min-height: clamp(85px, 12vw, 165px);
+  max-height: clamp(100px, 10vw, 150px);
   padding: clamp(12px, 1.8vw, 24px) clamp(8px, 1.2vw, 16px);
   display: flex;
   flex-direction: column;
@@ -131,12 +134,13 @@ font-size:  clamp(10px, 1.5vw, 18px);
 /* MOBILE */
 @media (max-width: 600px) {
   .global-section {
-    margin: clamp(10px, 3vw, 18px) 0;
+    margin: 0;
+    border-radius: 0;
   }
 
   .global-container {
     flex-wrap: wrap;
-    border-radius: 0;
+
   }
 
   .global-card {

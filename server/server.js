@@ -1,16 +1,70 @@
 const express = require("express");
 const cors = require("cors");
+const compression = require("compression");
 require("dotenv").config();
 
 const verifyAdmin = require("./middleware/verifyAdmin");
 
 const app = express();
 
+// ── Gzip compression for all responses ──────────────────────────────────────
+app.use(compression({ level: 6, threshold: 1024 }));
+
 app.use(express.json());
 app.use(cors());
 
-app.use("/uploads", express.static("uploads"));
-app.use(express.static("public"));
+// ── Static files with cache headers ─────────────────────────────────────────
+// Uploaded images/docs: cache 7 days (content-addressed by timestamp prefix)
+app.use("/uploads", express.static("uploads", {
+  maxAge: "7d",
+  etag: true,
+  lastModified: true,
+}));
+
+// Public assets (sitemap, robots): short cache
+app.use(express.static("public", {
+  maxAge: "1h",
+  etag: true,
+}));
+
+// Dynamic sitemap — serves pre-generated sitemap.xml from public/
+// Regenerate on demand (max once per hour) to reflect latest DB content
+let lastSitemapGen = 0;
+app.get("/sitemap.xml", (req, res) => {
+  const fs = require("fs");
+  const path = require("path");
+  const sitemapPath = path.join(__dirname, "public", "sitemap.xml");
+  const ONE_HOUR = 60 * 60 * 1000;
+
+  const regenerate = () => {
+    try {
+      require("child_process").fork(path.join(__dirname, "generateSitemap.js"));
+      lastSitemapGen = Date.now();
+    } catch (e) {
+      console.error("Sitemap regen error:", e.message);
+    }
+  };
+
+  if (!fs.existsSync(sitemapPath) || Date.now() - lastSitemapGen > ONE_HOUR) {
+    regenerate();
+  }
+
+  if (fs.existsSync(sitemapPath)) {
+    res.setHeader("Content-Type", "application/xml");
+    return res.sendFile(sitemapPath);
+  }
+
+  res.status(503).send("Sitemap not yet available. Try again shortly.");
+});
+
+// ── Cache headers for public read-only API responses ─────────────────────────
+// Applied only to GET requests on public routes (not admin/auth/write ops)
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api/admin") && !req.path.startsWith("/api/auth")) {
+    res.setHeader("Cache-Control", "public, max-age=60, stale-while-revalidate=300");
+  }
+  next();
+});
 
 // Centralized activity capture
 app.use("/api", require("./middleware/activityCapture"));
@@ -50,6 +104,9 @@ app.use("/api/examination-schedule", require("./routes/examinationSchedule"));
 app.use("/api/academic-calendar", require("./routes/academicCalendar"));
 app.use("/api/faqs", require("./routes/faq"));
 app.use("/api/student-grievance", require("./routes/studentGrievance"));
+
+app.use("/api/upcoming-events", require("./routes/upcomingEvents"));
+app.use("/api/achievements", require("./routes/Achievements"));
 
 app.use(
   "/api/activity-logs",

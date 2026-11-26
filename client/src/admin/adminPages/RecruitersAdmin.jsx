@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { PiExportBold } from "react-icons/pi";
 
-const RecruitersAdmin = () => {
   const API_URL = "http://localhost:5000/api/recruiters";
   const REQUESTS_URL = "http://localhost:5000/api/admin/my-requests";
   const ENTITY_TYPE = "recruiters";
@@ -14,6 +13,7 @@ const RecruitersAdmin = () => {
     logo: null,
   };
 
+const RecruitersAdmin = () => {
   const [list, setList] = useState([]);
   const [requests, setRequests] = useState([]);
   const [form, setForm] = useState(initialForm);

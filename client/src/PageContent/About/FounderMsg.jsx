@@ -21,8 +21,7 @@ const FounderMsg = () => {
           </div>
 
           <div className="leader-content">
-            {/* <p>Our true source of inspiration</p> */}
-            <h3 className="innerpage-subtitle">
+            <h3 className="leader-name">
               Hon. Prof. Dr. Vishwanath D. Karad
             </h3>
             <h4 className="leader-designation">

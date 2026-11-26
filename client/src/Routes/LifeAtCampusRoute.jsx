@@ -5,7 +5,6 @@ import Facilities from "../PageContent/LifeAtCampus/Facilities";
 import Events from "../PageContent/LifeAtCampus/Events";
 import Sports from "../PageContent/LifeAtCampus/Sports";
 
-
 export const LifeAtCampusRoute = (
     <Route path="campus-life" element={<LifeAtCampus />}>
         <Route index element={<Facilities />} />

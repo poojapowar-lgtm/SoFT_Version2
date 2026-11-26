@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { RiArrowDownSLine } from "react-icons/ri";
 import DOMPurify from "dompurify";
+import { useLocation } from "react-router-dom";
+import SEOMeta from "../../Components/SEO/SEOMeta";
+import API_BASE from "../../utils/apiBase";
 
 const FAQ = () => {
     const [faqList, setFaqList] = useState([]);
     const [activeIndex, setActiveIndex] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const location = useLocation();
 
     const toggleAccordion = (index) => {
         setActiveIndex((prev) => (prev === index ? null : index));
@@ -17,7 +21,7 @@ const FAQ = () => {
         const fetchFAQs = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/api/faqs"
+                    `${API_BASE}/api/faqs`
                 );
                 setFaqList(response.data);
             } catch (err) {
@@ -33,6 +37,9 @@ const FAQ = () => {
 
     return (
         <div>
+            {faqList.length > 0 && (
+                <SEOMeta path={location.pathname} faqData={faqList} />
+            )}
             <h2 className="innerpage-title">FAQ's</h2>
 
             <div className="accordion-container">

@@ -21,24 +21,12 @@
   overflow: hidden;
 }
 
-/* .page-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/public/assets/images/home/page_bg_main.jpg");
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  opacity: 0.24;
-  z-index: 0;
-  pointer-events: none;
-} */
 
 .page-content::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/public/assets/images/home/page_bg_new.png");
+  background-image: url("/public/assets/images/home/page_bg_new.webp");
   background-size: clamp(250px, 40%, 600px) auto;
   background-position: bottom right;
   background-repeat: no-repeat;
@@ -85,8 +73,7 @@
 
 .innerpage-title,
 .innerpage-subtitle {
-  /* font-family: math; */
-   font-family: system-ui;
+  font-family: system-ui;
   display: flex;
   align-items: end;
   gap: clamp(5px, 1vw, 10px);
@@ -96,16 +83,15 @@
 .innerpage-subtitle {
   color: #004d00;
   font-weight: 500;
-  font-size: clamp(14px, 1.2vw, 20px);
+  font-size: clamp(14px, 1vw, 21.5px);
 }
 
 .names {
-  /* font-family: math; */
-   font-family: system-ui;
+  font-family: system-ui;
   color: #004d00;
-  margin: 8px;
+  margin: 8px 0;
   font-weight: 500;
-  font-size: clamp(10px, 3vw, 20px);
+  font-size: clamp(10px, 1.5vw, 20px);
 }
 
 
@@ -143,14 +129,13 @@
 }
 
 .accordion-title {
-  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-   font-family: system-ui;
+  font-family: system-ui;
   cursor: pointer;
-  font-size: clamp(11px, 1.2vw, 16px);
+  font-size: clamp(11px, 1vw, 16px);
   line-height: clamp(18px, 2vw, 26px);
   margin: clamp(5px, 1vw, 15px) 0;
   font-weight: 600;
-  color: black;
+  color: #004d00;
 }
 
 /* Header */
@@ -349,15 +334,6 @@
   transform: translateY(-3px);
 }
 
-/* TITLE */
-.internship-title {
-  /* font-family: math; */
-   font-family: system-ui;
-  color: #004d00;
-  font-weight: 500;
-  font-size: clamp(11px, 2vw, 20px);
-  margin: 5px;
-}
 
 /* LIST */
 .internship-card ul {
@@ -370,7 +346,7 @@
   position: relative;
   padding-left: clamp(20px, 1vw, 28px);
   margin-bottom: 12px;
-  color: var(--text-color);
+  color: #3d2f00;
   font-size: clamp(10px, 1.1vw, 15px);
   line-height: 1.65;
   text-align: left;
@@ -435,7 +411,7 @@
   .internship-card {
     width: 100%;
     margin-left: 40px;
-    padding: 14px;
+    padding:0 14px;
   }
 
   .arrow {

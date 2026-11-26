@@ -1,7 +1,5 @@
 /* Leader Section */
 .leader-card {
-  /* background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
   padding: clamp(20px, 3vw, 40px);
 }
 
@@ -17,9 +15,7 @@
   width: 240px;
   height: 240px;
   max-width: 100%;
-  /* aspect-ratio: 1 / 1; */
   object-fit: cover;
-  /* border-radius: 50%; */
   border: 2px solid white;
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -27,6 +23,14 @@
 
 .leader-content {
   flex: 1;
+}
+
+.leader-name {
+  font-family: system-ui;
+  color: #004d00;
+  font-weight: 500;
+  font-size: clamp(14px, 1.5vw, 24px);
+  margin: clamp(5px, 0.5vw, 10px) 0;
 }
 
 

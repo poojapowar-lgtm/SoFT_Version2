@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../Pages/board_body.css";
+import API_BASE from "../../utils/apiBase";
 
 const BoardResearch = () => {
   const [ResearchBoardData, setResearchBoardData] = useState([]);
@@ -11,7 +12,7 @@ const BoardResearch = () => {
     const fetchResearchCommittee = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/members?type=research_committee"
+          `${API_BASE}/api/members?type=research_committee`
         );
 
         setResearchBoardData(response.data);

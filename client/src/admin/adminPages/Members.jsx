@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PiExportBold } from "react-icons/pi";
 
-const API_URL = "http://localhost:5000/api/members";
-const ADMIN_REQUESTS_URL =
-  "http://localhost:5000/api/admin/my-requests";
+const API_URL ="http://localhost:5000/api/members";
+const ADMIN_REQUESTS_URL ="http://localhost:5000/api/admin/my-requests";
 
 const memberTypes = [
   { value: "governing", label: "Governing Body" },

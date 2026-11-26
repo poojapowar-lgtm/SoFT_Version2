@@ -17,6 +17,7 @@ router.get("/dashboard", (req, res) => {
   const queries = [
     { key: "news", sql: "SELECT COUNT(*) AS total FROM news" },
     { key: "events", sql: "SELECT COUNT(*) AS total FROM events" },
+    { key: "upcomingEvents", sql: "SELECT COUNT(*) AS total FROM upcoming_events" },
     { key: "enquiries", sql: "SELECT COUNT(*) AS total FROM enquiries" },
     { key: "members", sql: "SELECT COUNT(*) AS total FROM members" },
     { key: "studentSpeak", sql: "SELECT COUNT(*) AS total FROM student_speak" },
@@ -36,6 +37,8 @@ router.get("/dashboard", (req, res) => {
     { key: "fundedResearch", sql: "SELECT COUNT(*) AS total FROM funded_research" },
     { key: "consultancyProjects", sql: "SELECT COUNT(*) AS total FROM consultancy_projects" },
     { key: "testimonials", sql: "SELECT COUNT(*) AS total FROM testimonials" },
+
+    { key: "achievements", sql: "SELECT COUNT(*) AS total FROM achievements" },
   ];
 
   const data = {};
@@ -214,7 +217,7 @@ router.post(
 
             // Add explicit, trusted handlers for more modules later.
             if (
-              !["news", "examination_schedule", "members", "faculty", "mou", "academic_calendar", "alumni_startups", "consultancy_projects", "events", "faqs", "funded_research", "patent_publications", "placed_students", "recruiters", "research_students", "student_grievance", "student_speak", "testimonials"].includes(request.entity_type)
+              !["news", "examination_schedule", "members", "faculty", "mou", "academic_calendar", "alumni_startups", "consultancy_projects", "events", "faqs", "funded_research", "patent_publications", "placed_students", "recruiters", "research_students", "student_grievance", "student_speak", "testimonials", "upcoming_events", "achievements"].includes(request.entity_type)
             ) {
               return failTransaction(422, {
                 message:
@@ -1719,6 +1722,250 @@ router.post(
               });
             }
 
+            // ================= Upcoming EVENTS APPROVAL =================
+            if (request.entity_type === "upcoming_events") {
+              // Parse saved JSON safely and support common wrapper structures.
+              const getEventData = (value) => {
+                let data = value;
+
+                if (typeof data === "string") {
+                  try {
+                    data = JSON.parse(data);
+                  } catch (error) {
+                    return null;
+                  }
+                }
+
+                if (!data || typeof data !== "object" || Array.isArray(data)) {
+                  return null;
+                }
+
+                if (data.proposed_data !== undefined) {
+                  return getEventData(data.proposed_data);
+                }
+
+                if (
+                  data.data &&
+                  typeof data.data === "object" &&
+                  !Array.isArray(data.data) &&
+                  data.title === undefined
+                ) {
+                  return getEventData(data.data);
+                }
+
+                return data;
+              };
+
+              const eventData = getEventData(proposed);
+
+              // Validate the actual event fields.
+              const validateEvent = (data) => {
+                if (!data) {
+                  return "Event data is missing or is not valid JSON.";
+                }
+
+                if (
+                  data.title == null ||
+                  String(data.title).trim() === ""
+                ) {
+                  return "The event title is missing.";
+                }
+
+                if (
+                  data.date == null ||
+                  String(data.date).trim() === ""
+                ) {
+                  return "The event date is missing.";
+                }
+
+                const optionalFields = [
+                  "description",
+                  "file_path",
+                  "link_text",
+                  "link_url",
+                  "doc_path",
+                ];
+
+                for (const field of optionalFields) {
+                  const value = data[field];
+
+                  if (
+                    value != null &&
+                    typeof value !== "string" &&
+                    typeof value !== "number"
+                  ) {
+                    return `Invalid event field: ${field}.`;
+                  }
+                }
+
+                return null;
+              };
+
+              // Normalize values to match the upcoming_events table.
+              const normalizeEvent = (data) => {
+                const optionalValue = (value) => {
+                  if (value == null) return null;
+
+                  if (typeof value === "string") {
+                    return value.trim() || null;
+                  }
+
+                  return String(value);
+                };
+
+                return {
+                  title: String(data.title).trim(),
+                  date: String(data.date).trim(),
+                  description: optionalValue(data.description),
+                  file_path: optionalValue(data.file_path),
+                  link_text: optionalValue(data.link_text),
+                  link_url: optionalValue(data.link_url),
+                  doc_path: optionalValue(data.doc_path),
+                };
+              };
+
+              // ================= CREATE =================
+              if (request.operation === "create") {
+                const validationError = validateEvent(eventData);
+
+                if (validationError) {
+                  console.error("Event approval validation failed:", {
+                    requestId: request.id,
+                    operation: request.operation,
+                    proposed,
+                    reason: validationError,
+                  });
+
+                  return failTransaction(400, {
+                    message: validationError,
+                  });
+                }
+
+                const event = normalizeEvent(eventData);
+
+                return connection.query(
+                  `INSERT INTO upcoming_events
+        (title, date, description, file_path, link_text, link_url, doc_path)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                  [
+                    event.title,
+                    event.date,
+                    event.description,
+                    event.file_path,
+                    event.link_text,
+                    event.link_url,
+                    event.doc_path,
+                  ],
+                  publishError
+                );
+              }
+
+              // ================= UPDATE =================
+              if (request.operation === "update") {
+                const recordId = Number(request.record_id);
+
+                if (!Number.isSafeInteger(recordId) || recordId < 1) {
+                  return failTransaction(400, {
+                    message: "The target event ID is invalid.",
+                  });
+                }
+
+                const validationError = validateEvent(eventData);
+
+                if (validationError) {
+                  console.error("Event update validation failed:", {
+                    requestId: request.id,
+                    recordId,
+                    proposed,
+                    reason: validationError,
+                  });
+
+                  return failTransaction(400, {
+                    message: validationError,
+                  });
+                }
+
+                const event = normalizeEvent(eventData);
+
+                return connection.query(
+                  `UPDATE upcoming_events
+       SET title = ?,
+           date = ?,
+           description = ?,
+           file_path = ?,
+           link_text = ?,
+           link_url = ?,
+           doc_path = ?
+       WHERE id = ?`,
+                  [
+                    event.title,
+                    event.date,
+                    event.description,
+                    event.file_path,
+                    event.link_text,
+                    event.link_url,
+                    event.doc_path,
+                    recordId,
+                  ],
+                  (err, result) => {
+                    if (err) return publishError(err);
+
+                    if (result.affectedRows === 0) {
+                      return connection.query(
+                        "SELECT id FROM upcoming_events WHERE id = ?",
+                        [recordId],
+                        (checkError, rows) => {
+                          if (checkError) return publishError(checkError);
+
+                          if (!rows.length) {
+                            return failTransaction(409, {
+                              message: "The event record no longer exists.",
+                            });
+                          }
+
+                          return publishError(null);
+                        }
+                      );
+                    }
+
+                    return publishError(null);
+                  }
+                );
+              }
+
+              // ================= DELETE =================
+              if (request.operation === "delete") {
+                const recordId = Number(request.record_id);
+
+                if (!Number.isSafeInteger(recordId) || recordId < 1) {
+                  return failTransaction(400, {
+                    message: "The target event ID is invalid.",
+                  });
+                }
+
+                return connection.query(
+                  "DELETE FROM upcoming_events WHERE id = ?",
+                  [recordId],
+                  (err, result) => {
+                    if (err) return publishError(err);
+
+                    if (result.affectedRows !== 1) {
+                      return failTransaction(409, {
+                        message: "The event record no longer exists.",
+                      });
+                    }
+
+                    return publishError(null);
+                  }
+                );
+              }
+
+              // ================= UNSUPPORTED OPERATION =================
+              return failTransaction(400, {
+                message: `Unsupported event operation: ${request.operation}`,
+              });
+            }
+
             // ================= FAQS APPROVAL =================
             if (request.entity_type === "faqs") {
               const validateFAQ = (data) =>
@@ -3139,6 +3386,239 @@ router.post(
                   `Unsupported student grievance operation: ${request.operation} `,
               });
             }
+
+
+            // ================= ACHIEVEMENTS APPROVAL =================
+            if (request.entity_type === "achievements") {
+
+              const validTypes = ["Faculty", "Student"];
+
+              const normalizeOptionalString = (value) => {
+                if (value === undefined || value === null || value === "") {
+                  return null;
+                }
+
+                return String(value).trim() || null;
+              };
+
+              const validateAchievement = (data) => {
+                if (
+                  !data ||
+                  typeof data !== "object" ||
+                  Array.isArray(data)
+                ) {
+                  return false;
+                }
+
+                const validImage =
+                  data.image_path === undefined ||
+                  data.image_path === null ||
+                  (
+                    typeof data.image_path === "string" &&
+                    data.image_path.trim().length <= 255
+                  );
+
+                const validDescription =
+                  data.description === undefined ||
+                  data.description === null ||
+                  typeof data.description === "string";
+
+                return (
+                  validTypes.includes(data.achievement_type) &&
+                  typeof data.name === "string" &&
+                  data.name.trim() !== "" &&
+                  data.name.trim().length <= 255 &&
+                  typeof data.academic_year === "string" &&
+                  data.academic_year.trim() !== "" &&
+                  data.academic_year.trim().length <= 50 &&
+                  typeof data.event_category === "string" &&
+                  data.event_category.trim() !== "" &&
+                  data.event_category.trim().length <= 255 &&
+                  typeof data.competition_activity === "string" &&
+                  data.competition_activity.trim() !== "" &&
+                  data.competition_activity.trim().length <= 255 &&
+                  validImage &&
+                  validDescription
+                );
+              };
+
+              const achievementValues = (data) => [
+                data.achievement_type,
+                data.name.trim(),
+                normalizeOptionalString(data.academic_year),
+                normalizeOptionalString(data.event_category),
+                normalizeOptionalString(data.competition_activity),
+                normalizeOptionalString(data.image_path),
+                normalizeOptionalString(data.description),
+              ];
+
+              // ================= CREATE =================
+
+              if (request.operation === "create") {
+
+                if (!validateAchievement(proposed)) {
+                  return failTransaction(400, {
+                    message: "The proposed achievement data is invalid.",
+                  });
+                }
+
+                return connection.query(
+                  `INSERT INTO achievements
+      (
+        achievement_type,
+        name,
+        academic_year,
+        event_category,
+        competition_activity,
+        image_path,
+        description
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                  achievementValues(proposed),
+                  publishError
+                );
+              }
+
+              // ================= UPDATE =================
+
+              if (request.operation === "update") {
+
+                const recordId = Number(request.record_id);
+
+                if (!Number.isSafeInteger(recordId) || recordId < 1) {
+                  return failTransaction(400, {
+                    message: "The target achievement ID is invalid.",
+                  });
+                }
+
+                if (!validateAchievement(proposed)) {
+                  return failTransaction(400, {
+                    message: "The proposed achievement data is invalid.",
+                  });
+                }
+
+                return connection.query(
+                  `UPDATE achievements
+       SET achievement_type = ?,
+           name = ?,
+           academic_year = ?,
+           event_category = ?,
+           competition_activity = ?,
+           image_path = ?,
+           description = ?
+       WHERE id = ?`,
+                  [...achievementValues(proposed), recordId],
+                  (err, result) => {
+                    if (err) return publishError(err);
+
+                    if (result.affectedRows === 0) {
+                      return connection.query(
+                        "SELECT id FROM achievements WHERE id = ?",
+                        [recordId],
+                        (checkError, rows) => {
+                          if (checkError) return publishError(checkError);
+
+                          if (!rows.length) {
+                            return failTransaction(409, {
+                              message: "The achievement record no longer exists.",
+                            });
+                          }
+
+                          return publishError(null);
+                        }
+                      );
+                    }
+
+                    return publishError(null);
+                  }
+                );
+              }
+
+              // ================= DELETE SINGLE RECORD =================
+
+              if (request.operation === "delete") {
+
+                const recordId = Number(
+                  proposed?.id ?? request.record_id
+                );
+
+                if (!Number.isSafeInteger(recordId) || recordId < 1) {
+                  return failTransaction(400, {
+                    message: "The target achievement ID is invalid.",
+                  });
+                }
+
+                return connection.query(
+                  "DELETE FROM achievements WHERE id = ?",
+                  [recordId],
+                  (err, result) => {
+                    if (err) return publishError(err);
+
+                    if (result.affectedRows !== 1) {
+                      return failTransaction(409, {
+                        message: "The achievement record no longer exists.",
+                      });
+                    }
+
+                    return publishError(null);
+                  }
+                );
+              }
+
+              // ================= DELETE BY TYPE =================
+
+              if (request.operation === "delete_by_type") {
+
+                const type = proposed?.achievement_type;
+                const ids = proposed?.ids;
+
+                if (
+                  !validTypes.includes(type) ||
+                  !Array.isArray(ids) ||
+                  ids.length === 0 ||
+                  ids.some(
+                    (id) =>
+                      !Number.isSafeInteger(Number(id)) ||
+                      Number(id) < 1
+                  )
+                ) {
+                  return failTransaction(400, {
+                    message: "The proposed achievement section deletion data is invalid.",
+                  });
+                }
+
+                const uniqueIds = [...new Set(ids.map(Number))];
+
+                // Delete only the approved IDs belonging to this section.
+
+                return connection.query(
+                  `DELETE FROM achievements
+       WHERE achievement_type = ?
+       AND id IN (?)`,
+                  [type, uniqueIds],
+                  (err, result) => {
+                    if (err) return publishError(err);
+
+                    if (result.affectedRows !== uniqueIds.length) {
+                      return failTransaction(409, {
+                        message:
+                          "Some achievement records no longer exist in the requested section. Refresh and submit a new request.",
+                      });
+                    }
+
+                    return publishError(null);
+                  }
+                );
+              }
+
+              // ================= UNSUPPORTED OPERATION =================
+
+              return failTransaction(400, {
+                message:
+                  `Unsupported achievements operation: ${request.operation}`,
+              });
+            }
+
 
             // ================= STUDENT SPEAK APPROVAL =================
             if (request.entity_type === "student_speak") {

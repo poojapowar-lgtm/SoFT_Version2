@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const MOU = () => {
     const [mouList, setMouList] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/api/mou")
+            .get(`${API_BASE}/api/mou`)
             .then((res) => setMouList(res.data))
             .catch(() => console.log("Error fetching MOU data"));
     }, []);

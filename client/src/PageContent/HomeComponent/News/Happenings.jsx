@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { PiCalendarCheckFill  } from "react-icons/pi";
+import API_BASE from "../../../utils/apiBase";
 
 const Happenings = () => {
     const [happeningsData, setHappeningsData] = useState([]);
@@ -12,7 +14,7 @@ const Happenings = () => {
 
     const fetchHappenings = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/events");
+            const res = await axios.get(`${API_BASE}/api/events`);
 
             setHappeningsData(
                 Array.isArray(res.data) ? res.data : []
@@ -55,13 +57,16 @@ const Happenings = () => {
     return (
         <div className="happenings">
             <div className="section-header">
-                <h2 className="title">Happenings</h2>
+                <h2 className="title">
+                    <PiCalendarCheckFill  className="title-icon" />
+                    Happenings
+                </h2>
 
                 <button
                     className="btn"
                     onClick={() => navigate("/campus-life/events")}
                 >
-                    View More
+                    View All
                 </button>
             </div>
 
@@ -85,7 +90,7 @@ const Happenings = () => {
                                             src={
                                                 imagePath.startsWith("http")
                                                     ? imagePath
-                                                    : `http://localhost:5000${imagePath.startsWith("/") ? "" : "/"}${imagePath}`
+                                                    : `${API_BASE}${imagePath.startsWith("/") ? "" : "/"}${imagePath}`
                                             }
                                             alt={item?.title || "Campus event"}
                                             width="1200"

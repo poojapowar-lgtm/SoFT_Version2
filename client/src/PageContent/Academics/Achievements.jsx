@@ -1,86 +1,184 @@
-import React, { useState } from "react";
+
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from "react";
+import axios from "axios";
+import DOMPurify from "dompurify";
+import {
+  TbPlayerTrackPrevFilled,
+  TbPlayerTrackNextFilled,
+} from "react-icons/tb";
+
+import "../Speak.css";
 import "./achievements.css";
+import API_BASE from "../../utils/apiBase";
 
-const facultyData = [
-  {
-    type: "faculty",
-    title:
-      "Achievement: Runner-Up Prize at the 2-Day National Symposium on World IP Day Celebration 2026",
-    image: "/assets/images/achievements/faculty-achievement.webp",
-    details: {
-      name: "Dr. Deepti N. Chaudhari",
-      designation: "Assistant Professor, Department of FSQN",
-      department: "SoFT, MIT-ADT University, Pune",
-    },
-    description: [
-      "I am pleased to share that I was awarded the Runner-Up Prize at the 2-Day National Symposium on World IP Day Celebration 2026, organized by the IPR Cell and Technology Transfer Office (TTO), MIT-ADT University, Pune, in collaboration with Bhate & Ponkshe and the International Institute of Sports & Management (IISM).",
-      "The symposium, held on 23 and 24 April 2026, was based on the theme 'IP & Sports: Ready, Set, Innovate.' The event focused on promoting innovation in sports and fitness by raising awareness about intellectual property rights, patents, designs, commercialization pathways, and technology transfer.",
-      "The symposium provided an excellent platform to interact with intellectual property experts, industry professionals, innovators, and researchers while highlighting the importance of protecting and commercializing innovative ideas.",
-      "Receiving the Runner-Up Prize at this national-level symposium is a matter of great honour and motivation.",
-      "I sincerely thank the organizers for providing this valuable opportunity and acknowledge the constant support and encouragement extended by my institution.",
-    ],
-  },
-];
-
-const studentData = [
-  {
-    type: "student",
-    title: "Smart India Hackathon (SIH) 2025",
-    image: "/assets/images/achievements/std-achievement1.webp",
-    details: {
-      name: "Esha Sharma",
-      year: "2025-26",
-      event: "Smart India Hackathon (SIH) 2025",
-      activity: "Herbal Probiotic Drink",
-    },
-    description: [
-      "The problem statement for the Smart India Hackathon (SIH), introduced by the Government of India, focused on developing innovative solutions to strengthen India's primary sector, particularly agriculture, by improving the processing, value addition, and management of agricultural produce.",
-      "In response, our team proposed HerbaFizz, a functional herbal probiotic beverage made from Indian agricultural crops such as amla, tulsi, jamun, and ginger. The product incorporates encapsulated probiotics delivered through a smart activation cap, which releases probiotic beads into the drink at the time of consumption to maintain their viability and freshness.",
-      "This solution helps convert perishable agricultural produce into a high-value functional beverage, supporting farmers and reducing post-harvest losses. Our innovation was recognized at the Smart India Hackathon Hardware Edition, where we were declared winners under the given problem statement.",
-    ],
-  },
-  {
-    type: "student",
-    title: "Engineer’s Day Blog Writing Competition",
-    image: "/assets/images/achievements/std-achievement2.webp",
-    details: {
-      name: "Esha Sharma",
-      year: "2025-26",
-      event: "Engineer’s Day",
-      activity: "Blog Writing",
-    },
-    description: [
-      "Winning the blog writing competition held at our college on the occasion of Engineer’s Day was a truly rewarding experience. The competition provided a platform to express ideas creatively about innovation, engineering, and the impact of technology on society.",
-      "Through my blog, I aimed to highlight the role of engineers in shaping sustainable and future-ready solutions. This recognition encouraged me to continue exploring and sharing thoughtful perspectives through writing. It was an honour to be part of such an inspiring academic initiative.",
-    ],
-  },
-];
+const API_URL = `${API_BASE}/api/achievements`;
+const IMAGE_BASE_URL = `${API_BASE}/`;
 
 const Achievements = () => {
   const [active, setActive] = useState("faculty");
+  const [achievements, setAchievements] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const data = active === "faculty" ? facultyData : studentData;
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [expandedItems, setExpandedItems] = useState({});
 
+  const [itemsPerView, setItemsPerView] = useState(
+    () => (window.innerWidth <= 768 ? 1 : 2)
+  );
+
+  const sliderRef = useRef(null);
+
+  // TABS
   const tabs = [
     {
       id: "faculty",
       label: "Faculty Achievement",
+      type: "Faculty",
     },
     {
       id: "student",
       label: "Student Achievement",
+      type: "Student",
     },
   ];
 
-  return (
-    <div>
-      <h2 className="innerpage-title">Achievements</h2>
+  const selectedType =
+    tabs.find((tab) => tab.id === active)?.type || "Faculty";
 
-      {/* BUTTONS */}
+  // FETCH ACHIEVEMENTS
+  const fetchAchievements = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
+      setIndex(0);
+
+      const response = await axios.get(
+        `${API_URL}?type=${selectedType}`
+      );
+
+      setAchievements(
+        Array.isArray(response.data) ? response.data : []
+      );
+    } catch (err) {
+      console.error("Error fetching achievements:", err);
+
+      setError(
+        "Unable to load achievements. Please try again later."
+      );
+
+      setAchievements([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [selectedType]);
+
+  useEffect(() => {
+    fetchAchievements();
+  }, [fetchAchievements]);
+
+  // RESPONSIVE SLIDER
+  useEffect(() => {
+    const handleResize = () => {
+      setItemsPerView(window.innerWidth <= 768 ? 1 : 2);
+      setIndex(0);
+    };
+
+    let resizeTimer;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(handleResize, 150);
+    };
+
+    window.addEventListener("resize", debouncedResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedResize);
+      clearTimeout(resizeTimer);
+    };
+  }, []);
+
+  // MAX INDEX
+  const maxIndex = Math.max(
+    0,
+    achievements.length - itemsPerView
+  );
+
+  // NAVIGATION
+  const scrollLeft = () => {
+    setIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const scrollRight = () => {
+    setIndex((prev) =>
+      prev >= maxIndex ? maxIndex : prev + 1
+    );
+  };
+
+  // VISIBLE ACHIEVEMENTS
+  const visibleData = achievements.slice(
+    index,
+    index + itemsPerView
+  );
+
+  // AUTO SLIDER
+  useEffect(() => {
+    if (isPaused || achievements.length <= itemsPerView) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setIndex((prev) =>
+        prev >= maxIndex ? 0 : prev + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [
+    isPaused,
+    achievements.length,
+    itemsPerView,
+    maxIndex,
+  ]);
+
+  // IMAGE URL
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return "";
+
+    if (/^https?:\/\//i.test(imagePath)) {
+      return imagePath;
+    }
+
+    return `${IMAGE_BASE_URL}${imagePath.replace(/^\/+/, "")}`;
+  };
+
+  // READ MORE / READ LESS
+  const toggleReadMore = (id) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  return (
+    <div className="achievements-section">
+
+      <h2 className="innerpage-title">
+        Achievements
+      </h2>
+
+      {/* TABS */}
       <div className="tab-buttons">
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            type="button"
             className={`btn ${active === tab.id ? "active" : ""}`}
             onClick={() => setActive(tab.id)}
           >
@@ -89,66 +187,171 @@ const Achievements = () => {
         ))}
       </div>
 
-      {/* LOOP */}
-      {Array.isArray(data) &&
-        data.map((item, index) => {
-          const fields =
-            item.type === "faculty"
-              ? [
-                  { label: "Name", value: item.details?.name },
-                  { label: "Designation", value: item.details?.designation },
-                  { label: "Department", value: item.details?.department },
-                ]
-              : [
-                  { label: "Name", value: item.details?.name },
-                  { label: "Academic Year", value: item.details?.year },
-                  { label: "Event/Category", value: item.details?.event },
-                  {
-                    label: "Competition/Activity",
-                    value: item.details?.activity,
-                  },
-                ];
+      {loading && <p>Loading achievements...</p>}
 
-          return (
-            <div key={index} className="achievement-card">
-              {/* CONTENT */}
-              <div className="achievement-content">
-                <div className="left">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+      {!loading && error && (
+        <p className="achievement-error">{error}</p>
+      )}
 
-                <div className="right">
-                  <div className="details">
-                    {fields.map(
-                      (f, i) =>
-                        f.value && (
-                          <p key={i} style={{ margin: "5px 0" }}>
-                            <strong>{f.label}:</strong> {f.value}
-                          </p>
-                        )
-                    )}
+      {!loading && !error && achievements.length > 0 && (
+        <div className="speak-slider-wrapper" >
+
+          <div
+            className="speak-slider"
+            ref={sliderRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {visibleData.map((item, itemIndex) => {
+              const fields = [
+                {
+                  label: "Academic Year",
+                  value: item.academic_year,
+                },
+                {
+                  label: "Event/Category",
+                  value: item.event_category,
+                },
+                {
+                  label: "Competition/Activity",
+                  value: item.competition_activity,
+                },
+              ];
+
+              return (
+                <div
+                  className="achievement-card"
+                  key={item.id || itemIndex}
+                >
+                  <div className="achievement-top">
+
+                    {/* IMAGE */}
+                    <div className="achievement-image">
+                      {item.image_path && (
+                        <img
+                          src={getImageUrl(item.image_path)}
+                          alt={item.name || "Achievement"}
+                          width="400"
+                          height="250"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                    </div>
+
+                    {/* CONTENT */}
+                    <div className="speak-right">
+                      <h3 className="student-name">
+                        {item.name}
+                      </h3>
+
+                      <ul className="speak-list">
+                        {fields.map(
+                          (field, i) =>
+                            field.value && (
+                              <li key={i}>
+                                <strong>
+                                  {field.label}:
+                                </strong>{" "}
+                                {field.value}
+                              </li>
+                            )
+                        )}
+                      </ul>
+                    </div>
+
                   </div>
-                </div>
-              </div>
 
-              {/* DESCRIPTION */}
-              <div className="description">
-                {item.description
-                  ?.filter((d) => d.trim() !== "")
-                  .map((d, i) => (
-                    <p key={i}>{d}</p>
-                  ))}
-              </div>
+                  {item.description && (() => {
+                    const descriptionText = item.description
+                      .replace(/<[^>]*>/g, "")
+                      .trim();
+
+                    const isExpanded = expandedItems[item.id || itemIndex];
+
+                    return (
+                      <div className="speak-message">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(
+                              isExpanded
+                                ? item.description
+                                : descriptionText.substring(0, 400) +
+                                (descriptionText.length > 400 ? "..." : "")
+                            ),
+                          }}
+                        />
+
+                        {descriptionText.length > 400 && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              toggleReadMore(item.id || itemIndex)
+                            }
+                            className="read-more"
+                          >
+                            {isExpanded ? "Read Less" : "Read More"}
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* DOTS */}
+          {maxIndex > 0 && (
+            <div className="dots">
+              {Array.from({ length: maxIndex + 1 }).map(
+                (_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Go to achievement ${i + 1}`}
+                    aria-current={
+                      index === i ? "true" : undefined
+                    }
+                    className={`dot ${index === i ? "active" : ""
+                      }`}
+                    onClick={() => setIndex(i)}
+                  />
+                )
+              )}
             </div>
-          );
-        })}
+          )}
+
+          {/* NAV BUTTONS */}
+          {achievements.length > itemsPerView && (
+            <div className="nav-buttons">
+              <button
+                type="button"
+                onClick={scrollLeft}
+                disabled={index === 0}
+                aria-label="Previous achievement"
+              >
+                <TbPlayerTrackPrevFilled />
+              </button>
+
+              <button
+                type="button"
+                onClick={scrollRight}
+                disabled={index >= maxIndex}
+                aria-label="Next achievement"
+              >
+                <TbPlayerTrackNextFilled />
+              </button>
+            </div>
+          )}
+
+        </div>
+      )}
+
+      {!loading && !error && achievements.length === 0 && (
+        <p>No achievements available.</p>
+      )}
+
     </div>
   );
 };

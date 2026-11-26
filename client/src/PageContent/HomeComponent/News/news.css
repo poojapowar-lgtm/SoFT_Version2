@@ -6,22 +6,19 @@
     padding: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
 }
 
-/* Equal sections */
-/* .notices,
-.happenings {
-    flex: 1;
-    min-width: 0;
-} */
 .notices {
     flex: 1.5;
     min-width: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 0 clamp(20px, 2.5vw, 45px);
+    border-radius: clamp(8px, 1vw, 18px);
 }
 
 .happenings {
     flex: 2.5;
     min-width: 0;
     background-color: #E9E1C4;
-    padding: 0 clamp(20px, 2.5vw, 45px) clamp(20px, 2.5vw, 45px) clamp(20px, 2.5vw, 45px);
+    padding: 0 clamp(20px, 2.5vw, 45px) clamp(15px, 2vw, 40px) clamp(20px, 2.5vw, 45px);
     border-radius: clamp(8px, 1vw, 18px);
 }
 
@@ -57,37 +54,34 @@
 
 /* Notices List */
 .notices-list {
-    max-height: clamp(180px, 20vw, 280px);
+    max-height: clamp(100px, 11vw, 250px);
     overflow-y: auto;
-    padding-right: 5px;
+    padding-right: 10px;
     margin: clamp(10px, 1.2vw, 20px) 0;
 }
 
 /* Scrollbar */
 .notices-list::-webkit-scrollbar {
-    width: 4px;
+    width: 5px;
+    border: 0.5px solid rgb(189, 230, 168);
+    border-radius: 10px;
 }
 
 .notices-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(whitesmoke, gray);
+    background: linear-gradient(rgb(128, 126, 126), rgb(189, 230, 168));
     border-radius: 10px;
 }
 
 /* Notice Card */
-
 .notice-card {
     display: flex;
     align-items: center;
     max-width: 700px;
     gap: clamp(12px, 2vw, 18px);
     margin: clamp(10px, 1.2vw, 15px) 0;
-    padding: clamp(5px, 0.5vw, 10px) clamp(10px, 1.2vw, 18px);
+    padding: 5px clamp(5px, 1vw, 15px);
     border-radius: 10px;
-    background-color: #E9E1C4;
-    /* background: linear-gradient(90deg,
-            #eef6d8 0%,
-            #f5f9e8 45%,
-            #ffffff 100%); */
+    background-color: white;
     border: 1px solid #ffffff;
     border-left: 3px solid #97c600;
     transition: all 0.3s ease;
@@ -111,7 +105,7 @@
 
 .notice-text {
     margin: 0;
-    font-size: clamp(10.5px, 1vw, 16px) !important;
+    font-size: clamp(11px, 1vw, 17px) !important;
     flex: 1;
     color: #004D00;
 }
@@ -124,6 +118,9 @@
     font-weight: 500;
     text-decoration: none;
     margin: 4px 10px;
+    border: 1px solid #0066ff;
+    padding: 5px;
+    border-radius: 14px;
 }
 
 .notice-link:hover {
@@ -182,7 +179,7 @@
 /* Image */
 .happening-card img {
     width: 100%;
-    height: clamp(180px, 18vw, 300px);
+    height: clamp(160px, 15vw, 250px);
     display: block;
     object-fit: cover;
     object-position: center;
@@ -211,7 +208,7 @@
 .happening-text {
     text-align: center;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    color: white !important;
 }
 
 /* Animation */

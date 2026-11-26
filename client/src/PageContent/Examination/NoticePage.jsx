@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../PageContent/HomeComponent/News/news.css";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const NoticePage = ({ type, title }) => {
   const [notices, setNotices] = useState([]);
@@ -12,7 +13,7 @@ const NoticePage = ({ type, title }) => {
   const fetchNotices = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/news?type=${type}`
+        `${API_BASE}/api/news?type=${type}`
       );
       setNotices(res.data);
     } catch (err) {
@@ -61,7 +62,7 @@ const NoticePage = ({ type, title }) => {
               {/* FILE LINK */}
               {item.file_path && (
                 <a
-                  href={`http://localhost:5000${item.file_path}`}
+                  href={`${API_BASE}${item.file_path}`}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`View PDF: ${item.title}`}

@@ -65,7 +65,7 @@ const labData = [
   },
   {
     title: "Food Microbiology Laboratory",
-    image: "/assets/images/labs/FML1.jpeg",
+    image: "/assets/images/labs/FML1.webp",
     details: [
       "Food microbiology labs are integral to the food industry and public health, providing crucial information that affects the safety, quality and sustainability of food production. ",
       " From detecting pathogens and spoilage organisms to advancing fermentation processes and preserving food, these labs ensure that the food we consume is safe, nutritious, and of high quality.",
@@ -147,7 +147,6 @@ const LabFacilities = () => {
       </div>
 
       {/* Lab Details Modal */}
-      {/* Lab Details Modal */}
       {selectedLab &&
         createPortal(
           <div
@@ -181,7 +180,7 @@ const LabFacilities = () => {
 
               <div className="lab-modal-content">
                 {selectedLab.details.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <p className="lab-modal-text" key={i}>{para}</p>
                 ))}
               </div>
             </div>

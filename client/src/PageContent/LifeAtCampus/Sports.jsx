@@ -9,11 +9,11 @@ const Sports = () => {
       <div className="sports-container">
         <div className="sports-image-wrapper">
           <img
-            src="/assets/images/sports_banner.png"
+            src="/assets/images/sports_banner.webp"
             alt="Sports facilities at MIT-ADT University"
             className="sports-main-image"
-            width="1200"
-            height="500"
+            width="1000"
+            height="450"
             loading="lazy"
             decoding="async"
           />

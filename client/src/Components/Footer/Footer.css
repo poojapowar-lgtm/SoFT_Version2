@@ -1,8 +1,7 @@
 .footer {
-  /* background: #470004; */
-  background: #06240b;
+  background: #06270b;
   color: white;
-  padding: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
+  padding: clamp(15px, 2vw, 30px) clamp(25px, 5.5vw, 100px);
 }
 
 /* Top Section */
@@ -11,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 75px;
+  border-bottom: 1px solid #abdf02;
 }
 
 .footer-logos {
@@ -19,10 +19,15 @@
   align-items: center;
 }
 
+.footer-logos img {
+  display: block;
+  box-sizing: border-box;
+}
+
 .ft-logo1 {
-  width: 170px;
+  width: 160px;
   height: 50px;
-  aspect-ratio: 170 / 50;
+  aspect-ratio: 17 / 5;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -30,9 +35,11 @@
 
 .ft-logo2 {
   background-color: white;
-  width: 75px;
-  height: 75px;
-  aspect-ratio: 90 / 60;
+  border-radius: 50%;
+  padding: 2px;
+  width: 66px;
+  height: 66px;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -52,7 +59,7 @@
 .ft-logo-title {
   color: white;
   /* font-family: math; */
-   font-family: system-ui;
+  font-family: system-ui;
   font-size: clamp(16px, 2.2vw, 32px);
   font-weight: 800;
   margin: 0;
@@ -60,7 +67,7 @@
 
 .ft-logo-subtitle {
   /* font-family: math; */
-   font-family: system-ui;
+  font-family: system-ui;
   font-size: clamp(10px, 1.5vw, 20px);
   margin: 0 0 5px 0;
   color: white;
@@ -78,6 +85,7 @@
   display: flex;
   align-items: center;
   gap: clamp(6px, 1vw, 14px);
+  min-height: 40px;
 }
 
 .footer-social-icons {
@@ -124,22 +132,20 @@
 }
 
 .footer-links h4 {
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-   font-family: system-ui;
+  font-family: system-ui;
   font-size: clamp(10.5px, 2.5vw, 15px);
   font-weight: 500;
-  color: #bcf20b;
+  color: #abdf02;
+  margin-bottom: 5px;
 }
 
 .footer-links ul {
-
   list-style: none;
   padding: 0;
 }
 
 .footer-links li {
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-   font-family: system-ui;
+  font-family: system-ui;
   margin-bottom: clamp(5px, 1vw, 10px);
   font-size: clamp(10px, 1vw, 16px);
   cursor: pointer;
@@ -159,14 +165,22 @@
 }
 
 /* Map */
+.footer-map-wrapper {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 2 / 1;
+  margin-top: clamp(10px, 2vw, 20px);
+  overflow: hidden;
+  border-radius: clamp(10px, 2vw, 20px);
+  position: relative;
+}
+
 .map {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 2 / 1;
-  height: auto;
-  margin-top: clamp(10px, 2vw, 20px);
-  border-radius: clamp(10px, 2vw, 20px);
+  height: 100%;
   border: 0;
 }
 
@@ -175,13 +189,14 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content:space-between;
   gap: clamp(25px, 5vw, 80px);
   padding: clamp(12px, 1.5vw, 20px) 0;
+  border-top: 1px solid #abdf02;
 }
 
 .bottom-text {
-  color: wheat;
+  color: #abdf02 !important;
 }
 
 .visitor-box {
@@ -194,26 +209,43 @@
 .visitor-box h4 {
   font-family: system-ui;
   font-size: clamp(12px, 3vw, 16px);
-  color: wheat;
+  color: #abdf02;
+}
+
+.visitor-box {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visitor-box h4 {
+  margin: 0;
+  white-space: nowrap;
+  font-family: system-ui;
+  font-size: clamp(12px, 3vw, 16px);
+  color: #abdf02;
+  font-weight: 400;
 }
 
 .visitor-count {
-  min-width: 90px;
-  min-height: 28px;
   box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: 2px 5px;
   border-radius: 6px;
-  background: whitesmoke !important;
-  color: #470004;
+  background: whitesmoke;
+  color: #5a4501;
   font-size: clamp(14px, 1.5vw, 20px);
   font-weight: 600;
   letter-spacing: 2px;
+  padding: 0 10px;
 }
-
 
 .back-to-top {
   position: fixed;
@@ -257,12 +289,6 @@
     justify-content: center;
   }
 
-  /* .footer-top {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
-  } */
-
   .footer-logos {
     order: 1;
     justify-content: center;
@@ -304,8 +330,8 @@
   }
 
   .ft-logo2 {
-    width: 65px;
-    height: 65px;
+    width: 56px;
+    height: 56px;
   }
 }
 
@@ -316,8 +342,8 @@
   }
 
   .ft-logo2 {
-    width: 55px;
-    height: 55px;
+    width: 46px;
+    height: 46px;
   }
 
   .footer-social-icons {
@@ -335,8 +361,8 @@
   }
 
   .ft-logo2 {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
   }
 
   .footer-social-icons {

@@ -9,14 +9,12 @@ const Alumni = () => {
   const location = useLocation();
 
 const menu = [
-    // { name: "Alumni Report", path: "alumni-report" },
     { name: "Alumni Startup", path: "alumni-startup" },
     { name: "Alumni Success Stories", path: "alumni-testimonials" },
 ];
 
 // Title mapping
 const titleMap = {
-    // "alumni-report": "Alumni Report",
     "alumni-startup": "Alumni Startup",
     "alumni-testimonials": "Alumni Success Stories",
 };
@@ -34,9 +32,14 @@ const titleMap = {
 
   const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
+  const breadcrumbs = [
+    { name: "Alumni", path: "/alumni/alumni-report" },
+    { name: title, path: location.pathname },
+  ];
+
   return (
     <>
-      <SEOMeta title={title} path={location.pathname} />
+      <SEOMeta title={title} path={location.pathname} breadcrumbs={breadcrumbs} />
       <InnerBanner bgImage={bgImage} title={title} />
 
       <div className="page-layout">

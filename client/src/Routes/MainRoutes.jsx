@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Pages — lazy loaded
 const Home = lazy(() => import("../Pages/Home"));
+const NotFound = lazy(() => import("../Pages/NotFound"));
 const AboutUs = lazy(() => import("../Pages/AboutUs"));
 const Academics = lazy(() => import("../Pages/Academics"));
 const Admission = lazy(() => import("../Pages/Admission"));
@@ -142,7 +143,7 @@ const MainRoutes = () => {
           <Route index element={<ExamSchedule />} />
           <Route path="examinations-schedule" element={<ExamSchedule />} />
           <Route path="exam-notice" element={<NoticePage type="examination" title="Examinations Notices" />} />
-          <Route path="admission-notice" element={<NoticePage type="admission" title="Academics Notices" />} />
+          <Route path="academics-notice" element={<NoticePage type="admission" title="Academics Notices" />} />
         </Route>
 
         {/* Research */}
@@ -185,6 +186,9 @@ const MainRoutes = () => {
 
         {/* Contact */}
         <Route path="contact" element={<ContactUs />} />
+
+        {/* 404 catch-all */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

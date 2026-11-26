@@ -39,9 +39,19 @@ const titleMap = {
 
   const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
+  const programLabel = programId
+    ? programId.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Programs";
+
+  const breadcrumbs = [
+    { name: "Programs", path: "/programs" },
+    { name: programLabel, path: `/programs/${programId}/about-programs` },
+    { name: title, path: location.pathname },
+  ];
+
   return (
     <>
-      <SEOMeta title={title} path={location.pathname} />
+      <SEOMeta title={title} path={location.pathname} breadcrumbs={breadcrumbs} />
       <InnerBanner bgImage={bgImage} title={title} />
 
       <div className="page-layout">

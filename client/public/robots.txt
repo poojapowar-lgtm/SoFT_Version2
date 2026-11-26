@@ -1,12 +1,13 @@
 User-agent: *
 Allow: /
 
-# Block admin routes
+# Block all admin routes
 Disallow: /admin/
 Disallow: /admin/secure-soft
 Disallow: /admin/dashboard
 Disallow: /admin/news
 Disallow: /admin/events
+Disallow: /admin/upcoming-events
 Disallow: /admin/enquiry
 Disallow: /admin/members
 Disallow: /admin/student-speak
@@ -18,8 +19,19 @@ Disallow: /admin/mou
 Disallow: /admin/placed-students
 Disallow: /admin/alumni-startup
 Disallow: /admin/contact
+Disallow: /admin/patent-publication
+Disallow: /admin/funded-research
+Disallow: /admin/consultancy-projects
+Disallow: /admin/examination-schedule
+Disallow: /admin/academic-calendar
+Disallow: /admin/faq
+Disallow: /admin/student-grievance
+Disallow: /admin/achievements
+Disallow: /admin/user-management
+Disallow: /admin/pending-approvals
+Disallow: /admin/activity-logs
 
-# Block query strings and API
+# Block API and query strings
 Disallow: /api/
 Disallow: /*?*
 

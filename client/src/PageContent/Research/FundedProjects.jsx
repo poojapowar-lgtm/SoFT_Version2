@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
-const API_URL = "http://localhost:5000/api/funded-research";
+const API_URL = `${API_BASE}/api/funded-research`;
 
 const FundedProjects = () => {
     const [projects, setProjects] = useState([]);

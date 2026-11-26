@@ -4,8 +4,6 @@ import Examinations from "../Pages/Examinations";
 import ExamSchedule from "../PageContent/Examination/ExamSchedule";
 import NoticePage from "../PageContent/Examination/NoticePage";
 
-
-
 export const ExaminationRoute = (
     <Route path="examinations" element={<Examinations />}>
         <Route index element={<ExamSchedule />} />
@@ -16,7 +14,7 @@ export const ExaminationRoute = (
         />
 
         <Route
-            path="admission-notice"
+            path="academics-notice"
             element={<NoticePage type="admission" title="Academics Notices" />}
         />
     </Route>

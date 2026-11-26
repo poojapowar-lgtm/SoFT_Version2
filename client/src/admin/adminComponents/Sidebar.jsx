@@ -44,6 +44,7 @@ const Sidebar = ({ role }) => {
         { name: "MOU Data", path: "/admin/mou" },
         { name: "Academic Calendar", path: "/admin/academic-calendar" },
         { name: "Student Grievance", path: "/admin/student-grievance" },
+        { name: "Achievements", path: "/admin/achievements" },
         { name: "FAQ's", path: "/admin/faq" },
       ],
     },
@@ -91,7 +92,15 @@ const Sidebar = ({ role }) => {
       ],
     },
 
-    { name: "Events", path: "/admin/events" },
+    {
+      name: "Events",
+      children: [
+        { name: "Happnings Events", path: "/admin/events" },
+        { name: "Upcoming Events", path: "/admin/upcoming-events" },
+      ],
+    },
+
+
     { name: "Testimonials", path: "/admin/testimonials" },
     { name: "Enquiry Form", path: "/admin/enquiry" },
     // { name: "Contact Form", path: "/admin/contact" },

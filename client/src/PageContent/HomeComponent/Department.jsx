@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { RiBuilding2Fill } from "react-icons/ri";
 import useHorizontalScroll from "../useHorizontalScroll";
 import "./Department.css";
 
@@ -45,11 +46,20 @@ const Department = () => {
   return (
     <>
       <section className="department-section">
-        <h2 className="title">Our Departments</h2>
+        <h2 className="title">
+          <RiBuilding2Fill className="title-icon" />
+          Our<span>Departments</span>
+        </h2>
 
         <div className="scroll-wrapper">
-          <button className="scroll-btn left" onClick={scrollLeft}>
-            <FaChevronLeft />
+          <button
+            className="scroll-btn left"
+            onClick={scrollLeft}
+            aria-label="Scroll departments to the left"
+            title="Scroll left"
+            type="button"
+          >
+            <FaChevronLeft aria-hidden="true" />
           </button>
 
           <div className="department-container" ref={scrollRef}>
@@ -69,8 +79,14 @@ const Department = () => {
             ))}
           </div>
 
-          <button className="scroll-btn right" onClick={scrollRight}>
-            <FaChevronRight />
+          <button
+            className="scroll-btn right"
+            onClick={scrollRight}
+            aria-label="Scroll departments to the right"
+            title="Scroll right"
+            type="button"
+          >
+            <FaChevronRight aria-hidden="true" />
           </button>
         </div>
       </section>

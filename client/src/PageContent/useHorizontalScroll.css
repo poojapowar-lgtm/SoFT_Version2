@@ -10,10 +10,8 @@
   background: none;
   color: #722327;
   border: none;
-  /* padding: clamp(4px, 2vw, 8px) clamp(5px, 2vw, 10px); */
   cursor: pointer;
   font-size: clamp(16px, 2vw, 22px);
   border-radius: 50%;
   flex-shrink: 0;
-  /* prevent shrinking */
 }

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./recruiters.css";
+import API_BASE from "../../utils/apiBase";
 
 const Recruiters = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/recruiters")
+      .get(`${API_BASE}/api/recruiters`)
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -20,7 +21,7 @@ const Recruiters = () => {
         {data.map((item, index) => (
           <div className="recruiter-card" key={index}>
             <img
-              src={`http://localhost:5000/uploads/${item.logo}`}
+              src={`${API_BASE}/uploads/${item.logo}`}
               alt={item.company_name}
               width="220"
               height="100"

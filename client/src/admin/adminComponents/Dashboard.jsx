@@ -24,6 +24,7 @@ const initialCounts = {
     mou: 0,
     academicCalendar: 0,
     studentGrievance: 0,
+    achievements: 0,
     faq: 0,
   },
   examination: {
@@ -46,6 +47,7 @@ const initialCounts = {
   },
   other: {
     events: 0,
+    upcomingEvents: 0,
     testimonials: 0,
     enquiries: 0,
   },
@@ -95,6 +97,7 @@ const AdminPanel = () => {
             mou: data.mou ?? 0,
             academicCalendar: data.academicCalendar ?? 0,
             studentGrievance: data.studentGrievance ?? 0,
+            achievements: data.achievements ?? 0,
             faq: data.faq ?? 0,
           },
           examination: {
@@ -117,6 +120,7 @@ const AdminPanel = () => {
           },
           other: {
             events: data.events ?? 0,
+            upcomingEvents: data.upcomingEvents ?? 0,
             testimonials: data.testimonials ?? 0,
             enquiries: data.enquiries ?? 0,
           },
@@ -181,6 +185,12 @@ const AdminPanel = () => {
           count: counts.academics.faq,
           icon: <TbMessageCircle />,
           path: "/admin/faq",
+        },
+        {
+          title: "Achievements",
+          count: counts.placement.achievements,
+          icon: <BsBuildingFillCheck />,
+          path: "/admin/achievements",
         },
       ],
     },
@@ -277,6 +287,12 @@ const AdminPanel = () => {
           count: counts.other.events,
           icon: <PiCalendarCheckFill />,
           path: "/admin/events",
+        },
+        {
+          title: "Total Upcoming Events",
+          count: counts.other.upcomingEvents,
+          icon: <PiCalendarCheckFill />,
+          path: "/admin/upcoming-events",
         },
         {
           title: "Total Testimonials",

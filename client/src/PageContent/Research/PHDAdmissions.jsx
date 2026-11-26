@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const PHDAdmissions = () => {
     const [research, setResearch] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/api/research")
+            .get(`${API_BASE}/api/research`)
             .then((res) => setResearch(res.data))
             .catch(() => console.log("Error fetching data"));
     }, []);

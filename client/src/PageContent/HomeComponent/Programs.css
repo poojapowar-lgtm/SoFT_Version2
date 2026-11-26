@@ -1,7 +1,6 @@
 .programs-section {
   text-align: center;
   padding: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px);
-  /* background: #F3ECD3; */
   overflow: hidden;
 }
 

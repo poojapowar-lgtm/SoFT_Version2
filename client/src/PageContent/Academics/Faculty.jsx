@@ -3,20 +3,43 @@ import axios from "axios";
 import "./faculty.css";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
+import { createPortal } from "react-dom";
+import SEOMeta from "../../Components/SEO/SEOMeta";
+import { useLocation } from "react-router-dom";
+import API_BASE from "../../utils/apiBase";
 
 const Faculty = () => {
   const [faculty, setFaculty] = useState([]);
   const [selectedFaculty, setSelectedFaculty] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/faculty")
+      .get(`${API_BASE}/api/faculty`)
       .then((res) => setFaculty(res.data))
       .catch(() => console.log("Error fetching data"));
   }, []);
 
+  // Person schema for selected faculty (shown in modal)
+  const personData = selectedFaculty
+    ? {
+        name: selectedFaculty.name,
+        designation: selectedFaculty.designation,
+        image: selectedFaculty.image
+          ? `${API_BASE}/uploads/${selectedFaculty.image}`
+          : null,
+        expertise: selectedFaculty.area_of_expertise || null,
+      }
+    : null;
+
   return (
     <>
+      {personData && (
+        <SEOMeta
+          path={location.pathname}
+          personData={personData}
+        />
+      )}
       <h2 className="innerpage-title">Faculty Members</h2>
 
       <div className="faculty-container">
@@ -28,7 +51,7 @@ const Faculty = () => {
           >
             <div className="faculty-img">
               <img
-                src={`http://localhost:5000/uploads/${item.image}`}
+                src={`${API_BASE}/uploads/${item.image}`}
                 alt={item.name}
                 width="140"
                 height="140"
@@ -54,26 +77,54 @@ const Faculty = () => {
       </div>
 
       {/* MODAL */}
-      {selectedFaculty && (
-        <div className="faculty-modal">
-          <div className="modal-content">
+      {selectedFaculty &&
+        createPortal(
+          <div
+            className="faculty-modal"
+            onClick={() => setSelectedFaculty(null)}
+          >
+            <div
+              className="modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                className="page-close-btn"
+                onClick={() => setSelectedFaculty(null)}
+              >
+                <IoMdCloseCircle />
+              </div>
 
-            <div className="page-close-btn" onClick={() => setSelectedFaculty(null)}>
-              <IoMdCloseCircle />
+              {/* Image Section */}
+              <div className="modal-image-section">
+                {/* Left Side - Image */}
+                <div className="modal-img-wrapper">
+                  <img
+                    src={`${API_BASE}/uploads/${selectedFaculty.image}`}
+                    alt={selectedFaculty.name}
+                    className="modal-img"
+                  />
+                </div>
+
+                {/* Right Side - Faculty Details */}
+                <div className="modal-heading-details">
+                  <h4 className="names">{selectedFaculty.name}</h4>
+
+                  <p className="modal-designation">
+                    <strong>{selectedFaculty.designation}</strong>
+                  </p>
+                </div>
+              </div>
+
+              {/* Text Section */}
+              <div className="modal-details-section">
+                <p className="modal-expertise">
+                  {selectedFaculty.area_of_expertise}
+                </p>
+              </div>
             </div>
-            <img
-              src={`http://localhost:5000/uploads/${selectedFaculty.image}`}
-              alt={selectedFaculty.name}
-              title={selectedFaculty.name}
-              className="modal-img"
-            />
-
-            <h4 className="names">{selectedFaculty.name}</h4>
-            <p><strong>{selectedFaculty.designation}</strong></p>
-            <p>{selectedFaculty.area_of_expertise}</p>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 };

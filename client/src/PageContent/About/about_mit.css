@@ -61,14 +61,11 @@
         0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
-
 /* CONTENT*/
 .aboutsoft-text {
     display: flex;
     flex-direction: column;
 }
-
-
 
 
 /*  VISION & MISSION SECTION */
@@ -78,7 +75,6 @@
     overflow: hidden;
     box-sizing: border-box;
 }
-
 
 .vm-container {
     width: 100%;
@@ -100,12 +96,6 @@
     overflow: hidden;
 }
 
-
-.vision-card {
-    background-image: url("/public/assets/images/home/vision6.webp");
-}
-
-
 .mission-card {
     background-image: url("/public/assets/images/home/vision1.webp");
 }
@@ -115,8 +105,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    /* background: rgb(255 255 255 / 85%); */
-    background: rgba(241, 238, 225, 0.85);
+    background: rgb(245 245 245 / 85%);
     z-index: 0;
 }
 
@@ -126,7 +115,6 @@
     position: relative;
     z-index: 1;
 }
-
 
 /*  HEADING */
 .vm-heading {
@@ -138,12 +126,11 @@
     margin: 0;
      font-family: system-ui;
     color: #24650d;
-    font-size: clamp(18px, 2vw, 28px);
+    font-size: clamp(16px, 1.5vw, 25px);
     line-height: 1.2;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-
 
 /* Heading underline */
 .vm-heading span {
@@ -154,7 +141,6 @@
 }
 
 .v-para {
-    font-size: clamp(10px, 1vw, 14px) !important;
     color: #153816;
 }
 

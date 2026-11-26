@@ -88,7 +88,7 @@ const Internship = () => {
                     <div key={index} className="timeline-item">
 
                         <div className="internship-card">
-                            <h3 className="internship-title">{step.title}</h3>
+                            <h3 className="innerpage-subtitle">{step.title}</h3>
                             <ul>
                                 {step.points.map((point, i) => (
                                     <li key={i}>{point}</li>

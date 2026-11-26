@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { RiHome3Fill } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-// import { FaTimes } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";

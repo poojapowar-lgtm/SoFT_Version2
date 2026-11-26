@@ -125,7 +125,7 @@ export const subMenus = [
     columns: [
       { name: " Examinations Schedule", to: "/examinations/examinations-schedule" },
       { name: "Examinations Notices", to: "/examinations/exam-notice" },
-      { name: "Academics Notices", to: "/examinations/admission-notice" },
+      { name: "Academics Notices", to: "/examinations/academics-notice" },
     ],
   },
 

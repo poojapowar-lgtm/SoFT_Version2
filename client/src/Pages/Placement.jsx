@@ -40,9 +40,14 @@ const titleMap = {
 
     const bgImage = "/assets/banner_gif/inner_bnr.jpg";
 
+    const breadcrumbs = [
+        { name: "Placement", path: "/placement/placement-cell" },
+        { name: title, path: location.pathname },
+    ];
+
     return (
         <>
-            <SEOMeta title={title} path={location.pathname} />
+            <SEOMeta title={title} path={location.pathname} breadcrumbs={breadcrumbs} />
             <InnerBanner bgImage={bgImage} title={title} />
 
             <div className="page-layout">

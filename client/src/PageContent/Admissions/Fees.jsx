@@ -1,46 +1,106 @@
+
 import React from "react";
 import "./admission.css";
 
 const Fees = () => {
+    // Correct academic-year sequence
+    const headers = [
+        "Type",
+        "A.Y. 2026-27",
+        "A.Y. 2027-28",
+        "A.Y. 2028-29",
+        "A.Y. 2029-30",
+        "Total",
+    ];
 
-    // Common headers (not inside array)
-    const headers = ["Type", "A.Y.2026-27", "A.Y.2027-28", "A.Y.2029-30", "A.Y.2026-27", "Total"];
+    // All fees are stored as numbers.
+    // Total is calculated automatically from the available years.
+    const tableData = [
+        {
+            title: "UG Program – B.Tech. (Food Technology)",
+            rows: [
+                {
+                    type: "Indian Resident",
+                    fees: [185000, 195000, 205000, 218500],
+                },
+                {
+                    type: "EWS",
+                    fees: [107000, 112000, 118000, 122500],
+                },
+                {
+                    type: "NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)",
+                    fees: [277500, 292500, 307500, 327750],
+                },
+            ],
+        },
+        {
+            title: "PG Program – M.Tech. (Food Technology)",
+            rows: [
+                {
+                    type: "Indian Resident",
+                    fees: [165000, 168500, null, null],
+                },
+                {
+                    type: "EWS",
+                    fees: [95000, 98500, null, null],
+                },
+                {
+                    type: "NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)",
+                    fees: [247500, 252750, null, null],
+                },
+            ],
+        },
+        {
+            title: "PG Program – M.Tech. (Food Safety and Quality Management)",
+            rows: [
+                {
+                    type: "Indian Resident",
+                    fees: [165000, 168500, null, null],
+                },
+                {
+                    type: "EWS",
+                    fees: [95000, 98500, null, null],
+                },
+                {
+                    type: "NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)",
+                    fees: [247500, 252750, null, null],
+                },
+            ],
+        },
+        {
+            title: "PG Program – M.Tech. (Food Technology) for Working Professionals",
+            rows: [
+                {
+                    type: "Indian Resident",
+                    fees: [165000, 168500, null, null],
+                },
+                {
+                    type: "EWS",
+                    fees: [95000, 98500, null, null],
+                },
+                {
+                    type: "NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)",
+                    fees: [247500, 252750, null, null],
+                },
+            ],
+        },
+    ];
 
-const tableData = [
-    {
-        title: "UG Program – B.Tech. (Food Technology)",
-        rows: [
-            ["Indian Resident", "1,85,000", "1,95,500", "2,05,000", "2,18,500", "8,03,500"],
-            ["EWS", "1,07,000", "1,12,000", "1,18,000", "1,22,500", "4,59,500"],
-            ["NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)", "2,77,500", "2,92,500", "3,07,500", "3,27,750", "12,05,250"],
-        ],
-    },
-    {
-        title: "PG Program – M.Tech. (Food Technology)",
-        rows: [
-            ["Indian Resident", "1,65,000", "1,68,500", "-", "-", "3,33,500"],
-            ["EWS", "95,000", "98,500", "-", "-", "1,93,500"],
-            ["NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)", "2,47,500", "2,52,500", "-", "-", "5,00,250"],
-        ],
-    },
-    {
-        title: "PG Program – M.Tech. (Food Safety and Quality Management)",
-        rows: [
-            ["Indian Resident", "1,65,000", "1,68,500", "-", "-", "3,33,500"],
-            ["EWS", "95,000", "98,500", "-", "-", "1,93,500"],
-            ["NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)", "2,47,500", "2,52,500", "-", "-", "5,00,250"],
-        ],
-    },
-    {
-        title: "PG Program – M.Tech. (Food Technology) for Working Professionals",
-        rows: [
-            ["Indian Resident", "1,65,000", "1,68,500", "-", "-", "3,33,500"],
-            ["EWS", "95,000", "98,500", "-", "-", "1,93,500"],
-            ["NRI/PIO/OCI/CIWGC/CIWSEA/FN (in INR)", "2,47,500", "2,52,500", "-", "-", "5,00,250"],
-        ],
-    },
-];
+    // Format numbers using Indian numbering system
+    const formatINR = (amount) => {
+        if (amount === null || amount === undefined) {
+            return "-";
+        }
 
+        return amount.toLocaleString("en-IN");
+    };
+
+    // Calculate total from available fee years
+    const calculateTotal = (fees) => {
+        return fees.reduce((total, fee) => {
+            return total + (fee !== null ? fee : 0);
+        }, 0);
+    };
 
     return (
         <div className="fees-container">
@@ -48,7 +108,9 @@ const tableData = [
 
             {tableData.map((table, index) => (
                 <div key={index} className="table-section">
-                    <h3 className="innerpage-subtitle">{table.title}</h3>
+                    <h3 className="innerpage-subtitle">
+                        {table.title}
+                    </h3>
 
                     <div className="table-responsive">
                         <table className="common-table">
@@ -63,9 +125,19 @@ const tableData = [
                             <tbody>
                                 {table.rows.map((row, i) => (
                                     <tr key={i}>
-                                        {row.map((cell, j) => (
-                                            <td key={j}>{cell || "-"}</td>
+                                        <td>{row.type}</td>
+
+                                        {row.fees.map((fee, j) => (
+                                            <td key={j}>
+                                                {formatINR(fee)}
+                                            </td>
                                         ))}
+
+                                        <td>
+                                            {formatINR(
+                                                calculateTotal(row.fees)
+                                            )}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

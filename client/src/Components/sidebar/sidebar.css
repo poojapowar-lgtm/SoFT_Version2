@@ -1,5 +1,5 @@
 .sidebar {
-  width: clamp(200px, 25vw, 300px);
+  width: clamp(200px, 18vw, 300px);
   border-radius: clamp(8px, 1vw, 18px);
   margin-left: auto;
   padding: clamp(5px, 1.5vw, 25px) clamp(5px, 1vw, 15px);
@@ -25,8 +25,8 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: clamp(12px, 1.2vw, 18px);
-  padding: clamp(4px, 1vw, 12px) clamp(12px, 1.5vw, 18px);
+  font-size: clamp(10px, 1vw, 17px);
+  padding: clamp(4px, 0.5vw, 12px) clamp(12px, 1vw, 18px);
   color: #004d00;
   position: relative;
 }
@@ -49,7 +49,7 @@
 
 /* Default tab style */
 .sidebar ul li a.sidebar-link {
-  color: #333;
+  color: #3d2f00;
   font-weight: 400;
   text-decoration: none;
   transition: color 0.2s ease, font-weight 0.2s ease;

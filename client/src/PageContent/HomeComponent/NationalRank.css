@@ -1,5 +1,5 @@
 .rank-container {
-  margin: clamp(20px, 2.5vw, 45px) clamp(25px, 5.5vw, 100px) 0 clamp(25px, 5.5vw, 100px);
+  margin: clamp(10px, 2vw, 25px) clamp(25px, 5.5vw, 100px) 0 clamp(25px, 5.5vw, 100px);
 }
 
 /* Content Layout */
@@ -19,14 +19,11 @@
   text-align: left;
 }
 
-
-
 .national-rank-img {
   padding-bottom: 10px;
   display: block;
   width: 100%;
-  max-width: clamp(85px, 12vw, 225px);
-  /* max-height: 250px; */
+  max-width: clamp(75px, 10vw, 170px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 6px 10px rgba(0, 77, 0, 0.15));
@@ -53,7 +50,7 @@
 
 .RLogo {
   flex: 0 0 auto;
-  width: clamp(100px, 12vw, 200px);
+  width: clamp(85px, 10vw, 150px);
   height: clamp(25px, 4vw, 60px);
   object-fit: contain;
   display: block;

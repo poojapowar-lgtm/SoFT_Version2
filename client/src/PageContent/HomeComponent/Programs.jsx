@@ -1,5 +1,6 @@
 import React from "react";
 import "./Programs.css";
+import { FaGraduationCap } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -47,7 +48,10 @@ const Programs = () => {
 
   return (
     <section className="programs-section">
-      <h2 className="title">Our Academic Programs</h2>
+      <h2 className="title">
+        <FaGraduationCap className="title-icon" />
+        Academic <span>Programs & Specializations</span>
+      </h2>
 
       <div className="programs-slider">
         <div className="programs-track">

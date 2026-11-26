@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const Governing_Body = () => {
   const [govboardData, setGovboardData] = useState([]);
@@ -10,7 +11,7 @@ const Governing_Body = () => {
     const fetchGoverningMembers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/members?type=governing"
+          `${API_BASE}/api/members?type=governing`
         );
 
         setGovboardData(response.data);

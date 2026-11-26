@@ -1,8 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
-const API_URL = "http://localhost:5000/api/patent-publications";
+const API_URL = `${API_BASE}/api/patent-publications`;
 
 const Patent = () => {
     const [activeYear, setActiveYear] = useState("");

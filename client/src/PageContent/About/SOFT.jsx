@@ -1,10 +1,5 @@
 import React from "react";
 import "./about_mit.css";
-import {
-  FaEye,
-  FaLeaf,
-  FaBullseye,
-} from "react-icons/fa6";
 
 const SOFT = () => {
   const visionData = [
@@ -72,22 +67,6 @@ const SOFT = () => {
 
       <section className="vision-mission-section">
         <div className="vm-container">
-          {/* VISION */}
-          {/* <div className="vision-card">
-            <div className="vision-main-content">
-              <div className="vm-heading">
-                <h2>{visionData[0].title}</h2>
-                <span></span>
-              </div>
-
-              <div className="vision-paragraph">
-                {visionData[0].paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            </div>
-          </div> */}
-
           {/* VISION */}
           <div className="mission-card">
             <div className="vision-main-content">

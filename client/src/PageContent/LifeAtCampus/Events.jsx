@@ -3,6 +3,9 @@ import axios from "axios";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import "./events.css";
+import SEOMeta from "../../Components/SEO/SEOMeta";
+import { useLocation } from "react-router-dom";
+import API_BASE from "../../utils/apiBase";
 
 const Events = () => {
   const [eventData, setEventData] = useState([]);
@@ -10,6 +13,7 @@ const Events = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxSlides, setLightboxSlides] = useState([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const location = useLocation();
 
   const imageScrollRefs = useRef({});
   const scrollCleanups = useRef([]);
@@ -18,7 +22,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/events");
+        const res = await axios.get(`${API_BASE}/api/events`);
         setEventData(res.data);
       } catch (err) {
         console.error("Error fetching events", err);
@@ -140,7 +144,7 @@ const Events = () => {
 
   const openLightbox = (paths, clickedIndex) => {
     const slides = paths.map((path, index) => ({
-      src: `http://localhost:5000${path}`,
+      src: `${API_BASE}${path}`,
       alt: `Event image ${index + 1}`,
     }));
 
@@ -152,6 +156,24 @@ const Events = () => {
   return (
     <div className="event-container">
       <h2 className="innerpage-title">Events</h2>
+
+      {/* Event JSON-LD schemas for all published events */}
+      {eventData.map((event) => (
+        <SEOMeta
+          key={`seo-event-${event.id}`}
+          path={location.pathname}
+          eventData={{
+            name: event.title,
+            description: event.description
+              ? event.description.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 200)
+              : "",
+            startDate: event.date
+              ? new Date(event.date).toISOString().slice(0, 10)
+              : undefined,
+            url: `https://soft.mituniversity.ac.in/campus-life/events`,
+          }}
+        />
+      ))}
 
       {eventData.length === 0 ? (
         <p>No events available</p>
@@ -187,7 +209,7 @@ const Events = () => {
 
                 {event.doc_path && (
                   <a
-                    href={`http://localhost:5000${event.doc_path}`}
+                    href={`${API_BASE}${event.doc_path}`}
                     target="_blank"
                     rel="noreferrer"
                     className="btn"
@@ -209,8 +231,8 @@ const Events = () => {
                   {paths.map((path, i) => (
                     <img
                       key={`${eventId}-${i}`}
-                      src={`http://localhost:5000${path}`}
-                      alt={`${event.title || "Event"} - Image ${i + 1}`}
+                      src={`${API_BASE}${path}`}
+                      alt={`${event.title || "Campus event"} - ${i + 1}`}
                       width="400"
                       height="250"
                       loading="lazy"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Verify_Homepage</name>
+   <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>createdByName</key>
+            <value>Pooja Powar</value>
+         </entry>
+         <entry>
+            <key>lastModifiedByName</key>
+            <value>Pooja Powar</value>
+         </entry>
+         <entry>
+            <key>createdByUuid</key>
+            <value>90aa4d9d-3304-41d5-8f01-57b44e648561</value>
+         </entry>
+         <entry>
+            <key>lastModifiedByUuid</key>
+            <value>90aa4d9d-3304-41d5-8f01-57b44e648561</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>bd3e76ec-ee28-4fe1-87db-d3109d57e4ce</testCaseGuid>
+</TestCaseEntity>

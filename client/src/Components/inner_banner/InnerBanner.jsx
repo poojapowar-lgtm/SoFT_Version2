@@ -17,11 +17,12 @@ const InnerBanner = ({ title, bgImage }) => {
             <div className="innerbanner-image">
 
                 <img
-                    src={bgImage}
+                    src="/assets/banner_gif/inner_bnr.webp"
                     alt={title || "MIT-SoFT Page Banner"}
                     width="2000"
                     height="600"
                     fetchPriority="high"
+                    loading="eager"
                     decoding="async"
                 />
 

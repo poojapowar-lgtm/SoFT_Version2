@@ -7,10 +7,6 @@
   flex-wrap: wrap;
 }
 
-
-
-
-
 /*  File Button */
 .file-btn {
   font-size: clamp(12px, 1.3vw, 16px);

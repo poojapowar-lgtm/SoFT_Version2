@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../Pages/board_body.css";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const MembersList = ({ type, title }) => {
   const [members, setMembers] = useState([]);
@@ -12,7 +13,7 @@ const MembersList = ({ type, title }) => {
   const fetchMembers = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/members?type=${type}`
+        `${API_BASE}/api/members?type=${type}`
       );
 
       setMembers(res.data.reverse()); // reverse once here

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>txt_HomepageTitle</name>
+   <tag></tag>
+   <elementGuidId>2417f338-1364-491f-81a7-415446677835</elementGuidId>
+   <imagePath></imagePath>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>body</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>body&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>CSS</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>Name</name>
+      <type>Main</type>
+      <value>txt_HomepageTitle</value>
+      <webElementGuid>0714bd8b-553c-4c49-8133-ca468901f312</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>Selector method</name>
+      <type>Main</type>
+      <value>CSS</value>
+      <webElementGuid>ca2807a9-791e-4d18-8652-97839f9c4b3f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>Selector</name>
+      <type>Main</type>
+      <value>body</value>
+      <webElementGuid>76910692-0328-4932-91ec-d805bdc02baf</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

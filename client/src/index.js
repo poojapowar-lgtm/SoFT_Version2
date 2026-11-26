@@ -11,7 +11,17 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Send Core Web Vitals to GA4 when gtag is available (production),
+// otherwise log to console in development.
+reportWebVitals(({ name, value, id, delta }) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, {
+      event_category: 'Web Vitals',
+      event_label: id,
+      value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+      non_interaction: true,
+    });
+  } else if (process.env.NODE_ENV === 'development') {
+    console.log('[Web Vitals]', name, Math.round(value));
+  }
+});

@@ -33,13 +33,14 @@ const NationalRank = () => {
   return (
     <section className="rank-container">
       <div className="rank-content">
-        {/* <h2 className="title">
-            National Rankings & Recognition
-          </h2> */}
         <img
-          src="/assets/images/home/award_4.png"
+          src="/assets/images/home/award_4.webp"
           alt="National Awards and Recognitions"
           className="national-rank-img"
+          width="376"
+          height="299"
+          loading="lazy"
+          decoding="async"
         />
 
 
@@ -60,34 +61,6 @@ const NationalRank = () => {
             ))}
           </div>
         </div>
-
-
-
-        {/* <div className="rank-text">
-          <h2 className="title">
-            National Rankings & Recognition
-          </h2>
-
-          <p>
-            The institute is committed to developing skilled, industry-ready
-            graduates and fostering entrepreneurship to meet evolving industry
-            needs and global standards. Its higher education programs include
-            undergraduate (B.Tech.), postgraduate (M.Tech.), and doctoral (Ph.D.)
-            studies in Food Technology, providing students with opportunities
-            to build careers in the food science and technology sector.
-          </p>
-
-          <p>
-            Graduates can explore career opportunities in government organizations
-            such as the Food and Drug Administration, Food Corporation of India,
-            and Food Safety and Standards Authority of India (FSSAI). They can
-            also pursue technical and business-oriented roles in the public and
-            private sectors, including food manufacturing, quality control,
-            and research and development.
-          </p>
-        </div> */}
-
-
       </div>
     </section>
   );

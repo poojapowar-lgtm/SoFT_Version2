@@ -87,7 +87,7 @@
   margin-left: auto;
   padding: 8px 18px;
   color: #722327;
-  font-size: clamp(11px, 1.2vw, 14px);
+  font-size: clamp(8px, 1.2vw, 13px);
   font-weight: 600;
   background: none;
   border: none;

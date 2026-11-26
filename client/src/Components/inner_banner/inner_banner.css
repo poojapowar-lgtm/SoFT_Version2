@@ -74,7 +74,7 @@
 /* Separator */
 .breadcrumb-separator {
   color: rgba(255, 255, 255, 0.7);
-  font-size: clamp(10px, 1vw, 14.5px);
+  font-size: clamp(8px, 1.2vw, 14.5px);
 }
 
 

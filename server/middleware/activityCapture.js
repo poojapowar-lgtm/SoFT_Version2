@@ -24,6 +24,9 @@ const MODULE_NAMES = {
     faqs: "FAQs",
     "student-grievance": "Student Grievance",
     admin: "Admin Management",
+    "upcoming-events": "Upcoming Events",
+    achievements: "Achievements",
+
 };
 
 function getAction(req, statusCode) {

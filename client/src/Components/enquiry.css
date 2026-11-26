@@ -55,6 +55,14 @@
   padding: clamp(8px, 2.5vw, 20px);
 }
 
+.enquiry-title {
+  font-size: clamp(15px, 1.5vw, 22px);
+}
+
+.enquiry-subtitle {
+  font-size: clamp(12px, 1.5vw, 18px);
+}
+
 .enquiry-title,
 .enquiry-subtitle {
   font-family: system-ui;
@@ -68,13 +76,13 @@
 }
 
 .enquiry-form {
-  padding: 20px;
+  padding: clamp(10px, 1vw, 20px);
 }
 
 .enquiry-form label {
   margin: 0px;
   color: rgb(92, 90, 90);
-  font-size: clamp(8px, 2.5vw, 12px);
+  font-size: clamp(8.5px, 1.5vw, 12px);
   font-weight: 600;
 }
 
@@ -82,7 +90,8 @@
 .enquiry-form select {
   width: 95%;
   padding: clamp(8px, 2.5vw, 12px);
-  margin: 10px auto;
+  font-size: clamp(8px, 2.5vw, 12px);
+  margin: clamp(5px, 1vw, 10px) auto;
   border: 2px solid rgb(236, 234, 234);
   border-radius: 6px;
 }
@@ -109,11 +118,6 @@
 
 @media (max-width: 768px) {
   .enquiry-modal {
-    justify-content: center;
+    width: 90%;
   }
-
-  .enquiry-content {
-    border-radius: 15px;
-  }
-
 }

@@ -8,10 +8,6 @@ import MembersList from "../PageContent/About/MembersList";
 import FounderMsg from "../PageContent/About/FounderMsg";
 import PresidentMsg from "../PageContent/About/PresidentMsg";
 
-// import Board_Body from "../PageContent/About/board_body/Board_Body";
-// import Governing_Body from "../PageContent/About/board_body/Governing_Body";
-
-
 
 export const AboutRoute = (
   <Route path="aboutus" element={<AboutUs />}>

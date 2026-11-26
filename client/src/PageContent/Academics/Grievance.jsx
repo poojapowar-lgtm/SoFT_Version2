@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
-const API_URL = "http://localhost:5000/api/student-grievance";
+const API_URL = `${API_BASE}/api/student-grievance`;
 
 const Grievance = () => {
     const [activeTab, setActiveTab] = useState("committee");

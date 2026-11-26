@@ -21,8 +21,7 @@ const PrincipalMSG = () => {
           </div>
 
           <div className="leader-content">
-            {/* <p>From the Principal's Desk</p> */}
-            <h3 className="innerpage-subtitle">
+            <h3 className="leader-name">
               Prof. Dr. Anjali Bhoite
             </h3>
             <h4 className="leader-designation">

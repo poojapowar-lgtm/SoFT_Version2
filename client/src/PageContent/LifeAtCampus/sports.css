@@ -19,7 +19,8 @@
 /* IMAGE WRAPPER */
 .sports-image-wrapper {
   position: relative;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: clamp(10px, 1.5vw, 20px);
   background: #f3f5f3;

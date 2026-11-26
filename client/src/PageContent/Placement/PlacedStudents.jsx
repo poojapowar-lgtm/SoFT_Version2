@@ -1,27 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 // import "./placedstudents.css";
 
 const PlacedStudents = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchStudents = useCallback(async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await axios.get(
+        `${API_BASE}/api/placed-students`,
+        { timeout: 15000 }
+      );
+
+      if (!Array.isArray(res.data)) {
+        throw new Error("Invalid API response");
+      }
+
+      setStudents(res.data);
+    } catch (err) {
+      console.error("Error fetching placed students:", err);
+
+      setError(
+        err.code === "ECONNABORTED"
+          ? "Request timed out. Please try again."
+          : "Unable to load placed students. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/placed-students")
-      .then((res) => {
-        setStudents(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        console.log("Error fetching data");
-        setLoading(false);
-      });
-  }, []);
+    fetchStudents();
+  }, [fetchStudents]);
+
+  const validStudents = students.filter(
+    (item) =>
+      typeof item.name === "string" &&
+      item.name.trim() !== ""
+  );
 
   return (
     <div className="research-container">
       <h2 className="innerpage-title">Placed Students</h2>
+
+      {!loading && !error && (
+        <p>
+          Total Placed Students: <strong>{students.length}</strong>
+        </p>
+      )}
 
       <div className="table-responsive">
         <table className="common-table">
@@ -40,7 +73,21 @@ const PlacedStudents = () => {
             {loading ? (
               <tr>
                 <td colSpan="6" style={{ textAlign: "center" }}>
-                  Loading...
+                  Loading placement records...
+                </td>
+              </tr>
+            ) : error ? (
+              <tr>
+                <td colSpan="6" style={{ textAlign: "center" }}>
+                  {error}
+                  <br />
+                  <button
+                    type="button"
+                    onClick={fetchStudents}
+                    style={{ marginTop: "10px", cursor: "pointer" }}
+                  >
+                    Retry
+                  </button>
                 </td>
               </tr>
             ) : students.length === 0 ? (
@@ -50,35 +97,35 @@ const PlacedStudents = () => {
                 </td>
               </tr>
             ) : (
-              students
-                .filter((item) => item.name)
-                .map((item, index) => (
-                  <tr key={item.id}>
-                    <td>{index + 1}</td>
+              students.map((item, index) => (
+                <tr key={item.id || index}>
+                  <td>{index + 1}</td>
 
-                    {/* PHOTO */}
-                    <td>
-                      {item.photo ? (
-                        <img
-                          src={`http://localhost:5000/uploads/${item.photo}`}
-                          alt={item.name}
-                          className="student-img"
-                          width="100"
-                          height="80"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <span className="no-img">N/A</span>
-                      )}
-                    </td>
+                  <td>
+                    {item.photo ? (
+                      <img
+                        src={`${API_BASE}/uploads/${item.photo}`}
+                        alt={item.name || "Student"}
+                        className="student-img"
+                        width="100"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="no-img">N/A</span>
+                    )}
+                  </td>
 
-                    <td>{item.name}</td>
-                    <td>{item.discipline}</td>
-                    <td>{item.organization}</td>
-                    <td>{item.package_lpa}</td>
-                  </tr>
-                ))
+                  <td>
+                    {item.name?.trim() || "Name unavailable"}
+                  </td>
+
+                  <td>{item.discipline || "N/A"}</td>
+                  <td>{item.organization || "N/A"}</td>
+                  <td>{item.package_lpa ?? "N/A"}</td>
+                </tr>
+              ))
             )}
           </tbody>
         </table>

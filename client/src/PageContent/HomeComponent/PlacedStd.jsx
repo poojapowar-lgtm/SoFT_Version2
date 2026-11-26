@@ -2,8 +2,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { TbBriefcase2Filled  } from "react-icons/tb";
 import "./PlacedStd.css";
+import "../Speak.css";
 import Recruiters from "./Recruiters";
+import API_BASE from "../../utils/apiBase";
 
 const PlacedStd = () => {
   const [students, setStudents] = useState([]);
@@ -16,7 +19,7 @@ const PlacedStd = () => {
   // Fetch placed students
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/placed-students")
+      .get(`${API_BASE}/api/placed-students`)
       .then((res) => setStudents(res.data))
       .catch((error) =>
         console.error("Error fetching placed students:", error)
@@ -38,10 +41,17 @@ const PlacedStd = () => {
 
     handleResize();
 
-    window.addEventListener("resize", handleResize);
+    let resizeTimer;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(handleResize, 150);
+    };
+
+    window.addEventListener("resize", debouncedResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedResize);
+      clearTimeout(resizeTimer);
     };
   }, []);
 
@@ -91,8 +101,9 @@ const PlacedStd = () => {
 
   return (
     <div className="placed-section">
-      <h2 className="title">
-        Our Recruiters & Successful Placements
+      <h2 className="title" style={{textAlign:"center", margin:"0 auto clamp(10px,2vw,25px) auto"}}>
+        <TbBriefcase2Filled  className="title-icon" />
+        Leading <span>Recruiters, Career Success</span>
       </h2>
 
       <div
@@ -130,10 +141,12 @@ const PlacedStd = () => {
                         <div className="card-overlay">
                           <div className="card-left">
                             <img
-                              src={`http://localhost:5000/uploads/${item.photo}`}
+                              src={`${API_BASE}/uploads/${item.photo}`}
                               alt={`${item.name} - ${item.discipline}`}
                               width="300"
                               height="300"
+                              loading="lazy"
+                              decoding="async"
                             />
                           </div>
 

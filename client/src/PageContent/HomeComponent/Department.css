@@ -10,12 +10,11 @@
 /* Container */
 .department-container {
   display: flex;
-  gap: clamp(15px, 3vw, 40px);
+  gap: clamp(15px, 2.2vw, 40px);
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
   flex: 1;
-  /* take remaining space */
 }
 
 .department-container::-webkit-scrollbar {
@@ -24,14 +23,14 @@
 
 /* Card */
 .department-card {
-  flex: 0 0 clamp(250px, 60vw, 320px);
+  flex: 0 0 clamp(250px, 25vw, 320px);
   text-align: center;
 }
 
 /* Image */
 .department-card img {
-  width: 95%;
-  height: clamp(220px, 22vw, 300px);
+  width: 94%;
+  height: clamp(210px, 22vw, 300px);
   display: block;
   margin: 0 auto;
   object-fit: cover;

@@ -21,7 +21,7 @@ const PresidentMsg = () => {
                     </div>
 
                     <div className="leader-content">
-                        <h3 className="innerpage-subtitle">
+                        <h3 className="leader-name">
                             Hon. Prof. Dr. Mangesh T. Karad
                         </h3>
                         <h4 className="leader-designation">

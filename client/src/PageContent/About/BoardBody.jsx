@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const BoardBody = () => {
   const [boardData, setBoardData] = useState([]);
@@ -10,7 +11,7 @@ const BoardBody = () => {
     const fetchBoardMembers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/members?type=board"
+          `${API_BASE}/api/members?type=board`
         );
 
         setBoardData(response.data);

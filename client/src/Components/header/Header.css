@@ -3,12 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(10px, 1vw, 20px) clamp(25px, 5.5vw, 100px);
+  padding: 10px clamp(25px, 5.5vw, 100px);
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   flex-wrap: nowrap;
   gap: 20px;
+  background: linear-gradient(240deg,
+      #ffffff 30%,
+      #f3ecd3 70%);
 }
 
 .header> :first-child {
@@ -41,7 +44,7 @@
 }
 
 .logo2 {
-  width: 120px;
+  width: 110px;
   height: auto;
   aspect-ratio: 110 / 85;
   object-fit: contain;
@@ -51,8 +54,9 @@
 .logo-title {
   font-family: system-ui;
   margin: 0;
-  color: #645500;
-  font-size: clamp(18px, 2vw, 33px);
+  color: #765b00;
+  font-size: clamp(16.5px, 2vw, 30px);
+  letter-spacing: -0.5px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -80,7 +84,7 @@
   list-style: none;
   display: flex;
   padding: 0;
-  margin: clamp(5px, 0.5vw, 10px) 0 0 0;
+  margin: clamp(5px, 0.8vw, 12px) 0 0 0;
 }
 
 .sub-navbar li,
@@ -94,10 +98,6 @@
   gap: clamp(10px, 1.2vw, 22px);
 }
 
-.main-navbar {
-  padding: clamp(5px, 1.5vw, 10px);
-}
-
 .sub-navbar li span.nav-item,
 .main-navbar li span.nav-item {
   font-family: system-ui;
@@ -108,7 +108,7 @@
 
 .sub-navbar li span.nav-item {
   font-size: clamp(10px, 1vw, 16px);
-  color: #002b47;
+  color: #765b00;
 }
 
 
@@ -116,15 +116,16 @@
 .sub-navbar li a.nav-link {
   font-family: system-ui;
   font-size: clamp(9px, 1vw, 15px);
-  color: #002b47;
+  color: #765b00;
   font-weight: 500;
   text-decoration: none;
 }
 
 .sub-navbar li a,
 .main-navbar li a {
-  color: #002B47;
+  color: #3d2f00;
   font-size: clamp(9px, 1vw, 15px);
+  font-weight: 400;
   text-decoration: none;
 }
 
@@ -140,7 +141,7 @@
 .sub-navbar svg,
 .main-navbar svg {
   font-size: clamp(18px, 1.6vw, 24px);
-  color: #002b47;
+  color: #765b00;
 }
 
 .main-navbar svg {
@@ -154,7 +155,9 @@
   right: 10%;
   left: auto;
   width: max-content;
-  background: #efe3b9;
+  background: linear-gradient(240deg,
+      #ffffff 30%,
+      #f3ecd3 70%);
   list-style: none;
   padding: 5px 0px;
   border-radius: 10px;
@@ -172,9 +175,14 @@
 }
 
 .dropdown-menu li:hover {
-  background: #faf7ee;
+  background: #E9E1C4;
 }
 
+.sub-navbar li a:hover,
+.main-navbar li a:hover {
+  color: #004d00;
+  font-weight: 500;
+}
 
 .main-navbar li:hover .dropdown-menu,
 .sub-navbar li:hover .dropdown-menu {
@@ -194,6 +202,7 @@
 .address {
   text-align: center;
   margin-top: 30px;
+  background-color: #E9E1C4;
   padding: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -220,16 +229,17 @@
   }
 
 
-
-
   /* Full-width hamburger container */
   .ham-container {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
-    background: linear-gradient(90deg, #6baa41, #7cb342, #3f8114);
-    padding: 5px 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: linear-gradient(120deg, #0D4218 0%, #083510 55%, #041A08 100%);
+    padding: 5px 15px;
     box-sizing: border-box;
     z-index: 1099;
   }
@@ -239,14 +249,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fit-content;
-    font-size: 20px;
-    color: #722327;
+    padding: 2px 5px;
+    font-size: clamp(16px, 1.5vw, 22px);
+    color: #abdf02;
     cursor: pointer;
     position: relative;
     z-index: 1100;
+    background: rgba(171, 223, 2, 0.10);
+    border: 1px solid rgba(171, 223, 2, 0.45);
+    border-radius: 4px;
+    transition: all 0.3s ease;
   }
 
+  .hamburger:hover {
+    background: rgba(171, 223, 2, 0.20);
+    border-color: #abdf02;
+    box-shadow: 0 0 10px rgba(171, 223, 2, 0.25);
+  }
 
   /* MOBILE MENU */
   .mobile-menu {
@@ -254,10 +273,12 @@
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 270px;
     height: 100vh;
-    background: #fff;
+    background: linear-gradient(240deg,
+        #ffffff 30%,
+        #f3ecd3 70%);
     padding: 25px 15px;
     overflow-y: auto;
     transition: left 0.3s ease;
@@ -265,7 +286,7 @@
   }
 
   .mobile-menu.active {
-    left: 0;
+    right: 0;
   }
 
 
@@ -317,7 +338,7 @@
     max-height: 0;
     overflow: hidden;
     background: #f9f9f9;
-    border-left: 2px solid #722327;
+    border-left: 2px solid #765b00;
     transition: max-height 0.3s ease;
   }
 
@@ -329,7 +350,7 @@
   .mobile-dropdown a {
     padding: 8px 15px;
     font-size: 10px;
-    color: #333;
+    color: #806200;
   }
 
   .rotated {
@@ -374,7 +395,7 @@
   }
 
   .logo2 {
-    width: 95px;
+    width: 94px;
   }
 }
 
@@ -388,7 +409,7 @@
   }
 
   .logo2 {
-    width: 80px;
+    width: 75px;
   }
 }
 
@@ -398,7 +419,7 @@
   }
 
   .logo2 {
-    width: 70px;
+    width: 64px;
   }
 }
 
@@ -409,6 +430,6 @@
   }
 
   .logo2 {
-    width: 65px;
+    width: 58px;
   }
 }

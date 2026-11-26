@@ -1,32 +1,19 @@
-
 /* IMAGES */
 .skill-image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: clamp(15px, 2vw, 30px);
-  margin: clamp(8px, 1.5vw, 15px) auto;
+  margin: clamp(8px, 1vw, 15px) auto;
 }
 
 .skill-image-wrapper img {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 400px;
+  max-width: clamp(150px, 20vw, 350px);
   aspect-ratio: 400 / 250;
   object-fit: cover;
   border-radius: 10px;
 }
 
-
-@media (max-width: 768px) {
-  .skill-image-wrapper {
-    flex-direction: column;
-  }
-
-  .skill-image-wrapper img {
-    width: 90%;
-    height: 150px;
-  }
-
-}

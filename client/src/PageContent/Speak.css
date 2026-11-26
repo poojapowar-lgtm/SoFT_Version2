@@ -1,0 +1,215 @@
+/* SLIDER WRAPPER */
+.speak-slider-wrapper {
+  width: 100%;
+  margin-bottom: clamp(15px, 3vw, 35px);
+  padding: clamp(25px, 3vw, 35px) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+/* SLIDER */
+.speak-slider {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 45px);
+}
+
+
+.speak-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border-radius: clamp(20px, 2vw, 28px);
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.speak-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.11);
+}
+
+
+/* TOP PROFILE */
+.speak-top {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 25px);
+  padding: clamp(5px, 1vw, 15px);
+  background-image: url("/public/assets/images/home/speak1.webp");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* PROFILE IMAGE */
+.speak-left {
+  flex-shrink: 0;
+}
+
+.speak-left img {
+  width: clamp(100px, 9vw, 145px);
+  height: clamp(100px, 9vw, 145px);
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.speak-card:hover .speak-left img {
+  transform: scale(1.04);
+}
+
+/* RIGHT PROFILE CONTENT */
+.speak-right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.student-name {
+  font-size: clamp(12px, 1.2vw, 17px);
+  margin: 4px 0;
+  color: #004d00;
+}
+
+/* LIST */
+.speak-list {
+  list-style: none;
+  padding: 0;
+  margin: clamp(10px, 1vw, 15px) 0;
+}
+
+.speak-list li {
+  font-size: clamp(9.5px, 1.2vw, 14px);
+  color: rgb(128, 93, 5);
+  font-style: italic;
+  font-weight: 550;
+  margin-bottom: clamp(3px, 0.4vw, 6px);
+}
+
+.speak-list li strong {
+  color: #722327;
+  font-weight: 700;
+}
+
+
+/* MESSAGE */
+.speak-message {
+  font-family: system-ui;
+  position: relative;
+  margin: 0;
+  padding:
+    clamp(15px, 1.5vw, 22px) clamp(20px, 2.2vw, 30px) clamp(20px, 2vw, 26px);
+  border-top: 1px solid #eeeeee;
+  color: #333333;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.75;
+  text-align: left;
+}
+
+
+/* QUOTE */
+.speak-message::before {
+  content: "“";
+  position: absolute;
+  left: clamp(7px, 1vw, 14px);
+  top: clamp(8px, 0.8vw, 12px);
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1;
+  color: #008000;
+  opacity: 0.35;
+}
+
+
+/* READ MORE */
+.read-more {
+  font-family: system-ui;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  display: inline-block;
+  margin-left: clamp(5px, 0.5vw, 8px);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #008000;
+  font-size: clamp(10px, 0.9vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+  line-height: inherit;
+  transition: color 0.25s ease;
+}
+
+.read-more:hover {
+  color: #722327;
+  text-decoration: underline;
+}
+
+
+/* NAVIGATION */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: clamp(15px, 2vw, 25px);
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.nav-buttons button {
+  width: clamp(30px, 4vw, 40px);
+  height: clamp(30px, 4vw, 40px);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+      #7fc47f,
+      #7dc47d);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 16px);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background: linear-gradient(135deg,
+      #722327,
+      #a83232);
+
+  transform: scale(1.1);
+}
+
+.nav-buttons button:active {
+  transform: scale(0.95);
+}
+
+
+
+
+/* Mobile: change 2 columns → 1 column */
+@media (max-width: 768px) {
+  .speak-slider {
+    grid-template-columns: 1fr;
+  }
+}

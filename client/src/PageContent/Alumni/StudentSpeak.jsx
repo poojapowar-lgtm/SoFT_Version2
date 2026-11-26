@@ -4,8 +4,9 @@ import {
     TbPlayerTrackPrevFilled,
     TbPlayerTrackNextFilled,
 } from "react-icons/tb";
-import "./StudentSpeak.css";
+import "../Speak.css";
 import "../HomeComponent/PlacedStd.css";
+import API_BASE from "../../utils/apiBase";
 
 
 const StudentSpeak = () => {
@@ -18,7 +19,7 @@ const StudentSpeak = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/api/student-speak")
+            .get(`${API_BASE}/api/student-speak`)
             .then((res) => setData(res.data))
             .catch((err) => console.error(err));
     }, []);
@@ -72,11 +73,15 @@ const StudentSpeak = () => {
                                         <img
                                             src={
                                                 item.image
-                                                    ? `http://localhost:5000/uploads/${item.image}`
+                                                    ? `${API_BASE}/uploads/${item.image}`
                                                     : "/default-user.webp"
                                             }
                                             alt={item.image_alt || item.name}
                                             title={item.image_title || item.name}
+                                            width="120"
+                                            height="120"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                     </div>
 

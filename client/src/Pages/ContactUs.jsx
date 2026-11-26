@@ -56,7 +56,7 @@ const boardData = [
 
     //     try {
     //         const res = await axios.post(
-    //             "http://localhost:5000/api/contact",
+    //             "http://localhost:5000 /api/contact",
     //             formData
     //         );
 
@@ -80,7 +80,7 @@ const boardData = [
 
     return (
         <>
-            <SEOMeta title="Contact Us" path="/contact" />
+            <SEOMeta path="/contact" breadcrumbs={[{ name: "Contact", path: "/contact" }]} />
             <InnerBanner
                 bgImage="/assets/banner_gif/inner_bnr.jpg"
                 title="Contact Us"

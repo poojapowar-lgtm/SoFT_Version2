@@ -37,9 +37,9 @@ const Department = lazy(
   () => import("../PageContent/HomeComponent/Department")
 );
 
-const Testimonials = lazy(
-  () => import("../PageContent/HomeComponent/Testimonials")
-);
+// const Testimonials = lazy(
+//   () => import("../PageContent/HomeComponent/Testimonials")
+// );
 
 const Home = () => {
   return (

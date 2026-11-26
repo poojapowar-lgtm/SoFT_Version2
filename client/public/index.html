@@ -1,80 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
 
-  <link rel="icon" type="image/webp" href="%PUBLIC_URL%/favicon_new.png" />
+  <!-- Google Search Console Verification -->
+  <!-- Replace XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX with your actual GSC verification code -->
+  <!-- <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" /> -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon_new.png" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#006400" />
 
+  <!-- Preconnect to API server and third-party origins -->
+  <link rel="preconnect" href="https://soft.mituniversity.ac.in" />
+  <link rel="preconnect" href="https://www.google.com" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.youtube.com" />
+  <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+  <link rel="dns-prefetch" href="https://maps.gstatic.com" />
 
-  <!-- Primary SEO -->
-  <title id="seo-title">
+  <!-- Preload LCP banner image (first slide, above the fold) -->
+  <link
+    rel="preload"
+    as="image"
+    href="/assets/banner_gif/Green_Innovation5.webp"
+    type="image/webp"
+  />
+
+  <!-- Default Page Title -->
+  <title>
     MIT School of Food Technology (MIT-SoFT) | MIT-ADT University, Pune
   </title>
 
-  <meta id="seo-description" name="description"
-    content="MIT School of Food Technology (MIT-SoFT), Pune offers B.Tech, M.Tech and Ph.D. programs in Food Technology, Food Science, Food Processing and Food Safety at MIT-ADT University." />
+  <!-- Default SEO Metadata -->
+  <meta
+    name="description"
+    content="MIT School of Food Technology (MIT-SoFT), Pune offers B.Tech, M.Tech and Ph.D. programs in Food Technology, Food Science, Food Processing and Food Safety at MIT-ADT University."
+  />
 
-  <meta id="seo-keywords" name="keywords"
-    content="MIT School of Food Technology, MIT SoFT, Food Technology College Pune, B.Tech Food Technology Pune, M.Tech Food Technology Pune, Ph.D Food Technology, Food Science, Food Processing, Food Safety, MIT ADT University" />
+  <meta
+    name="keywords"
+    content="MIT School of Food Technology, MIT SoFT, Food Technology College Pune, B.Tech Food Technology Pune, M.Tech Food Technology Pune, Ph.D Food Technology, Food Science, Food Processing, Food Safety, MIT ADT University"
+  />
 
-  <meta id="seo-robots" name="robots"
-    content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta
+    name="robots"
+    content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+  />
 
   <meta name="googlebot" content="index, follow" />
 
-  <meta name="author" content="MIT School of Food Technology, MIT-ADT University" />
+  <meta
+    name="author"
+    content="MIT School of Food Technology, MIT-ADT University"
+  />
 
-  <link id="seo-canonical" rel="canonical" href="https://www.mitsoft.edu.in/" />
-
-  <!-- Open Graph -->
+  <!-- Open Graph Default Metadata -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_IN" />
-  <meta property="og:site_name" content="MIT School of Food Technology" />
+  <meta
+    property="og:site_name"
+    content="MIT School of Food Technology"
+  />
 
-  <meta property="og:title" content="MIT School of Food Technology (MIT-SoFT) | MIT-ADT University, Pune" />
-
-  <meta property="og:description"
-    content="Explore B.Tech, M.Tech and Ph.D. programs in Food Technology, Food Science, Food Processing and Food Safety at MIT-SoFT, MIT-ADT University, Pune." />
-
-  <meta property="og:url" content="https://www.mitsoft.edu.in/" />
-
-  <meta property="og:image" content="https://www.mitsoft.edu.in/favicon_new.png" />
-
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="MIT School of Food Technology logo" />
-
-  <!-- Twitter Card -->
+  <!-- Twitter Default Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@mitsoft" />
 
-  <meta name="twitter:title" content="MIT School of Food Technology (MIT-SoFT) | MIT-ADT University, Pune" />
+  <!-- Apple Touch Icon -->
+  <link
+    rel="apple-touch-icon"
+    href="%PUBLIC_URL%/favicon_new.png"
+  />
 
-  <meta name="twitter:description"
-    content="Explore B.Tech, M.Tech and Ph.D. programs in Food Technology at MIT School of Food Technology, Pune." />
-
-  <meta name="twitter:image" content="https://www.mitsoft.edu.in/favicon_new.png" />
-
-  <meta name="twitter:image:alt" content="MIT School of Food Technology logo" />
-
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon_new.png" />
-
+  <!-- Web App Manifest -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <!-- CollegeOrUniversity Structured Data -->
+  <!-- EducationalOrganization Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollegeOrUniversity",
+    "@type": "EducationalOrganization",
+    "@id": "https://soft.mituniversity.ac.in/#organization",
     "name": "MIT School of Food Technology",
     "alternateName": "MIT-SoFT",
-    "url": "https://www.mitsoft.edu.in/",
-    "logo": "https://www.mitsoft.edu.in/favicon_new.png"",
-    "image": "https://www.mitsoft.edu.in/favicon_new.png"",
+    "url": "https://soft.mituniversity.ac.in/",
+    "logo": "https://soft.mituniversity.ac.in/favicon_new.png",
+    "image": "https://soft.mituniversity.ac.in/favicon_new.png",
     "description": "MIT School of Food Technology offers B.Tech, M.Tech and Ph.D. programs in Food Technology, Food Science, Food Processing and Food Safety at MIT-ADT University, Pune.",
     "address": {
       "@type": "PostalAddress",
@@ -93,23 +110,45 @@
   }
   </script>
 
-  <!-- Website Structured Data -->
+  <!-- WebSite Structured Data with SearchAction -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://soft.mituniversity.ac.in/#website",
     "name": "MIT School of Food Technology",
-    "url": "https://www.mitsoft.edu.in/"
+    "url": "https://soft.mituniversity.ac.in/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://soft.mituniversity.ac.in/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
+
+  <!-- Google Analytics 4 -->
+  <!-- Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script> -->
+
 </head>
 
 <body>
+
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
 
   <div id="root"></div>
+
 </body>
 
 </html>

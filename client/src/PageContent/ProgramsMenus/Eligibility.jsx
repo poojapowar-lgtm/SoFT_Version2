@@ -42,35 +42,6 @@ const Eligibility = ({ title, description, duration, requirement, exam }) => {
           </div>
         </div>
 
-        {/* <div className="row-lists">
-          {duration && (
-            <div>
-              <h4 className="names">Duration</h4>
-              {duration.map((item, index) => (
-                <p key={index}>{item}</p>
-              ))}
-            </div>
-          )}
-
-          {requirement && (
-            <div>
-              <h4 className="names">Specific Requirement</h4>
-              {requirement.map((item, index) => (
-                <p key={index}>{item}</p>
-              ))}
-            </div>
-          )}
-
-
-          {exam && (
-            <div>
-              <h3 className="names">Entrance Exam</h3>
-              {exam.map((item, index) => (
-                <p key={index}>{item}</p>
-              ))}
-            </div>
-          )}
-        </div> */}
         <div className="board-body-container">
           {infoData.map((section, index) => (
             section.data && (

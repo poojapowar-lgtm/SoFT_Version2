@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from "../../utils/apiBase";
 
 const AlumniStartup = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/alumni-startup") // ✅ FIXED
+      .get(`${API_BASE}/api/alumni-startup`)
       .then((res) => setData(res.data))
       .catch((err) => console.log("Error:", err));
   }, []);
@@ -55,7 +56,7 @@ const AlumniStartup = () => {
                   <td>
                     {item.certificate_file && (
                       <a
-                        href={`http://localhost:5000/uploads/${item.certificate_file}`}
+                        href={`${API_BASE}/uploads/${item.certificate_file}`}
                         target="_blank"
                         rel="noreferrer"
                       >
